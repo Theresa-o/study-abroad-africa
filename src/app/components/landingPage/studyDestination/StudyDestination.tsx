@@ -1,0 +1,54 @@
+import DestinationCard from "./DestinationCard";
+
+const destinations = [
+  {
+    country: "Canada",
+    flagCode: "CA",
+    imageUrl: "/placeholder.svg?height=160&width=320",
+    href: "/study/canada",
+  },
+  {
+    country: "UK",
+    flagCode: "GB",
+    imageUrl: "/placeholder.svg?height=160&width=320",
+    href: "/study/uk",
+  },
+  {
+    country: "US",
+    flagCode: "US",
+    imageUrl: "/placeholder.svg?height=160&width=320",
+    href: "/study/us",
+  },
+  {
+    country: "Australia",
+    flagCode: "AU",
+    imageUrl: "/placeholder.svg?height=160&width=320",
+    href: "/study/australia",
+  },
+  {
+    country: "Ireland",
+    flagCode: "IE",
+    imageUrl: "/placeholder.svg?height=160&width=320",
+    href: "/study/ireland",
+  },
+];
+
+const StudyDestinations = () => {
+  return (
+    <section className="py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+          Study In Your Dream Destination
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {destinations.map((destination) => (
+            <DestinationCard key={destination.country} {...destination} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default StudyDestinations;
