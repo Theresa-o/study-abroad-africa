@@ -11,14 +11,14 @@ import {
 
 const EduNavTabs = () => {
   return (
-    <Tabs defaultValue="all-programs" className="w-full">
+    <Tabs defaultValue="undergraduate" className="w-full">
       <TabsList className="w-full grid grid-cols-1 md:grid-cols-5 h-auto bg-white">
         <TabsTrigger
-          value="all-programs"
+          value="undergraduate"
           className="data-[state=active]:bg-[#2d4a43] data-[state=active]:text-white py-6 border"
         >
           <Rotate3D className="pr-1" />
-          <span>All Programs</span>
+          <span>Undergraduate</span>
         </TabsTrigger>
         <TabsTrigger
           value="masters"
