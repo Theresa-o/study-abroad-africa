@@ -2,12 +2,15 @@ const FilterTags = () => {
   const tags = [
     "Popular",
     "AI & Digital Transformation",
-    "Sustainability",
-    "Leadership & Interpersonal Skills",
-    "Business Management & Strategy",
+    "Business & Economics",
     "Data Science & Analysis",
     "Education",
     "Finance, Investment & Banking",
+    "Healthcare",
+    "HR & operations",
+    "Information technology and cybersecurity",
+    "Computer science",
+    "Marketing, sales & design",
   ];
 
   return (
