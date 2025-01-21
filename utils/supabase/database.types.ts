@@ -34,7 +34,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      "Course Categories": {
+      "course_categories": {
         Row: {
           category_name: string | null
           created_at: string
@@ -52,7 +52,7 @@ export type Database = {
         }
         Relationships: []
       }
-      "Course m2m Tags": {
+      "course_m2m_tags": {
         Row: {
           course_id: number | null
           created_at: string
@@ -73,22 +73,22 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "Course m2m Tags_course_id_fkey"
+            foreignKeyName: "course_m2m_tags_course_id_fkey"
             columns: ["course_id"]
             isOneToOne: false
             referencedRelation: "Courses"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "Course m2m Tags_tag_id_fkey"
+            foreignKeyName: "course_m2m_tags_tag_id_fkey"
             columns: ["tag_id"]
             isOneToOne: false
-            referencedRelation: "Course Tags"
+            referencedRelation: "course_tags"
             referencedColumns: ["id"]
           },
         ]
       }
-      "Course Tags": {
+      "course_tags": {
         Row: {
           created_at: string
           id: number
@@ -139,7 +139,7 @@ export type Database = {
             foreignKeyName: "Courses_category_id_fkey"
             columns: ["category_id"]
             isOneToOne: false
-            referencedRelation: "Course Categories"
+            referencedRelation: "course_categories"
             referencedColumns: ["id"]
           },
           {
