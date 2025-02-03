@@ -15,6 +15,8 @@ const ConsultationRequest = () => {
         alt="Background"
         fill
         className="rounded-md object-cover"
+        // udate the sizes attribute to match the image dimensions
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
       <div className="absolute inset-0 bg-navy-900 bg-opacity-70"></div>
       <div className="relative z-10 max-w-3xl mx-auto text-center text-white space-y-6">

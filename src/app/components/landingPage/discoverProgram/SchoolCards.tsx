@@ -33,6 +33,13 @@ const SchoolCards = ({
           fill
           className="rounded-md object-cover"
         />
+
+        {/* <Image
+          src={imageUrl}
+          alt={title}
+          fill
+          className="rounded-md object-cover"
+        /> */}
       </div>
       <CardContent className="p-6">
         <h3 className="text-xl font-bold mb-2">{title}</h3>

@@ -23,11 +23,26 @@ export function useTags() {
   });
 }
 
+export function useCoursesByTag(tagId: number | null) {
+  return useQuery({
+    queryKey: ["courses", "byTag", tagId],
+    queryFn: () => (tagId ? tagService.getCoursesByTag(tagId) : []),
+    enabled: !!tagId,
+  });
+}
+
 // hooks/useInstitutions.ts
 export function useInstitutions() {
   return useQuery({
     queryKey: ["institutions"],
     queryFn: institutionService.getInstitutions,
+  });
+}
+
+export function useCourses() {
+  return useQuery({
+    queryKey: ["courses"],
+    queryFn: courseService.getCourses,
   });
 }
 

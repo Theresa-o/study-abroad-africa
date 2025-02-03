@@ -10,6 +10,8 @@ const HeroSection = () => {
         src="/images/landing-page-bg.jpg"
         alt="Background"
         fill
+        // udate the sizes attribute to match the image dimensions
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority
         className="absolute z-0 object-cover object-center w-full h-full"
       />

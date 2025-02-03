@@ -12,11 +12,29 @@ export const categoryService = {
   }
 };
 
+// services/tagService.ts
 export const tagService = {
   async getTags() {
     const { data, error } = await supabase
       .from('course_tags')
       .select('*');
+    if (error) throw error;
+    return data;
+  },
+
+  async getCoursesByTag(tagId: number) {
+    const { data, error } = await supabase
+      .from('Courses')
+      .select(`
+        *,
+        institution:institution_id(institution_name),
+        category:category_id(category_name),
+        course_m2m_tags!inner(
+          tag_id
+        )
+      `)
+      .eq('course_m2m_tags.tag_id', tagId);
+    
     if (error) throw error;
     return data;
   }
@@ -57,5 +75,19 @@ export const courseService = {
 
     if (tagError) throw tagError;
     return course;
+  },
+
+  async getCourses() {
+    const { data, error } = await supabase
+      .from('Courses')
+      .select(`
+        *,
+        institution:institution_id(institution_name),
+        category:category_id(category_name),
+        course_tags:course_m2m_tags(tag_id)
+      `);
+
+    if (error) throw error;
+    return data;
   }
 };

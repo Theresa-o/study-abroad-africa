@@ -1,5 +1,6 @@
 "use client";
 
+import { useCategories } from "@/app/hooks/courses/useCourses";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ArrowRightLeft,
@@ -9,45 +10,49 @@ import {
   Rotate3D,
 } from "lucide-react";
 
-const EduNavTabs = () => {
+const categoryIcons = {
+  undergraduate: Rotate3D,
+  masters: LandmarkIcon,
+  phd: FolderSync,
+  mba: ArrowRightLeft,
+  online: ReceiptText,
+};
+
+type CategoryId = keyof typeof categoryIcons;
+
+const EduNavTabs = ({
+  onCategorySelect,
+}: {
+  onCategorySelect: (id: number | null) => void;
+}) => {
+  const { data, error, isLoading } = useCategories();
+
   return (
     <Tabs defaultValue="undergraduate" className="w-full">
       <TabsList className="w-full grid grid-cols-1 md:grid-cols-5 h-auto bg-white">
-        <TabsTrigger
-          value="undergraduate"
+        {/* <TabsTrigger
+          value="all"
+          onClick={() => onCategorySelect(null)}
           className="data-[state=active]:bg-[#2d4a43] data-[state=active]:text-white py-6 border"
         >
-          <Rotate3D className="pr-1" />
-          <span>Undergraduate</span>
-        </TabsTrigger>
-        <TabsTrigger
-          value="masters"
-          className="data-[state=active]:bg-[#2d4a43] data-[state=active]:text-white py-6 border"
-        >
-          <LandmarkIcon className="pr-1" />
-          <span>Masters</span>
-        </TabsTrigger>
-        <TabsTrigger
-          value="phd"
-          className="data-[state=active]:bg-[#2d4a43] data-[state=active]:text-white py-6 border"
-        >
-          <FolderSync className="pr-1" />
-          <span>PhD</span>
-        </TabsTrigger>
-        <TabsTrigger
-          value="mba"
-          className="data-[state=active]:bg-[#2d4a43] data-[state=active]:text-white py-6 border"
-        >
-          <ArrowRightLeft className="pr-1" />
-          <span>MBA</span>
-        </TabsTrigger>
-        <TabsTrigger
-          value="online"
-          className="data-[state=active]:bg-[#2d4a43] data-[state=active]:text-white py-6 border"
-        >
-          <ReceiptText className="pr-1" />
-          <span>Online</span>
-        </TabsTrigger>
+          All Categories
+        </TabsTrigger> */}
+        {data?.map((category) => {
+          const categoryId = category.category_name.toLowerCase() as CategoryId;
+          const Icon = categoryIcons[categoryId] || Rotate3D;
+          return (
+            <TabsTrigger
+              // key={category.id}
+              key={`${category.id}-${category.category_name}`}
+              value={category.id.toString()}
+              onClick={() => onCategorySelect(category.id)}
+              className="data-[state=active]:bg-[#085145] data-[state=active]:text-white py-6 border"
+            >
+              <Icon className="pr-1" />
+              <span>{category.category_name}</span>
+            </TabsTrigger>
+          );
+        })}
       </TabsList>
     </Tabs>
   );
