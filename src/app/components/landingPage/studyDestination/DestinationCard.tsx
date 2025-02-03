@@ -32,6 +32,8 @@ const DestinationCard = ({
               alt="Background"
               fill
               className="rounded-md object-cover"
+              // udate the sizes attribute to match the image dimensions
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="p-6">

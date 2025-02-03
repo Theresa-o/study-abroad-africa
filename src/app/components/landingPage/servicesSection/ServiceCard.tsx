@@ -22,6 +22,8 @@ const ServiceCard = ({ title, description, logo, href }: ServiceCardProps) => {
             alt="Background"
             fill
             className="rounded-md object-cover"
+            // udate the sizes attribute to match the image dimensions
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <h3 className="text-xl font-semibold text-gray-900">{title}</h3>

@@ -25,11 +25,11 @@ const tips = [
     href: "/blog/student-success",
   },
   {
-    title: "Explore 5 Reasons a Work Visa to Europe Might be Denied",
+    title: "Explore 5 Reasons a Work Visa to Europe Might be eee",
     excerpt:
       "Understanding common pitfalls in the European work visa application process and how to avoid them.",
     date: "April 12, 2023",
-    comments: 3,
+    comments: 9,
     category: "Tips",
     image: "/placeholder.svg?height=200&width=400",
     href: "/blog/work-visa-europe",
@@ -58,11 +58,11 @@ const news = [
     href: "/blog/education-trends",
   },
   {
-    title: "New Immigration Policy Changes in 2024",
+    title: "New Immigration Policy Changes in 2027",
     excerpt:
       "Recent updates to immigration policies that affect international students and workers.",
     date: "April 10, 2023",
-    comments: 8,
+    comments: 9,
     category: "News",
     image: "/placeholder.svg?height=200&width=400",
     href: "/blog/policy-changes",
@@ -91,7 +91,7 @@ const events = [
     href: "/events/career-fair",
   },
   {
-    title: "International Education Fair 2024",
+    title: "International Education Fair 2028",
     excerpt:
       "Join us for the largest education fair featuring universities from around the world.",
     date: "April 20, 2023",
