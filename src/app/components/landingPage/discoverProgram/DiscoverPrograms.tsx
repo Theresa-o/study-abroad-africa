@@ -6,33 +6,13 @@ import SchoolCards from "./SchoolCards";
 import EduNavTabs from "./EduNavTabs";
 import { useCourses, useCoursesByTag } from "@/app/hooks/courses/useCourses";
 import { useState } from "react";
+import { Tables } from "../../../../../utils/supabase/database.types";
 
-const courses = [
-  {
-    title: "Oxford Artificial Intelligence Programme",
-    institution: "Oxford Said",
-    imageUrl: "/placeholder.svg?height=192&width=384",
-    category: "Executive Education",
-  },
-  {
-    title: "MBA Essentials",
-    institution: "LSE",
-    imageUrl: "/placeholder.svg?height=192&width=384",
-    category: "Executive Education",
-  },
-  {
-    title: "Artificial Intelligence: Implications for Business Strategy",
-    institution: "MIT Sloan School of Management",
-    imageUrl: "/placeholder.svg?height=192&width=384",
-    category: "Executive Education",
-  },
-  {
-    title: "Oxford Executive Leadership Programme",
-    institution: "Oxford Said",
-    imageUrl: "/placeholder.svg?height=192&width=384",
-    category: "Executive Education",
-  },
-];
+type Course = Tables<"Courses"> & {
+  course_m2m_tags?: Tables<"course_m2m_tags">[];
+  category?: Tables<"course_categories">;
+  institution?: Tables<"Institution">;
+};
 
 const DiscoverPrograms = () => {
   const [selectedTagId, setSelectedTagId] = useState<number | null>(null);
@@ -40,12 +20,12 @@ const DiscoverPrograms = () => {
     null
   );
 
-  const { data: allCourses } = useCourses();
+  const { data: allCourses } = useCourses(); // Remove type argument
   const { data: filteredCourses } = useCoursesByTag(selectedTagId);
 
   const displayedCourses = (
     selectedTagId ? filteredCourses : allCourses
-  )?.filter((course) => {
+  )?.filter((course: Course) => {
     const matchesTag = selectedTagId
       ? course.course_m2m_tags?.some((tag) => tag.tag_id === selectedTagId)
       : true;
