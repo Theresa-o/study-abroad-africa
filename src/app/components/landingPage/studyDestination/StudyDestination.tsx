@@ -1,3 +1,6 @@
+"use client";
+
+import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 import DestinationCard from "./DestinationCard";
 
 const destinations = [
@@ -34,6 +37,7 @@ const destinations = [
 ];
 
 const StudyDestinations = () => {
+  const { data, isLoading, error } = useStudyDestinations();
   return (
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -42,7 +46,7 @@ const StudyDestinations = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {destinations.map((destination) => (
+          {data?.map((destination) => (
             <DestinationCard key={destination.country} {...destination} />
           ))}
         </div>
