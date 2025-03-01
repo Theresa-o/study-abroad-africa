@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
 import Image from "next/image";
 
@@ -16,12 +9,7 @@ interface CourseCardProps {
   category: string;
 }
 
-const SchoolCards = ({
-  title,
-  institution,
-  imageUrl,
-  category,
-}: CourseCardProps) => {
+const SchoolCards = ({ title, institution, category }: CourseCardProps) => {
   return (
     <Card className="overflow-hidden relative">
       <div className="relative h-48 w-full">
