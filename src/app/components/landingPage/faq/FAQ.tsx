@@ -37,8 +37,6 @@ const faqs = [
 ];
 
 const FAQSection = () => {
-  const [openItem, setOpenItem] = useState<string | null>(null);
-
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-3xl mx-auto space-y-8">

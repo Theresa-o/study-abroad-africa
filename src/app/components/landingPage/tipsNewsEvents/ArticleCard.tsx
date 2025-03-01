@@ -25,7 +25,6 @@ const ArticleCard = ({
   date,
   comments,
   category,
-  image,
   href,
 }: ArticleCardProps) => {
   return (

@@ -10,7 +10,7 @@ const FilterTags = ({
 }) => {
   const [selectedTagId, setSelectedTagId] = useState<number | null>(null);
 
-  const { data, error, isLoading } = useTags();
+  const { data } = useTags();
 
   const handleTagClick = (tagId: number) => {
     const newTagId = selectedTagId === tagId ? null : tagId;

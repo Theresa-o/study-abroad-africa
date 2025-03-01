@@ -37,7 +37,7 @@ const destinations = [
 ];
 
 const StudyDestinations = () => {
-  const { data, isLoading, error } = useStudyDestinations();
+  const { data } = useStudyDestinations();
   return (
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">

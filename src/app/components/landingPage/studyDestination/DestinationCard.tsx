@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 interface DestinationCardProps {
   country: string;
@@ -9,11 +8,7 @@ interface DestinationCardProps {
   href: string;
 }
 
-const DestinationCard = ({
-  country,
-  image_url,
-  href,
-}: DestinationCardProps) => {
+const DestinationCard = ({ country, image_url }: DestinationCardProps) => {
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
       <CardContent className="p-0">

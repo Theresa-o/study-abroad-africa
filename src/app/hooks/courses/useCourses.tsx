@@ -55,7 +55,7 @@ export function useCreateCourse() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["courses"] });
     },
-    onError: (error: any) => {
+    onError: () => {
       let errorMessage = "An error occurred. Please try again.";
       toast.error(errorMessage);
     },

@@ -1,4 +1,3 @@
-import { TablesInsert } from "../../../utils/supabase/database.types";
 import supabase from "../../../utils/supabase/supaBaseClient";
 import { CreateCourseDTO } from "../types/courses/courses";
 
