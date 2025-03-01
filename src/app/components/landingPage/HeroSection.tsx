@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Search from "../filtering/search";
 import Image from "next/image";
 
@@ -32,7 +32,9 @@ const HeroSection = () => {
           {/* Search Bar Wrapper */}
           <div className="flex justify-center pb-8">
             <div className="w-full max-w-2xl">
-              <Search />
+              <Suspense>
+                <Search />
+              </Suspense>
             </div>
           </div>
         </div>
