@@ -36,22 +36,22 @@ const CourseForm = () => {
   const {
     data: categoriesQuery,
     isLoading: categoriesQueryLoading,
-    error: categoriesQueryError,
+    // error: categoriesQueryError,
   } = useCategories();
   const {
     data: tagsQuery,
     isLoading: tagsQueryLoading,
-    error: tagsQueryError,
+    // error: tagsQueryError,
   } = useTags();
   const {
     data: institutionsQuery,
     isLoading: institutionsQueryLoading,
-    error: institutionsQueryError,
+    // error: institutionsQueryError,
   } = useInstitutions();
   const {
     mutate: createCourseMutation,
-    error: createCourseMutationError,
-    isSuccess,
+    // error: createCourseMutationError,
+    // isSuccess,
   } = useCreateCourse();
 
   const categoriesOptions = useMemo(
@@ -60,7 +60,7 @@ const CourseForm = () => {
         value: category.id,
         label: category.category_name,
       })) || [],
-    [tagsQuery]
+    [categoriesQuery]
   );
 
   const tagsOptions = useMemo(
@@ -96,7 +96,7 @@ const CourseForm = () => {
     };
 
     await createCourseMutation(createCourseData, {
-      onError: (error) => {
+      onError: () => {
         toast.error("Transaction failed. Please try again.");
       },
       onSuccess: () => {
