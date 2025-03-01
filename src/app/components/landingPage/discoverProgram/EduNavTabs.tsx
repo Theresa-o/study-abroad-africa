@@ -25,7 +25,7 @@ const EduNavTabs = ({
 }: {
   onCategorySelect: (id: number | null) => void;
 }) => {
-  const { data, error, isLoading } = useCategories();
+  const { data } = useCategories();
 
   return (
     <Tabs defaultValue="undergraduate" className="w-full">
