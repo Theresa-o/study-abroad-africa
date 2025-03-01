@@ -55,9 +55,9 @@ const EssentialExams = () => {
           Preparing to study abroad involves more than just choosing a
           destination; it often requires proving your academic and language
           proficiency. These exams are essential to meeting the requirements of
-          universities and colleges worldwide. Whether it's demonstrating your
-          English skills or showcasing your aptitude, this guide will help you
-          navigate the exams that matter most for your dream destination.
+          universities and colleges worldwide. Whether it&apos;s demonstrating
+          your English skills or showcasing your aptitude, this guide will help
+          you navigate the exams that matter most for your dream destination.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {exams.map((exam) => (

@@ -48,7 +48,8 @@ const ServicesSection = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Explore exclusive programs to help you and your students save time
-            and money. With ApplyBoard, you're never far from a helping hand.
+            and money. With ApplyBoard, you&apos;re never far from a helping
+            hand.
           </p>
         </div>
 
