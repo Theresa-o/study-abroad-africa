@@ -1,10 +1,8 @@
 "use client";
 
-import React, { ChangeEvent, useState } from "react";
-import Image from "next/image";
+import React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { toast } from "sonner";
 
 // https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
 const Search = () => {
