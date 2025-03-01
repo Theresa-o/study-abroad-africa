@@ -34,7 +34,43 @@ export type Database = {
   }
   public: {
     Tables: {
-      "course_categories": {
+      category_m2m_scholarships: {
+        Row: {
+          category_id: number | null
+          created_at: string
+          id: number
+          scholarship_id: number | null
+        }
+        Insert: {
+          category_id?: number | null
+          created_at?: string
+          id?: number
+          scholarship_id?: number | null
+        }
+        Update: {
+          category_id?: number | null
+          created_at?: string
+          id?: number
+          scholarship_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "category_m2m_scholarships_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "course_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "category_m2m_scholarships_scholarship_id_fkey"
+            columns: ["scholarship_id"]
+            isOneToOne: false
+            referencedRelation: "scholarships"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      course_categories: {
         Row: {
           category_name: string | null
           created_at: string
@@ -52,7 +88,7 @@ export type Database = {
         }
         Relationships: []
       }
-      "course_m2m_tags": {
+      course_m2m_tags: {
         Row: {
           course_id: number | null
           created_at: string
@@ -73,14 +109,14 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "course_m2m_tags_course_id_fkey"
+            foreignKeyName: "Course m2m Tags_course_id_fkey"
             columns: ["course_id"]
             isOneToOne: false
             referencedRelation: "Courses"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "course_m2m_tags_tag_id_fkey"
+            foreignKeyName: "Course m2m Tags_tag_id_fkey"
             columns: ["tag_id"]
             isOneToOne: false
             referencedRelation: "course_tags"
@@ -88,7 +124,7 @@ export type Database = {
           },
         ]
       }
-      "course_tags": {
+      course_tags: {
         Row: {
           created_at: string
           id: number
@@ -151,10 +187,68 @@ export type Database = {
           },
         ]
       }
+      destination_m2m_scholarships: {
+        Row: {
+          created_at: string
+          destination_id: number | null
+          id: number
+          scholarship_id: number | null
+        }
+        Insert: {
+          created_at?: string
+          destination_id?: number | null
+          id?: number
+          scholarship_id?: number | null
+        }
+        Update: {
+          created_at?: string
+          destination_id?: number | null
+          id?: number
+          scholarship_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "destination_m2m_scholarships_scholarship_id_fkey"
+            columns: ["scholarship_id"]
+            isOneToOne: false
+            referencedRelation: "scholarships"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "destination_scholarships_destination_id_fkey"
+            columns: ["destination_id"]
+            isOneToOne: false
+            referencedRelation: "destinations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      destinations: {
+        Row: {
+          country: string | null
+          created_at: string
+          id: number
+          image_url: string | null
+        }
+        Insert: {
+          country?: string | null
+          created_at?: string
+          id?: number
+          image_url?: string | null
+        }
+        Update: {
+          country?: string | null
+          created_at?: string
+          id?: number
+          image_url?: string | null
+        }
+        Relationships: []
+      }
       Institution: {
         Row: {
           created_at: string
           description: string | null
+          destination_id: number | null
           id: number
           institution_name: string | null
           location: string | null
@@ -164,6 +258,7 @@ export type Database = {
         Insert: {
           created_at?: string
           description?: string | null
+          destination_id?: number | null
           id?: number
           institution_name?: string | null
           location?: string | null
@@ -173,11 +268,83 @@ export type Database = {
         Update: {
           created_at?: string
           description?: string | null
+          destination_id?: number | null
           id?: number
           institution_name?: string | null
           location?: string | null
           logo?: string | null
           website?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "Institution_destination_id_fkey"
+            columns: ["destination_id"]
+            isOneToOne: false
+            referencedRelation: "destinations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      scholarships: {
+        Row: {
+          created_at: string
+          creator_name: string | null
+          deadline_date: string | null
+          funding_amount: string | null
+          id: number
+          image: string | null
+          published_date: string | null
+          scholarship_description: string | null
+          scholarship_name: string | null
+          website: string | null
+        }
+        Insert: {
+          created_at?: string
+          creator_name?: string | null
+          deadline_date?: string | null
+          funding_amount?: string | null
+          id?: number
+          image?: string | null
+          published_date?: string | null
+          scholarship_description?: string | null
+          scholarship_name?: string | null
+          website?: string | null
+        }
+        Update: {
+          created_at?: string
+          creator_name?: string | null
+          deadline_date?: string | null
+          funding_amount?: string | null
+          id?: number
+          image?: string | null
+          published_date?: string | null
+          scholarship_description?: string | null
+          scholarship_name?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
+      study_abroad_steps: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: number
+          step_number: string | null
+          title: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          step_number?: string | null
+          title?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          step_number?: string | null
+          title?: string | null
         }
         Relationships: []
       }

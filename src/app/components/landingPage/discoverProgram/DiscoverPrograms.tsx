@@ -20,7 +20,7 @@ const DiscoverPrograms = () => {
     null
   );
 
-  const { data: allCourses } = useCourses(); // Remove type argument
+  const { data: allCourses } = useCourses();
   const { data: filteredCourses } = useCoursesByTag(selectedTagId);
 
   const displayedCourses = (
@@ -49,12 +49,9 @@ const DiscoverPrograms = () => {
             <SchoolCards
               key={course?.id}
               title={course?.title}
-              // institution={course?.institution.name}
-              // imageUrl={course?.imageUrl}
-              // category={course?.category.name}
-              institution={course.institution?.institution_name} // Updated to match API response
-              imageUrl={course.image} // Updated to match API response
-              category={course.category?.category_name} // Updated to match API response
+              institution={course.institution?.institution_name}
+              imageUrl={course.image}
+              category={course.category?.category_name}
             />
           ))}
         </div>
