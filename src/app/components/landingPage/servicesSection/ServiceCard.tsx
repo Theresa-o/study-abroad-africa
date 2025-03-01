@@ -10,7 +10,7 @@ interface ServiceCardProps {
   href: string;
 }
 
-const ServiceCard = ({ title, description, logo, href }: ServiceCardProps) => {
+const ServiceCard = ({ title, description, href }: ServiceCardProps) => {
   return (
     <Card className="h-full flex flex-col">
       <CardContent className="flex-grow space-y-4 p-6">

@@ -32,7 +32,6 @@ const ScholarshipCard = ({
   image,
   published_date,
   deadline_date,
-  type,
   website,
   scholarship_description,
   scholarship_categories,

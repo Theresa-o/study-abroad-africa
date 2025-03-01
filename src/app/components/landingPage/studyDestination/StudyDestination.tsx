@@ -3,39 +3,6 @@
 import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 import DestinationCard from "./DestinationCard";
 
-const destinations = [
-  {
-    country: "Canada",
-    flagCode: "CA",
-    imageUrl: "/placeholder.svg?height=160&width=320",
-    href: "/study/canada",
-  },
-  {
-    country: "UK",
-    flagCode: "GB",
-    imageUrl: "/placeholder.svg?height=160&width=320",
-    href: "/study/uk",
-  },
-  {
-    country: "US",
-    flagCode: "US",
-    imageUrl: "/placeholder.svg?height=160&width=320",
-    href: "/study/us",
-  },
-  {
-    country: "Australia",
-    flagCode: "AU",
-    imageUrl: "/placeholder.svg?height=160&width=320",
-    href: "/study/australia",
-  },
-  {
-    country: "Ireland",
-    flagCode: "IE",
-    imageUrl: "/placeholder.svg?height=160&width=320",
-    href: "/study/ireland",
-  },
-];
-
 const StudyDestinations = () => {
   const { data } = useStudyDestinations();
   return (

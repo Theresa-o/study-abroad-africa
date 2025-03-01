@@ -18,7 +18,7 @@ export function useCreateScholarship() {
       queryClient.invalidateQueries({ queryKey: ["scholarship"] });
     },
     onError: () => {
-      let errorMessage = "An error occurred. Please try again.";
+      const errorMessage = "An error occurred. Please try again.";
       toast.error(errorMessage);
     },
   });
