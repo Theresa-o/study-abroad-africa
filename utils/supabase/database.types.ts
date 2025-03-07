@@ -34,6 +34,96 @@ export type Database = {
   }
   public: {
     Tables: {
+      articles: {
+        Row: {
+          author: string | null
+          category_id: number | null
+          content: string | null
+          country_id: number | null
+          created_at: string
+          id: number
+          image_url: string | null
+          slug: string | null
+          title: string | null
+        }
+        Insert: {
+          author?: string | null
+          category_id?: number | null
+          content?: string | null
+          country_id?: number | null
+          created_at?: string
+          id?: number
+          image_url?: string | null
+          slug?: string | null
+          title?: string | null
+        }
+        Update: {
+          author?: string | null
+          category_id?: number | null
+          content?: string | null
+          country_id?: number | null
+          created_at?: string
+          id?: number
+          image_url?: string | null
+          slug?: string | null
+          title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_articles_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "course_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "post_articles_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "destinations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      articles_m2m_articles_tags: {
+        Row: {
+          article_id: number | null
+          articles_tags_id: number | null
+          created_at: string
+          id: number
+        }
+        Insert: {
+          article_id?: number | null
+          articles_tags_id?: number | null
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          article_id?: number | null
+          articles_tags_id?: number | null
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
+      articles_tags: {
+        Row: {
+          created_at: string
+          id: number
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          name?: string | null
+        }
+        Relationships: []
+      }
       category_m2m_scholarships: {
         Row: {
           category_id: number | null
@@ -241,6 +331,102 @@ export type Database = {
           created_at?: string
           id?: number
           image_url?: string | null
+        }
+        Relationships: []
+      }
+      event_m2m_events_tags: {
+        Row: {
+          created_at: string
+          event_id: number | null
+          events_tags_id: number | null
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          event_id?: number | null
+          events_tags_id?: number | null
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          event_id?: number | null
+          events_tags_id?: number | null
+          id?: number
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          country_id: number | null
+          course_id: number | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          event_date: string | null
+          event_location: string | null
+          id: number
+          image_url: string | null
+          registration_link: string | null
+          title: string | null
+        }
+        Insert: {
+          country_id?: number | null
+          course_id?: number | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          event_date?: string | null
+          event_location?: string | null
+          id?: number
+          image_url?: string | null
+          registration_link?: string | null
+          title?: string | null
+        }
+        Update: {
+          country_id?: number | null
+          course_id?: number | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          event_date?: string | null
+          event_location?: string | null
+          id?: number
+          image_url?: string | null
+          registration_link?: string | null
+          title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "destinations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "events_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "Courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events_tags: {
+        Row: {
+          created_at: string
+          id: number
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          name?: string | null
         }
         Relationships: []
       }

@@ -12,7 +12,7 @@ interface Category {
 interface ScholarshipCategory {
   id: number;
   category_id: string;
-  categories: Category; // Nested categories object
+  categories: Category;
 }
 interface ScholarshipCardProps {
   scholarship_name: string;
