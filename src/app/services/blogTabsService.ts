@@ -50,7 +50,6 @@ export const blogTabService = {
                 articles_tags:articles_m2m_articles_tags(articles_tags_id)
                 `
             );
-            console.log("Fetched Articles Data:", data);
         if (error) throw error
         return data
     },

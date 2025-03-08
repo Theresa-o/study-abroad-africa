@@ -3,43 +3,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ArticleCard from "./ArticleCard";
 import { useBlogTabs } from "@/app/hooks/blogTabs/useBlogTabs";
-
-const events = [
-  {
-    title: "International Education Fair 2024",
-    excerpt:
-      "Join us for the largest education fair featuring universities from around the world.",
-    date: "April 20, 2023",
-    comments: 2,
-    category: "Events",
-    image: "/placeholder.svg?height=200&width=400",
-    href: "/events/education-fair",
-  },
-  {
-    title: "Virtual Career Fair for International Students",
-    excerpt:
-      "Connect with global employers looking to hire international talent.",
-    date: "April 25, 2023",
-    comments: 1,
-    category: "Events",
-    image: "/placeholder.svg?height=200&width=400",
-    href: "/events/career-fair",
-  },
-  {
-    title: "International Education Fair 2028",
-    excerpt:
-      "Join us for the largest education fair featuring universities from around the world.",
-    date: "April 20, 2023",
-    comments: 2,
-    category: "Events",
-    image: "/placeholder.svg?height=200&width=400",
-    href: "/events/education-fair",
-  },
-];
+import { useEvents } from "@/app/hooks/events/useEvents";
 
 
 const BlogTabs = () => {
   const { data: articles = [] } = useBlogTabs();
+  const { data: events } = useEvents();
 
   const tips = articles.filter((article) =>
     article.articles_tags?.some(
@@ -53,6 +22,7 @@ const BlogTabs = () => {
     )
   );
 
+  console.log("events", events)
 
   return (
     <section className="py-16 px-4">
@@ -87,23 +57,23 @@ const BlogTabs = () => {
           </TabsList>
           <TabsContent value="tips" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {tips.map((article) => (
+              {tips?.map((article) => (
                 <ArticleCard key={article.id} {...article} />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="news" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {news.map((article) => (
+              {news?.map((article) => (
                 <ArticleCard key={article.id} {...article} />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="events" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* {events.map((article) => (
-                <ArticleCard key={article.title} {...article} />
-              ))} */}
+              {events?.map((event) => (
+                <ArticleCard key={event.id} {...event} />
+              ))}
             </div>
           </TabsContent>
         </Tabs>

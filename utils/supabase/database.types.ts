@@ -45,6 +45,7 @@ export type Database = {
           image_url: string | null
           slug: string | null
           title: string | null
+          url: string | null
         }
         Insert: {
           author?: string | null
@@ -56,6 +57,7 @@ export type Database = {
           image_url?: string | null
           slug?: string | null
           title?: string | null
+          url?: string | null
         }
         Update: {
           author?: string | null
@@ -67,6 +69,7 @@ export type Database = {
           image_url?: string | null
           slug?: string | null
           title?: string | null
+          url?: string | null
         }
         Relationships: [
           {
@@ -104,7 +107,22 @@ export type Database = {
           created_at?: string
           id?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "articles_m2m_articles_tags_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "articles_m2m_articles_tags_articles_tags_id_fkey"
+            columns: ["articles_tags_id"]
+            isOneToOne: false
+            referencedRelation: "articles_tags"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       articles_tags: {
         Row: {
@@ -334,66 +352,48 @@ export type Database = {
         }
         Relationships: []
       }
-      event_m2m_events_tags: {
-        Row: {
-          created_at: string
-          event_id: number | null
-          events_tags_id: number | null
-          id: number
-        }
-        Insert: {
-          created_at?: string
-          event_id?: number | null
-          events_tags_id?: number | null
-          id?: number
-        }
-        Update: {
-          created_at?: string
-          event_id?: number | null
-          events_tags_id?: number | null
-          id?: number
-        }
-        Relationships: []
-      }
       events: {
         Row: {
           country_id: number | null
           course_id: number | null
           created_at: string
           created_by: string | null
-          description: string | null
+          content: string | null
           event_date: string | null
           event_location: string | null
           id: number
           image_url: string | null
           registration_link: string | null
           title: string | null
+          url: string | null
         }
         Insert: {
           country_id?: number | null
           course_id?: number | null
           created_at?: string
           created_by?: string | null
-          description?: string | null
+          content?: string | null
           event_date?: string | null
           event_location?: string | null
           id?: number
           image_url?: string | null
           registration_link?: string | null
           title?: string | null
+          url?: string | null
         }
         Update: {
           country_id?: number | null
           course_id?: number | null
           created_at?: string
           created_by?: string | null
-          description?: string | null
+          content?: string | null
           event_date?: string | null
           event_location?: string | null
           id?: number
           image_url?: string | null
           registration_link?: string | null
           title?: string | null
+          url?: string | null
         }
         Relationships: [
           {
@@ -411,24 +411,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
-      }
-      events_tags: {
-        Row: {
-          created_at: string
-          id: number
-          name: string | null
-        }
-        Insert: {
-          created_at?: string
-          id?: number
-          name?: string | null
-        }
-        Update: {
-          created_at?: string
-          id?: number
-          name?: string | null
-        }
-        Relationships: []
       }
       Institution: {
         Row: {
