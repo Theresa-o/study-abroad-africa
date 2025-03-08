@@ -4,21 +4,22 @@ import supabase from "../../../utils/supabase/supaBaseClient";
 type EventInsertDataDTO = Database['public']['Tables']['events']['Insert'];
 
 export const eventsService = {
-    async createEvents (EventData: EventInsertDataDTO) {
+    async createEvents (eventData: EventInsertDataDTO) {
         const {data, error} = await supabase
             .from('events')
             .insert({
-                country_id: EventData.country_id,
-                course_id: EventData.course_id,
-                created_at: EventData.created_at,
-                created_by: EventData.created_by,
-                content: EventData.content,
-                event_date: EventData.event_date,
-                event_location: EventData.event_location,
-                id: EventData.id,
-                image_url: EventData.image_url,
-                registration_link: EventData.registration_link,
-                title: EventData.title,
+                country_id: eventData.country_id,
+                course_id: eventData.course_id,
+                created_at: eventData.created_at,
+                created_by: eventData.created_by,
+                content: eventData.content,
+                event_date: eventData.event_date,
+                event_location: eventData.event_location,
+                id: eventData.id,
+                image_url: eventData.image_url,
+                registration_link: eventData.registration_link,
+                title: eventData.title,
+                url: eventData.url,
             })
             .select()
             .single()
