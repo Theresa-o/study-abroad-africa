@@ -38,7 +38,7 @@ const DiscoverPrograms = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-8 my-4">
       <Card className="p-4 md:py-12 md:px-4 ">
-        <h1 className="text-lg md:text-4xl font-bold mb-8 text-[#2d4a43">
+        <h1 className="text-lg md:text-4xl font-bold mb-8 ">
           Discover Programs by Category
         </h1>
 

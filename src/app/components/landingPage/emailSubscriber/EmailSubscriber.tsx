@@ -80,13 +80,13 @@ const EmailSubscriber = () => {
                   placeholder="Enter your e-mail"
                   className={`flex-grow p-2 border ${
                     errors.email && touched.email
-                      ? "border-red-500"
+                      ? "border-primary"
                       : "border-gray-300"
-                  } rounded-l-md focus:outline-none focus:ring-2 focus:ring-pink-500`}
+                  } rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary`}
                 />
                 <Button
                   type="submit"
-                  className="rounded-l-none bg-pink-500 hover:bg-pink-600"
+                  className="rounded-l-none my-auto bg-red-400 text-white hover:bg-red-500"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send a request"}
