@@ -10,7 +10,13 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
+			primary: "#0B5448",  // Deep Green (Main Theme)
+			// secondary: "#FFCC33", // Warm Yellow (Accent)
+			accent: "#2463EB",  // Deep Blue (Links, Secondary Buttons)
+			success: "#069668", // Green (Success Messages)
+			danger: "#F77171", // Soft Red (Error Messages)
+			background: "#F5F5F5", // Light Gray (Background)
+  			background1: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -20,11 +26,11 @@ export default {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
   			},
-  			primary: {
+  			primary1: {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
-  			secondary: {
+  			secondary1: {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
@@ -32,7 +38,7 @@ export default {
   				DEFAULT: 'hsl(var(--muted))',
   				foreground: 'hsl(var(--muted-foreground))'
   			},
-  			accent: {
+  			accent1: {
   				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
