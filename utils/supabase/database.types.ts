@@ -354,11 +354,11 @@ export type Database = {
       }
       events: {
         Row: {
+          content: string | null
           country_id: number | null
           course_id: number | null
           created_at: string
           created_by: string | null
-          content: string | null
           event_date: string | null
           event_location: string | null
           id: number
@@ -368,11 +368,11 @@ export type Database = {
           url: string | null
         }
         Insert: {
+          content?: string | null
           country_id?: number | null
           course_id?: number | null
           created_at?: string
           created_by?: string | null
-          content?: string | null
           event_date?: string | null
           event_location?: string | null
           id?: number
@@ -382,11 +382,11 @@ export type Database = {
           url?: string | null
         }
         Update: {
+          content?: string | null
           country_id?: number | null
           course_id?: number | null
           created_at?: string
           created_by?: string | null
-          content?: string | null
           event_date?: string | null
           event_location?: string | null
           id?: number
@@ -491,6 +491,119 @@ export type Database = {
           website?: string | null
         }
         Relationships: []
+      }
+      service_category: {
+        Row: {
+          created_at: string
+          id: number
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          name?: string | null
+        }
+        Relationships: []
+      }
+      service_provider_m2m_services: {
+        Row: {
+          affiliate_link: string | null
+          commission_rate: string | null
+          commission_type: string | null
+          created_at: string
+          id: number
+          provider_id: number | null
+          service_id: number | null
+        }
+        Insert: {
+          affiliate_link?: string | null
+          commission_rate?: string | null
+          commission_type?: string | null
+          created_at?: string
+          id?: number
+          provider_id?: number | null
+          service_id?: number | null
+        }
+        Update: {
+          affiliate_link?: string | null
+          commission_rate?: string | null
+          commission_type?: string | null
+          created_at?: string
+          id?: number
+          provider_id?: number | null
+          service_id?: number | null
+        }
+        Relationships: []
+      }
+      service_providers: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          description: string | null
+          id: number
+          logo: string | null
+          status: boolean | null
+          website: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          description?: string | null
+          id?: number
+          logo?: string | null
+          status?: boolean | null
+          website?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          description?: string | null
+          id?: number
+          logo?: string | null
+          status?: boolean | null
+          website?: string | null
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string
+          id: number
+          service_category_id: number | null
+          service_description: string | null
+          service_name: string | null
+          status: boolean | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          service_category_id?: number | null
+          service_description?: string | null
+          service_name?: string | null
+          status?: boolean | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          service_category_id?: number | null
+          service_description?: string | null
+          service_name?: string | null
+          status?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "services_service_category_fkey"
+            columns: ["service_category"]
+            isOneToOne: false
+            referencedRelation: "service_category"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       study_abroad_steps: {
         Row: {

@@ -2,43 +2,14 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ServiceCard from "./ServiceCard";
-
-const services = {
-  financial: [
-    {
-      title: "TD International Student GIC Program",
-      description:
-        "Expedite your study permit application with a verifiable GIC from TD, a top 10 North American bank.",
-      logo: "/placeholder.svg?height=64&width=128",
-      href: "/services/td-gic",
-    },
-    {
-      title: "RBC International Student GIC Program",
-      description:
-        "Strengthen and streamline your study permit application with a GIC from RBC, Canada's largest bank.",
-      logo: "/placeholder.svg?height=64&width=128",
-      href: "/services/rbc-gic",
-    },
-    {
-      title: "Students Loans Services",
-      description:
-        "Don't let a lack of funds keep your students from achieving their dreams. Jumpstart their journey with ApplyBoard Student Loans.",
-      logo: "/placeholder.svg?height=64&width=128",
-      href: "/services/student-loans",
-    },
-    {
-      title: "Tuition Payments Made Easy",
-      description:
-        "Speed up the application process with quick and reliable fee payments from Flywire.",
-      logo: "/placeholder.svg?height=64&width=128",
-      href: "/services/flywire",
-    },
-  ],
-  visa: [],
-  language: [],
-};
-
+import { useService } from "@/app/hooks/services/useServices";
 const ServicesSection = () => {
+  const { data } = useService();
+
+  const financialServices = data?.filter(
+    (service) => service?.service_category_id === 1
+  );
+
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -47,9 +18,8 @@ const ServicesSection = () => {
             Everything you need in one place
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore exclusive programs to help you and your students save time
-            and money. With ApplyBoard, you&apos;re never far from a helping
-            hand.
+            Explore exclusive programs to help you with your Financial, Visa and
+            Language needs
           </p>
         </div>
 
@@ -77,8 +47,8 @@ const ServicesSection = () => {
 
           <TabsContent value="financial" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.financial.map((service) => (
-                <ServiceCard key={service.title} {...service} />
+              {financialServices?.map((service) => (
+                <ServiceCard key={service.id} {...service} />
               ))}
             </div>
           </TabsContent>
