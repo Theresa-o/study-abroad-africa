@@ -25,7 +25,7 @@ const Search = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full text-gray-600 px-5 my-1 md:w-5/6">
+      <div className="relative w-full text-black px-5 my-1 md:w-5/6">
         <input
           type="search"
           name="search"
@@ -34,7 +34,7 @@ const Search = () => {
             handleSearch(e.target.value);
           }}
           defaultValue={searchParams.get("query")?.toString()}
-          className="bg-purple-100 h-12 md:h-14 px-4 pr-10 w-full rounded-full text-sm focus:outline-none "
+          className=" h-12 md:h-14 px-4 pr-10 w-full rounded-full text-sm focus:outline-none "
         />
       </div>
     </div>
