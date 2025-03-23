@@ -4,14 +4,12 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Calendar, MessageCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { DateTime } from "luxon";
 
 interface ArticleCardProps {
-  category_id: number;
   content: string;
   created_at: string;
   image_url: string;
@@ -20,7 +18,6 @@ interface ArticleCardProps {
 }
 
 const ArticleCard = ({
-  category_id,
   content,
   created_at,
   image_url,
