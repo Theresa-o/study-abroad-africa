@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Accordion,
   AccordionContent,
@@ -9,29 +7,97 @@ import {
 
 const faqs = [
   {
-    question: "What services does ApplyBoard offer?",
-    answer:
-      "ApplyBoard offers a range of services including study abroad program search, application assistance, visa guidance, and financial aid information for international students.",
+    question: "How do I choose the right university abroad?",
+    answer: (
+      <>
+        <p>Consider the following key factors:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Tuition & Cost of Living</strong> – Ensure the total
+            expenses fit your budget.
+          </li>
+          <li>
+            <strong>Available Scholarships</strong> – Some universities offer
+            financial aid to African students.
+          </li>
+          <li>
+            <strong>Job Opportunities</strong> – Check for post-study work
+            options.
+          </li>
+          <li>
+            <strong>University Ranking & Accreditation</strong> – Ensure your
+            chosen course is well recognized.
+          </li>
+          <li>
+            <strong>Student Support & Community</strong> – Look for universities
+            with strong African student associations.
+          </li>
+        </ul>
+      </>
+    ),
   },
   {
-    question: "How does the application process work?",
-    answer:
-      "Our application process involves creating an account, searching for programs, submitting required documents, and tracking your application status through our platform. Our team assists you at every step.",
+    question: "Can I study abroad without writing IELTS or TOEFL?",
+    answer: (
+      <>
+        <p>Yes! Some universities waive English tests if:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Your previous education was in English.</li>
+          <li>
+            You provide an official letter from your school confirming English
+            proficiency.
+          </li>
+          <li>
+            You apply to universities in countries where IELTS is not required
+            (e.g., Germany, Turkey, some schools in Canada & USA).
+          </li>
+        </ul>
+      </>
+    ),
   },
   {
-    question: "What countries can I study in through ApplyBoard?",
-    answer:
-      "ApplyBoard partners with institutions in several countries including Canada, the United States, the United Kingdom, Australia, and Ireland.",
+    question: "What are the requirements to study abroad?",
+    answer: (
+      <>
+        <p>For most countries, students will need to submit:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>A completed application form.</li>
+          <li>Official academic transcripts.</li>
+          <li>A personal statement.</li>
+          <li>
+            Minimum GPA requirements (typically <strong>2.5 – 3.0</strong>).
+          </li>
+        </ul>
+      </>
+    ),
   },
   {
-    question: "Are there any fees for using ApplyBoard's services?",
-    answer:
-      "ApplyBoard's services are free for students. We are compensated by our partner institutions when a student successfully enrolls.",
-  },
-  {
-    question: "How long does the application process usually take?",
-    answer:
-      "The application process duration can vary depending on the program and institution. Generally, it can take anywhere from a few weeks to several months. We recommend starting the process as early as possible.",
+    question: "Can I work while studying abroad?",
+    answer: (
+      <>
+        <p>Yes! Most countries allow students to work part-time:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Canada</strong> – 20 hours/week during school, full-time
+            during breaks.
+          </li>
+          <li>
+            <strong>UK</strong> – 20 hours/week during school, full-time during
+            holidays.
+          </li>
+          <li>
+            <strong>USA</strong> – Limited on-campus work; off-campus work
+            requires OPT/CPT approval.
+          </li>
+          <li>
+            <strong>Germany</strong> – 120 full days or 240 half days per year.
+          </li>
+          <li>
+            <strong>Australia</strong> – No limit during studies (as of 2023).
+          </li>
+        </ul>
+      </>
+    ),
   },
 ];
 
