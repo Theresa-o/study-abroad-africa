@@ -9,7 +9,7 @@ export function useService() {
   });
 }
 
-export function createServices() {
+export function useCreateServices() {
   const queryClient = useQueryClient();
 
   return useMutation({

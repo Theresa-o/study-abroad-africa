@@ -9,7 +9,7 @@ export function useBlogTabs() {
   });
 }
 
-export function createBlogTabs() {
+export function useCreateBlogTabs() {
   const queryClient = useQueryClient();
 
   return useMutation({

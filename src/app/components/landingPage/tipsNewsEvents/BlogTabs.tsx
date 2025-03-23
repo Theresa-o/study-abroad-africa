@@ -4,7 +4,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ArticleCard from "./ArticleCard";
 import { useBlogTabs } from "@/app/hooks/blogTabs/useBlogTabs";
 import { useEvents } from "@/app/hooks/events/useEvents";
+import { Database } from "../../../../../utils/supabase/database.types";
 
+type ArticleTagType =
+  Database["public"]["Tables"]["articles_m2m_articles_tags"]["Row"];
 
 const BlogTabs = () => {
   const { data: articles = [] } = useBlogTabs();
@@ -12,17 +15,17 @@ const BlogTabs = () => {
 
   const tips = articles.filter((article) =>
     article.articles_tags?.some(
-      (tag: any) => tag.articles_tags_id === 1
-    )
-  );
-  
-  const news = articles.filter((article) =>
-    article.articles_tags?.some(
-      (tag: any) => tag.articles_tags_id === 2
+      (tag: ArticleTagType) => tag.articles_tags_id === 1
     )
   );
 
-  console.log("events", events)
+  const news = articles.filter((article) =>
+    article.articles_tags?.some(
+      (tag: ArticleTagType) => tag.articles_tags_id === 2
+    )
+  );
+
+  console.log("events", events);
 
   return (
     <section className="py-16 px-4">
