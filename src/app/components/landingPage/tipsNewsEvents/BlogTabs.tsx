@@ -28,7 +28,7 @@ const BlogTabs = () => {
   console.log("events", events);
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-center space-y-2">
           <h2 className="text-3xl font-bold">Tips, News & Events</h2>
