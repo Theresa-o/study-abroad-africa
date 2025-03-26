@@ -44,14 +44,14 @@ const EssentialExams = () => {
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-gray-900 font-heading">
             Essential Exams for Your Study Abroad Journey
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-heading">
             Prepare for Success: Key Exams to Ace Your Study Abroad Dream
           </p>
         </div>
-        <p className="text-gray-700 max-w-3xl mx-auto text-center">
+        <p className="text-gray-700 max-w-3xl mx-auto text-center font-sans">
           Preparing to study abroad involves more than just choosing a
           destination; it often requires proving your academic and language
           proficiency. These exams are essential to meeting the requirements of

@@ -20,13 +20,18 @@ const ConsultationRequest = () => {
       />
       <div className="absolute inset-0 bg-navy-900 bg-opacity-70"></div>
       <div className="relative z-10 max-w-3xl mx-auto text-center text-white space-y-6">
-        <h2 className="text-4xl font-bold">Need a Consultation?</h2>
-        <p className="text-xl">
+        <h2 className="text-4xl font-bold font-heading">
+          Need a Consultation?
+        </h2>
+        <p className="text-xl font-sans">
           If you would like to process your visa application, the best way to
           start is to have a consultation with one of our experienced registered
           migration agents.
         </p>
-        <Button className="bg-pink-500 hover:bg-pink-600 text-white" size="lg">
+        <Button
+          className="bg-secondary text-white hover:bg-white hover:text-secondary font-sans"
+          size="lg"
+        >
           Make an appointment
         </Button>
       </div>

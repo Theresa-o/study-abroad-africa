@@ -105,10 +105,10 @@ const FAQSection = () => {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-3xl mx-auto space-y-8">
-        <h2 className="text-3xl font-bold text-center text-gray-900">
+        <h2 className="text-3xl font-bold text-center text-gray-900 font-heading">
           Frequently Asked Questions
         </h2>
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full font-sans">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left text-base md:text-xl">

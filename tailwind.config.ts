@@ -10,11 +10,11 @@ export default {
   theme: {
   	extend: {
   		colors: {
-			primary: "#0B5448",  // Deep Green (Main Theme)
-			// secondary: "#FFCC33", // Warm Yellow (Accent)
+			primary: "#164734",  // Deep Green (Main Theme)
+			secondary: "#D15B00", // Warm oragne (Accent)
 			accent: "#2463EB",  // Deep Blue (Links, Secondary Buttons)
-			success: "#069668", // Green (Success Messages)
-			danger: "#F77171", // Soft Red (Error Messages)
+			// success: "#069668", // Green (Success Messages)
+			// danger: "#F77171", // Soft Red (Error Messages)
 			background: "#F5F5F5", // Light Gray (Background)
   			background1: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -57,6 +57,10 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
+		fontFamily: {
+			sans: ['var(--font-open-sans)', 'sans-serif'], // Body text
+			heading: ['var(--font-inter)', 'sans-serif'], // Headings
+		  },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

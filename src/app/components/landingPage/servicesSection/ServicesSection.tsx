@@ -14,17 +14,17 @@ const ServicesSection = () => {
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h2 className="text-4xl font-bold text-gray-900">
+          <h2 className="text-4xl font-bold text-gray-900 font-heading">
             Everything you need in one place
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-heading">
             Explore exclusive programs to help you with your Financial, Visa and
             Language needs
           </p>
         </div>
 
         <Tabs defaultValue="financial" className="w-full">
-          <TabsList className="grid w-full max-w-[600px] grid-cols-3 mx-auto">
+          <TabsList className="grid w-full max-w-[600px] grid-cols-3 mx-auto font-sans">
             <TabsTrigger
               value="financial"
               className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
@@ -54,14 +54,14 @@ const ServicesSection = () => {
           </TabsContent>
 
           <TabsContent value="visa" className="mt-8">
-            <div className="text-center text-gray-600 py-12">
+            <div className="text-center text-gray-600 py-12 font-sans">
               Coming soon: Visa services to help streamline your application
               process
             </div>
           </TabsContent>
 
           <TabsContent value="language" className="mt-8">
-            <div className="text-center text-gray-600 py-12">
+            <div className="text-center text-gray-600 py-12 font-sans">
               Coming soon: Language testing services to help you meet your
               requirements
             </div>

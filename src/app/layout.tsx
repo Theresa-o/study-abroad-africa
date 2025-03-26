@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Inter, Open_Sans } from 'next/font/google';
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import ReactQueryProvider from "@/app/providers/ReactQueryProvider";
@@ -17,6 +18,21 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+
+// Configure Inter for headings
+export const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+// Configure Open Sans for body text
+export const openSans = Open_Sans({
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: "Study Abroad Africa",
   description: "All information about studying abroad as an African",
@@ -31,7 +47,7 @@ export default function RootLayout({
     <ReactQueryProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${openSans.variable} ${inter.variable}`}
         >
           <Navbar />
           {children}

@@ -18,23 +18,31 @@ interface ExamCardProps {
 
 export function ExamCard({ title, description, purpose, link }: ExamCardProps) {
   return (
-    <Card className="h-full flex flex-col">
+    <Card className="h-full flex flex-col font-sans">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           {title}
-          <Badge variant="secondary" className="text-red-500 hover:bg-red-300 hover:border-none border border-red-500 hover:text-red-600">{purpose}</Badge>
+          <Badge
+            variant="secondary"
+            className="text-white hover:bg-white hover:border-secondary border border-secondary hover:text-secondary"
+          >
+            {purpose}
+          </Badge>
         </CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow flex items-end">
-        <Button variant="outline" className="w-full mt-4 text-blue-600 font-medium group hover:bg-inherit" asChild>
+        <Button
+          variant="outline"
+          className="w-full mt-4 text-blue-600 font-medium group hover:bg-inherit"
+          asChild
+        >
           <a href={link} target="_blank" rel="noopener noreferrer">
-            Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Learn More{" "}
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
         </Button>
       </CardContent>
     </Card>
   );
 }
-
-

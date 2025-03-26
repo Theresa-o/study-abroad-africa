@@ -60,10 +60,10 @@ const EmailSubscriber = () => {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-3xl mx-auto text-center space-y-6">
-        <h2 className="text-4xl font-bold text-navy-900">
+        <h2 className="text-4xl font-bold text-navy-900 font-heading">
           Change Your Life Now!
         </h2>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-600 font-heading">
           Want to know how will immigration affect you?
         </p>
         <Formik
@@ -86,7 +86,7 @@ const EmailSubscriber = () => {
                 />
                 <Button
                   type="submit"
-                  className="rounded-l-none my-auto bg-red-400 text-white hover:bg-red-500"
+                  className="rounded-l-none my-auto bg-secondary text-white hover:bg-white hover:border-secondary hover:text-secondary"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send a request"}
@@ -95,7 +95,7 @@ const EmailSubscriber = () => {
 
               {/* Email Error Message */}
               {errors.email && touched.email && (
-                <p className="text-red-500 text-sm text-center">
+                <p className="text-secondary text-sm text-center">
                   {errors.email}
                 </p>
               )}
@@ -108,7 +108,7 @@ const EmailSubscriber = () => {
                   id="consent"
                   className={`${
                     errors.consent && touched.consent
-                      ? "border-red-500"
+                      ? "border-secondary"
                       : "border-gray-300"
                   }`}
                 />

@@ -10,7 +10,7 @@ interface DestinationCardProps {
 
 const DestinationCard = ({ country, image_url }: DestinationCardProps) => {
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg">
+    <Card className="overflow-hidden transition-all hover:shadow-lg font-sans">
       <CardContent className="p-0">
         <div className="relative h-40 w-full">
           <Image

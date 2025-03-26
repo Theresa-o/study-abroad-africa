@@ -22,10 +22,10 @@ const HeroSection = () => {
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-3xl text-center text-white px-4">
         <div className="space-y-4">
-          <h1 className="text-3xl md:text-5xl font-bold mb-3 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-bold mb-3 leading-tight font-heading">
             Guide to Navigating Studying Abroad
           </h1>
-          <p className="text-base md:text-xl mb-5 px-2">
+          <p className="text-base md:text-xl mb-5 px-2 font-heading">
             From Africa to the World
           </p>
 

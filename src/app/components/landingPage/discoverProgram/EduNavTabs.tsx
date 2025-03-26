@@ -46,7 +46,7 @@ const EduNavTabs = ({
               key={`${category.id}-${category.category_name}`}
               value={category.id.toString()}
               onClick={() => onCategorySelect(category.id)}
-              className="data-[state=active]:bg-[#085145] data-[state=active]:text-white py-6 border"
+              className="data-[state=active]:bg-primary data-[state=active]:text-white py-6 border"
             >
               <Icon className="pr-1" />
               <span>{category.category_name}</span>

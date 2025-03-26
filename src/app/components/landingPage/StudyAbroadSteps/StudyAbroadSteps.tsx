@@ -68,8 +68,10 @@ const ProcessSteps = () => {
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
       <div className="text-center mb-12">
-        <span className="text-red-400 font-medium">STUDY ABROAD PROCESS</span>
-        <h2 className="text-4xl font-bold mt-2">
+        <span className="text-secondary font-medium font-heading">
+          STUDY ABROAD PROCESS
+        </span>
+        <h2 className="text-4xl font-bold mt-2 font-heading">
           8 Steps to Studying Abroad for Africans
         </h2>
       </div>
@@ -80,11 +82,11 @@ const ProcessSteps = () => {
             key={step.step_number}
             className="flex-1 group hover:shadow-lg transition-shadow"
           >
-            <CardContent className="p-6 text-center flex flex-col h-full">
-              <div className="w-12 h-12 bg-red-400 rounded-full flex items-center justify-center text-white font-bold mb-4 mx-auto">
+            <CardContent className="p-6 text-center flex flex-col h-full font-sans">
+              <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold mb-4 mx-auto">
                 {step.step_number}
               </div>
-              <h3 className="font-bold text-xl mb-2 group-hover:text-red-400 transition-colors">
+              <h3 className="font-bold text-xl mb-2 group-hover:text-secondary transition-colors">
                 {step.title}
               </h3>
               <p className="text-gray-600 flex-1">{step.description}</p>

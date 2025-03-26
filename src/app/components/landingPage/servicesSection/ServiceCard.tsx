@@ -17,7 +17,7 @@ const ServiceCard = ({
   image,
 }: ServiceCardProps) => {
   return (
-    <Card className="h-full flex flex-col">
+    <Card className="h-full flex flex-col font-sans">
       <CardContent className="flex-grow space-y-4 p-6">
         <div className="h-24 w-full relative">
           <Image

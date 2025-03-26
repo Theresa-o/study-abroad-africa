@@ -38,7 +38,7 @@ const DiscoverPrograms = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-8 my-4">
       <Card className="p-4 md:py-12 md:px-4 ">
-        <h1 className="text-lg md:text-4xl font-bold mb-8 ">
+        <h1 className="text-lg md:text-4xl font-bold mb-8 font-heading">
           Discover Programs by Category
         </h1>
 
@@ -57,7 +57,10 @@ const DiscoverPrograms = () => {
         </div>
 
         <div className="text-center mt-8">
-          <a href="#" className="text-lg text-gray-900 hover:underline">
+          <a
+            href="#"
+            className="text-lg text-gray-900 hover:underline font-sans"
+          >
             View more options
           </a>
         </div>

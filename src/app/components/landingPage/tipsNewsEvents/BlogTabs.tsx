@@ -31,13 +31,15 @@ const BlogTabs = () => {
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold">Tips, News & Events</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-3xl font-bold font-heading">
+            Tips, News & Events
+          </h2>
+          <p className="text-muted-foreground font-heading">
             Stay updated with the latest information about studying abroad
           </p>
         </div>
 
-        <Tabs defaultValue="tips" className="w-full">
+        <Tabs defaultValue="tips" className="w-full font-sans">
           <TabsList className="grid w-full grid-cols-3 max-w-[400px] mx-auto">
             <TabsTrigger
               value="tips"

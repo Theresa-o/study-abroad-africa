@@ -25,7 +25,7 @@ const Search = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full text-black px-5 my-1 md:w-5/6">
+      <div className="relative w-full text-black px-5 my-1 md:w-5/6 font-sans">
         <input
           type="search"
           name="search"

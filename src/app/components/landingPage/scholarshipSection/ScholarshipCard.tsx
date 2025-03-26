@@ -59,7 +59,7 @@ const ScholarshipCard = ({
                 {scholarship_categories.length === 1 && (
                   <Badge
                     key={scholarship_categories[0].category_id}
-                    className="absolute top-4 right-4 bg-emerald-500 hover:bg-emerald-600"
+                    className="absolute top-4 right-4 bg-primary"
                   >
                     {scholarship_categories[0].categories?.category_name || ""}
                   </Badge>
@@ -104,7 +104,7 @@ const ScholarshipCard = ({
               {scholarship_description}
             </p>
             <div className="flex justify-between items-center">
-              <div className="text-sm text-red-500 font-medium">
+              <div className="text-sm text-secondary font-medium">
                 Deadline:{" "}
                 {deadline_date
                   ? DateTime.fromISO(deadline_date).toFormat("MMM, d, yyyy")
