@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import MagnifyingGlassIcon from "../common/icons/magnifyingGlassIcon";
@@ -10,12 +10,14 @@ const Search = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("query") || "");
 
-  const handleSearch = useDebouncedCallback((term: string) => {
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     const params = new URLSearchParams(searchParams);
     // changing the path name to the users input
-    if (term) {
-      params.set("query", term);
+    if (searchTerm) {
+      params.set("query", searchTerm);
     } else {
       params.delete("query");
     }
@@ -27,23 +29,31 @@ const Search = () => {
     else {
       router.replace(`/search?${params.toString()}`);
     }
-  }, 400);
+  };
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full text-black px-5 my-1 md:w-5/6 font-sans">
+      <form
+        onSubmit={handleSearch}
+        className="relative w-full text-black px-5 my-1 md:w-5/6 font-sans "
+      >
         <MagnifyingGlassIcon className="absolute left-8 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
         <input
           type="search"
           name="search"
-          placeholder="Search by programs, universities, countries..."
-          onChange={(e) => {
-            handleSearch(e.target.value);
-          }}
+          placeholder="Search for programs, scholarships, news..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
           className=" h-12 md:h-14 px-10 pr-10 w-full rounded-full text-sm focus:outline-none "
         />
-      </div>
+        <button
+          type="submit"
+          className="absolute right-8 top-2 bg-secondary text-white hover:bg-secondary-dark py-2 px-6 rounded-full border"
+        >
+          <span className="text-sm">Search</span>
+        </button>
+      </form>
     </div>
   );
 };

@@ -11,7 +11,10 @@ export default {
   	extend: {
   		colors: {
 			primary: "#164734",  // Deep Green (Main Theme)
-			secondary: "#D15B00", // Warm oragne (Accent)
+			secondary: {
+				DEFAULT: '#D15B00', // Warm oragne (Accent)
+				dark: '#B04900' // For hover states
+			  },
 			accent: "#2463EB",  // Deep Blue (Links, Secondary Buttons)
 			// success: "#069668", // Green (Success Messages)
 			// danger: "#F77171", // Soft Red (Error Messages)
