@@ -15,30 +15,30 @@ interface ScholarshipCategory {
   categories: Category;
 }
 interface ScholarshipCardProps {
-  scholarship_name: string;
+  title: string;
   id: number;
   image: string;
   published_date: string;
   deadline_date: string;
   type: string;
-  website: string;
-  scholarship_description: string;
+  url: string;
+  description: string;
   scholarship_categories: ScholarshipCategory[];
 }
 
 const ScholarshipCard = ({
-  scholarship_name,
+  title,
   id,
   image,
   published_date,
   deadline_date,
-  website,
-  scholarship_description,
+  url,
+  description,
   scholarship_categories,
 }: ScholarshipCardProps) => {
   return (
     <>
-      <Link href={website}>
+      <Link href={url}>
         <Card
           key={id}
           className="overflow-hidden h-full transition-all  md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-110 md:hover:shadow-lg md:duration-300 ..."
@@ -48,7 +48,7 @@ const ScholarshipCard = ({
               src={image}
               // udate the sizes attribute to match the image dimensions
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              alt={scholarship_name}
+              alt={title}
               fill
               className="rounded-md object-cover"
             />
@@ -96,13 +96,11 @@ const ScholarshipCard = ({
                 : ""}
             </div>
             <h3 className="text-xl font-bold leading-tight group-hover:text-emerald-600 transition-colors">
-              {scholarship_name}
+              {title}
             </h3>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-muted-foreground line-clamp-2">
-              {scholarship_description}
-            </p>
+            <p className="text-muted-foreground line-clamp-2">{description}</p>
             <div className="flex justify-between items-center">
               <div className="text-sm text-secondary font-medium">
                 Deadline:{" "}

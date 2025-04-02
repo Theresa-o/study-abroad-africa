@@ -13,9 +13,9 @@ export const scholarshipService = {
                 id: scholarshipData.id,
                 image: scholarshipData.image,
                 published_date: scholarshipData.published_date,
-                scholarship_description: scholarshipData.scholarship_description,
-                scholarship_name: scholarshipData.scholarship_name,
-                website: scholarshipData.website
+                description: scholarshipData.description,
+                title: scholarshipData.title,
+                url: scholarshipData.url
             })
             .select()
             .single() 

@@ -6,9 +6,9 @@ export interface createScholarshipDTO {
         id: number;
         image: string;
         published_date: string;
-        scholarship_description: string;
-        scholarship_name: string;
-        website: string;
+        description: string;
+        title: string;
+        url: string;
         destinations: number[];
         categories: number[];
 }

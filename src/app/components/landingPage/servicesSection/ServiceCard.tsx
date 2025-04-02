@@ -4,18 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface ServiceCardProps {
-  service_name: string;
-  service_description: string;
+  title: string;
+  description: string;
   image: string;
-  website: string;
+  url: string;
 }
 
-const ServiceCard = ({
-  service_name,
-  service_description,
-  website,
-  image,
-}: ServiceCardProps) => {
+const ServiceCard = ({ title, description, url, image }: ServiceCardProps) => {
   return (
     <Card className="h-full flex flex-col font-sans">
       <CardContent className="flex-grow space-y-4 p-6">
@@ -29,12 +24,12 @@ const ServiceCard = ({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
-        <h3 className="text-xl font-semibold text-gray-900">{service_name}</h3>
-        <p className="text-gray-600">{service_description}</p>
+        <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+        <p className="text-gray-600">{description}</p>
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Link
-          href={website}
+          href={url}
           className="text-blue-600 hover:text-blue-700 inline-flex items-center group"
         >
           Learn More

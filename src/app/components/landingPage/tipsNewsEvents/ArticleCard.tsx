@@ -10,17 +10,17 @@ import Link from "next/link";
 import { DateTime } from "luxon";
 
 interface ArticleCardProps {
-  content: string;
+  description: string;
   created_at: string;
-  image_url: string;
+  image: string;
   title: string;
   url: string;
 }
 
 const ArticleCard = ({
-  content,
+  description,
   created_at,
-  image_url,
+  image,
   title,
   url,
 }: ArticleCardProps) => {
@@ -35,7 +35,7 @@ const ArticleCard = ({
             className="object-cover transition-transform hover:scale-105"
           /> */}
           <Image
-            src={image_url}
+            src={image}
             alt={title}
             fill
             className="rounded-md object-cover"
@@ -64,7 +64,7 @@ const ArticleCard = ({
           </h3>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground line-clamp-2">{content}</p>
+          <p className="text-muted-foreground line-clamp-2">{description}</p>
         </CardContent>
         <CardFooter>
           <div className="flex items-center text-blue-600 font-medium group">

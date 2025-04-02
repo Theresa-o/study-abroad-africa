@@ -14,7 +14,7 @@ export const blogTabService = {
                 country_id: ArticleData.country_id,
                 created_at: ArticleData.created_at,
                 id: ArticleData.id,
-                image_url: ArticleData.image_url,
+                image: ArticleData.image,
                 slug: ArticleData.slug,
                 title: ArticleData.title
             })

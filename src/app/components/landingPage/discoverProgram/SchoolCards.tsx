@@ -9,25 +9,21 @@ interface CourseCardProps {
   category: string;
 }
 
-const SchoolCards = ({ title, institution, category }: CourseCardProps) => {
+const SchoolCards = ({
+  title,
+  institution,
+  category,
+  imageUrl,
+}: CourseCardProps) => {
   return (
     <Card className="overflow-hidden relative">
       <div className="relative h-48 w-full">
-        {/* <Image src={imageUrl} alt={title} fill className="object-cover" /> */}
-
         <Image
-          src="/images/landing-page-bg.jpg"
+          src={imageUrl}
           alt="Background"
           fill
           className="rounded-md object-cover"
         />
-
-        {/* <Image
-          src={imageUrl}
-          alt={title}
-          fill
-          className="rounded-md object-cover"
-        /> */}
       </div>
       <CardContent className="p-6">
         <h3 className="text-xl font-bold mb-2">{title}</h3>

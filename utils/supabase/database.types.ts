@@ -42,7 +42,7 @@ export type Database = {
           country_id: number | null
           created_at: string
           id: number
-          image_url: string | null
+          image: string | null
           slug: string | null
           title: string | null
           url: string | null
@@ -54,7 +54,7 @@ export type Database = {
           country_id?: number | null
           created_at?: string
           id?: number
-          image_url?: string | null
+          image?: string | null
           slug?: string | null
           title?: string | null
           url?: string | null
@@ -66,7 +66,7 @@ export type Database = {
           country_id?: number | null
           created_at?: string
           id?: number
-          image_url?: string | null
+          image?: string | null
           slug?: string | null
           title?: string | null
           url?: string | null
@@ -259,6 +259,7 @@ export type Database = {
           image: string | null
           institution_id: number | null
           title: string | null
+          url: string | null
         }
         Insert: {
           category_id?: number | null
@@ -268,6 +269,7 @@ export type Database = {
           image?: string | null
           institution_id?: number | null
           title?: string | null
+          url?: string | null
         }
         Update: {
           category_id?: number | null
@@ -277,6 +279,7 @@ export type Database = {
           image?: string | null
           institution_id?: number | null
           title?: string | null
+          url?: string | null
         }
         Relationships: [
           {
@@ -354,7 +357,7 @@ export type Database = {
       }
       events: {
         Row: {
-          content: string | null
+          description: string | null
           country_id: number | null
           course_id: number | null
           created_at: string
@@ -362,13 +365,13 @@ export type Database = {
           event_date: string | null
           event_location: string | null
           id: number
-          image_url: string | null
+          image: string | null
           registration_link: string | null
           title: string | null
           url: string | null
         }
         Insert: {
-          content?: string | null
+          description?: string | null
           country_id?: number | null
           course_id?: number | null
           created_at?: string
@@ -376,13 +379,13 @@ export type Database = {
           event_date?: string | null
           event_location?: string | null
           id?: number
-          image_url?: string | null
+          image?: string | null
           registration_link?: string | null
           title?: string | null
           url?: string | null
         }
         Update: {
-          content?: string | null
+          description?: string | null
           country_id?: number | null
           course_id?: number | null
           created_at?: string
@@ -390,7 +393,7 @@ export type Database = {
           event_date?: string | null
           event_location?: string | null
           id?: number
-          image_url?: string | null
+          image?: string | null
           registration_link?: string | null
           title?: string | null
           url?: string | null
@@ -462,8 +465,8 @@ export type Database = {
           id: number
           image: string | null
           published_date: string | null
-          scholarship_description: string | null
-          scholarship_name: string | null
+          description: string | null
+          title: string | null
           website: string | null
         }
         Insert: {
@@ -474,8 +477,8 @@ export type Database = {
           id?: number
           image?: string | null
           published_date?: string | null
-          scholarship_description?: string | null
-          scholarship_name?: string | null
+          description?: string | null
+          title?: string | null
           website?: string | null
         }
         Update: {
@@ -486,8 +489,8 @@ export type Database = {
           id?: number
           image?: string | null
           published_date?: string | null
-          scholarship_description?: string | null
-          scholarship_name?: string | null
+          description?: string | null
+          title?: string | null
           website?: string | null
         }
         Relationships: []
@@ -538,7 +541,22 @@ export type Database = {
           provider_id?: number | null
           service_id?: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "service_provider_m2m_services_provider_id_fkey"
+            columns: ["provider_id"]
+            isOneToOne: false
+            referencedRelation: "service_providers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_provider_m2m_services_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       service_providers: {
         Row: {
@@ -574,31 +592,37 @@ export type Database = {
         Row: {
           created_at: string
           id: number
+          image: string | null
           service_category_id: number | null
-          service_description: string | null
-          service_name: string | null
+          description: string | null
+          title: string | null
           status: boolean | null
+          url: string | null
         }
         Insert: {
           created_at?: string
           id?: number
+          image?: string | null
           service_category_id?: number | null
-          service_description?: string | null
-          service_name?: string | null
+          description?: string | null
+          title?: string | null
           status?: boolean | null
+          url?: string | null
         }
         Update: {
           created_at?: string
           id?: number
+          image?: string | null
           service_category_id?: number | null
-          service_description?: string | null
-          service_name?: string | null
+          description?: string | null
+          title?: string | null
           status?: boolean | null
+          url?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "services_service_category_fkey"
-            columns: ["service_category"]
+            columns: ["service_category_id"]
             isOneToOne: false
             referencedRelation: "service_category"
             referencedColumns: ["id"]

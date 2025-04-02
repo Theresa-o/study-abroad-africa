@@ -12,8 +12,8 @@ export const servicesService = {
                     created_at: serviceInsertData.created_at,
                     id: serviceInsertData.id,
                     service_category_id: serviceInsertData.service_category_id,
-                    service_description: serviceInsertData.service_description,
-                    service_name: serviceInsertData.service_name,
+                    description: serviceInsertData.description,
+                    title: serviceInsertData.title,
                     status: serviceInsertData.status
             })
             .select()
