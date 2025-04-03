@@ -45,13 +45,13 @@ const Search = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
-          className=" h-12 md:h-14 px-10 pr-10 w-full rounded-full text-sm focus:outline-none "
+          className=" h-12 md:h-14 px-10 pr-10 w-full rounded-full focus:outline-none text-xs md:text-sm"
         />
         <button
           type="submit"
-          className="absolute right-8 top-2 bg-secondary text-white hover:bg-secondary-dark py-2 px-6 rounded-full border"
+          className="absolute right-6 top-2 md:right-8 py-1 md:py-2 px-4 md:px-6 bg-secondary text-white hover:bg-secondary-dark rounded-full"
         >
-          <span className="text-sm">Search</span>
+          <span className="text-xs md:text-sm">Search</span>
         </button>
       </form>
     </div>
