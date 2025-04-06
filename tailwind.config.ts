@@ -10,15 +10,13 @@ export default {
   theme: {
   	extend: {
   		colors: {
-			primary: "#164734",  // Deep Green (Main Theme)
-			secondary: {
-				DEFAULT: '#D15B00', // Warm oragne (Accent)
-				dark: '#B04900' // For hover states
-			  },
-			accent: "#2463EB",  // Deep Blue (Links, Secondary Buttons)
-			// success: "#069668", // Green (Success Messages)
-			// danger: "#F77171", // Soft Red (Error Messages)
-			background: "#F5F5F5", // Light Gray (Background)
+  			primary: '#164734',
+  			secondary: {
+  				DEFAULT: '#D15B00',
+  				dark: '#B04900'
+  			},
+  			accent: '#2463EB',
+  			background: '#F5F5F5',
   			background1: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -58,12 +56,28 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
-		fontFamily: {
-			sans: ['var(--font-open-sans)', 'sans-serif'], // Body text
-			heading: ['var(--font-inter)', 'sans-serif'], // Headings
-		  },
+  		fontFamily: {
+  			sans: [
+  				'var(--font-open-sans)',
+  				'sans-serif'
+  			],
+  			heading: [
+  				'var(--font-inter)',
+  				'sans-serif'
+  			]
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

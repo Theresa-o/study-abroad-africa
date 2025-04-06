@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useDebouncedCallback } from "use-debounce";
-import MagnifyingGlassIcon from "../common/icons/magnifyingGlassIcon";
+import MagnifyingGlassIcon from "../shared/icons/magnifyingGlassIcon";
 
 // https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
 const Search = () => {

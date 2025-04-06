@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface ScholarshipCardProps {
+interface CustomCardProps {
   school_name?: string;
   id: number;
   image: string;
@@ -14,14 +14,14 @@ interface ScholarshipCardProps {
   url: string;
 }
 
-const SearchCard = ({
+const CustomCard = ({
   id,
   school_name,
   image,
   title,
   description,
   url,
-}: ScholarshipCardProps) => {
+}: CustomCardProps) => {
   return (
     <>
       <Link href={url}>
@@ -60,4 +60,4 @@ const SearchCard = ({
   );
 };
 
-export default SearchCard;
+export default CustomCard;

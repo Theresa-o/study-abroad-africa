@@ -1,5 +1,4 @@
 import React from "react";
-import SearchCard from "./searchCard";
 import { useCourses } from "@/app/hooks/courses/useCourses";
 import { useScholarship } from "@/app/hooks/scholarships/useScholarship";
 import { useBlogTabs } from "@/app/hooks/blogTabs/useBlogTabs";
