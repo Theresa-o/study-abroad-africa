@@ -10,7 +10,7 @@ export const blogTabService = {
             .insert({
                 author: ArticleData.author,
                 category_id: ArticleData.category_id,
-                content: ArticleData.content,
+                content: ArticleData.description,
                 country_id: ArticleData.country_id,
                 created_at: ArticleData.created_at,
                 id: ArticleData.id,
