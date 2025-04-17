@@ -38,9 +38,9 @@ export type Database = {
         Row: {
           author: string | null
           category_id: number | null
-          content: string | null
           country_id: number | null
           created_at: string
+          description: string | null
           id: number
           image: string | null
           slug: string | null
@@ -50,9 +50,9 @@ export type Database = {
         Insert: {
           author?: string | null
           category_id?: number | null
-          content?: string | null
           country_id?: number | null
           created_at?: string
+          description?: string | null
           id?: number
           image?: string | null
           slug?: string | null
@@ -62,9 +62,9 @@ export type Database = {
         Update: {
           author?: string | null
           category_id?: number | null
-          content?: string | null
           country_id?: number | null
           created_at?: string
+          description?: string | null
           id?: number
           image?: string | null
           slug?: string | null
@@ -258,6 +258,7 @@ export type Database = {
           id: number
           image: string | null
           institution_id: number | null
+          location_id: number | null
           title: string | null
           url: string | null
         }
@@ -268,6 +269,7 @@ export type Database = {
           id?: number
           image?: string | null
           institution_id?: number | null
+          location_id?: number | null
           title?: string | null
           url?: string | null
         }
@@ -278,6 +280,7 @@ export type Database = {
           id?: number
           image?: string | null
           institution_id?: number | null
+          location_id?: number | null
           title?: string | null
           url?: string | null
         }
@@ -294,6 +297,13 @@ export type Database = {
             columns: ["institution_id"]
             isOneToOne: false
             referencedRelation: "Institution"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "Courses_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "destinations"
             referencedColumns: ["id"]
           },
         ]
@@ -357,11 +367,11 @@ export type Database = {
       }
       events: {
         Row: {
-          description: string | null
           country_id: number | null
           course_id: number | null
           created_at: string
           created_by: string | null
+          description: string | null
           event_date: string | null
           event_location: string | null
           id: number
@@ -371,11 +381,11 @@ export type Database = {
           url: string | null
         }
         Insert: {
-          description?: string | null
           country_id?: number | null
           course_id?: number | null
           created_at?: string
           created_by?: string | null
+          description?: string | null
           event_date?: string | null
           event_location?: string | null
           id?: number
@@ -385,11 +395,11 @@ export type Database = {
           url?: string | null
         }
         Update: {
-          description?: string | null
           country_id?: number | null
           course_id?: number | null
           created_at?: string
           created_by?: string | null
+          description?: string | null
           event_date?: string | null
           event_location?: string | null
           id?: number
@@ -461,37 +471,37 @@ export type Database = {
           created_at: string
           creator_name: string | null
           deadline_date: string | null
+          description: string | null
           funding_amount: string | null
           id: number
           image: string | null
           published_date: string | null
-          description: string | null
           title: string | null
-          website: string | null
+          url: string | null
         }
         Insert: {
           created_at?: string
           creator_name?: string | null
           deadline_date?: string | null
+          description?: string | null
           funding_amount?: string | null
           id?: number
           image?: string | null
           published_date?: string | null
-          description?: string | null
           title?: string | null
-          website?: string | null
+          url?: string | null
         }
         Update: {
           created_at?: string
           creator_name?: string | null
           deadline_date?: string | null
+          description?: string | null
           funding_amount?: string | null
           id?: number
           image?: string | null
           published_date?: string | null
-          description?: string | null
           title?: string | null
-          website?: string | null
+          url?: string | null
         }
         Relationships: []
       }
@@ -591,32 +601,32 @@ export type Database = {
       services: {
         Row: {
           created_at: string
+          description: string | null
           id: number
           image: string | null
           service_category_id: number | null
-          description: string | null
-          title: string | null
           status: boolean | null
+          title: string | null
           url: string | null
         }
         Insert: {
           created_at?: string
+          description?: string | null
           id?: number
           image?: string | null
           service_category_id?: number | null
-          description?: string | null
-          title?: string | null
           status?: boolean | null
+          title?: string | null
           url?: string | null
         }
         Update: {
           created_at?: string
+          description?: string | null
           id?: number
           image?: string | null
           service_category_id?: number | null
-          description?: string | null
-          title?: string | null
           status?: boolean | null
+          title?: string | null
           url?: string | null
         }
         Relationships: [

@@ -37,6 +37,11 @@ const DiscoverPrograms = () => {
     return matchesTag && matchesCategory;
   });
 
+  const resetFilters = () => {
+    setSelectedTagId(null);
+    setSelectedCategoryId(null);
+  };
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-8 my-4">
       <Card className="p-4 md:py-12 md:px-4 ">
@@ -54,8 +59,14 @@ const DiscoverPrograms = () => {
             <Link href="/programs">View all</Link>
           </Button>
         </div>
-        <EduNavTabs onCategorySelect={setSelectedCategoryId} />
-        <FilterTags onTagSelect={setSelectedTagId} />
+        <EduNavTabs
+          onCategorySelect={setSelectedCategoryId}
+          selectedCategoryId={selectedCategoryId}
+        />
+        <FilterTags
+          onTagSelect={setSelectedTagId}
+          selectedTagId={selectedTagId}
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {displayedCourses?.map((course) => (
             <SchoolCards
@@ -67,6 +78,16 @@ const DiscoverPrograms = () => {
             />
           ))}
         </div>
+        {displayedCourses?.length === 0 && (
+          <div className="text-center mt-10">
+            <p className="text-gray-600 mb-4">
+              No courses found for the selected filters.
+            </p>
+            <Button onClick={resetFilters} className="bg-primary text-white">
+              Reset Filters
+            </Button>
+          </div>
+        )}
       </Card>
     </section>
   );

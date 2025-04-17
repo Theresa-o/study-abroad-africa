@@ -20,12 +20,21 @@ const categoryIcons = {
 
 type CategoryId = keyof typeof categoryIcons;
 
+interface EduNavTabsProps {
+  onCategorySelect: (id: number | null) => void;
+  selectedCategoryId: number | null;
+}
+
 const EduNavTabs = ({
   onCategorySelect,
-}: {
-  onCategorySelect: (id: number | null) => void;
-}) => {
+  selectedCategoryId,
+}: EduNavTabsProps) => {
   const { data } = useCategories();
+
+  const handleCategoryClick = (categoryId: number) => {
+    const newCategoryId = selectedCategoryId === categoryId ? null : categoryId;
+    onCategorySelect(newCategoryId);
+  };
 
   return (
     <Tabs defaultValue="undergraduate" className="w-full">
@@ -44,8 +53,12 @@ const EduNavTabs = ({
             <TabsTrigger
               key={`${category.id}-${category.category_name}`}
               value={category.id.toString()}
-              onClick={() => onCategorySelect(category.id)}
-              className="data-[state=active]:bg-primary data-[state=active]:text-white hover:bg-secondary hover:text-white py-6 border transition-all duration-300 ease-in-out "
+              onClick={() => handleCategoryClick(category.id)}
+              className={`py-6 border transition-all duration-300 ease-in-out  ${
+                selectedCategoryId === category.id
+                  ? "data-[state=active]:bg-primary  data-[state=active]:text-white"
+                  : "hover:bg-secondary hover:text-white"
+              }`}
             >
               <Icon className="pr-1" />
               <span>{category.category_name}</span>

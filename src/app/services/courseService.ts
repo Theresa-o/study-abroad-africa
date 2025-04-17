@@ -47,6 +47,14 @@ export const institutionService = {
   }
 }
 
+export const destinationsService = {
+  async getDestinations() {
+    const {data, error } = await supabase.from('destinations').select('*')
+    if (error) throw error;
+    return data;
+  }
+}
+
 export const courseService = {
   async createCourse(courseData: CreateCourseDTO) {
     const { data: course, error: courseError } = await supabase

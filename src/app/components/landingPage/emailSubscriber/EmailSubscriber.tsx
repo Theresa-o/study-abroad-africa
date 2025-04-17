@@ -40,7 +40,6 @@ const EmailSubscriber = () => {
     setSubmitting(true);
     try {
       // Here you would typically send the data to your API
-      console.log(values);
       await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating API call
 
       setStatus({ success: true });

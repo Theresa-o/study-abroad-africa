@@ -32,3 +32,7 @@ export interface Category {
     institution_id: number;
     tags: number[];
   }
+
+ export type CourseTagRelation = {
+    tag_id: number;
+  };
