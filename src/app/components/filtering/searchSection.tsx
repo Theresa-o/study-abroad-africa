@@ -1,12 +1,13 @@
 import React from "react";
 import CustomCard from "../shared/cardDesign/customCard";
+import { CustomCardProps } from "@/app/types/blogTabs/blogTabs";
 
 const searchSection = ({
   title,
   results,
 }: {
   title: string;
-  results: any[];
+  results: CustomCardProps[];
 }) => {
   return (
     <section className="py-6 px-4">

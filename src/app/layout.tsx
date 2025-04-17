@@ -1,23 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Inter, Open_Sans } from 'next/font/google';
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import ReactQueryProvider from "@/app/providers/ReactQueryProvider";
 import { Toaster } from "sonner";
 import Footer from "./components/footer/Footer";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 
 // Configure Inter for headings
 export const inter = Inter({

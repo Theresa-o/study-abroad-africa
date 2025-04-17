@@ -1,18 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import { DateTime } from "luxon";
+import { CustomCardProps } from "@/app/types/blogTabs/blogTabs";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface CustomCardProps {
-  school_name?: string;
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-  url: string;
-}
 
 const CustomCard = ({
   id,
