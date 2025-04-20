@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import { useCourses } from "@/app/hooks/courses/useCourses";
 import { useScholarship } from "@/app/hooks/scholarships/useScholarship";

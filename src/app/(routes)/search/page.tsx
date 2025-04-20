@@ -1,6 +1,6 @@
-import { Suspense } from "react";
+import SearchClientWrapper from "@/app/components/filtering/searchClientWrapper";
 import SearchResults from "../../components/filtering/searchResults";
-import Search from "@/app/components/filtering/search";
+
 
 export default function SearchPage({
   searchParams,
@@ -12,12 +12,11 @@ export default function SearchPage({
       <div className="flex justify-center pb-4">
         <div className="w-full max-w-2xl">
           
-          <Search />
+        <SearchClientWrapper />
+
         </div>
       </div>
-      <Suspense fallback={<div>Loading results...</div>}>
         <SearchResults searchParams={{ query }} />
-      </Suspense>
     </div>
   );
 }
