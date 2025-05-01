@@ -13,7 +13,8 @@ const ScholarshipsByDestination = ({
 
   const filteredScholarships = scholarships.filter((scholarship) =>
     scholarship.scholarship_destination?.some(
-      (link: any) => link.destination_id === destinationId
+      (link: { destination_id: number }) =>
+        link.destination_id === destinationId
     )
   );
   return (
