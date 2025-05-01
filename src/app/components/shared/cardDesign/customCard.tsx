@@ -1,4 +1,4 @@
-import { CustomCardProps } from "@/app/types/blogTabs/blogTabs";
+import { CustomCardProps } from "@/app/types/articles/articles";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
