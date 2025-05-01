@@ -1,10 +1,8 @@
-import { Database } from "../../../utils/supabase/database.types";
 import supabase from "../../../utils/supabase/supaBaseClient";
+import { ArticleInsertDataDTO } from "../types/articles/articles";
 
-type ArticleInsertDataDTO = Database['public']['Tables']['articles']['Insert'];
-
-export const blogTabService = {
-    async createBlogTab (ArticleData: ArticleInsertDataDTO & {tagIds: number[]}) {
+export const articleService = {
+    async createArticles (ArticleData: ArticleInsertDataDTO & {tagIds: number[]}) {
         const {data: blogTab, error: blogTabError} = await supabase
             .from('articles')
             .insert({
@@ -41,7 +39,7 @@ export const blogTabService = {
         return blogTab
     },
 
-    async getBlogTabs() {
+    async getArticles() {
         const {data, error} = await supabase    
             .from("articles")
             .select(`*,

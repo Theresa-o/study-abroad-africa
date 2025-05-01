@@ -1,6 +1,6 @@
 import React from "react";
 import CustomCard from "../shared/cardDesign/customCard";
-import { CustomCardProps } from "@/app/types/blogTabs/blogTabs";
+import { CustomCardProps } from "@/app/types/articles/articles";
 
 const searchSection = ({
   title,

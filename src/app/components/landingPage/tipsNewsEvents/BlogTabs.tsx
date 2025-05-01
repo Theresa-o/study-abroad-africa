@@ -2,15 +2,12 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ArticleCard from "./ArticleCard";
-import { useBlogTabs } from "@/app/hooks/blogTabs/useBlogTabs";
+import { useArticles } from "@/app/hooks/blogTabs/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
-import { Database } from "../../../../../utils/supabase/database.types";
-
-type ArticleTagType =
-  Database["public"]["Tables"]["articles_m2m_articles_tags"]["Row"];
+import { ArticleTagType } from "@/app/types/articles/articles";
 
 const BlogTabs = () => {
-  const { data: articles = [] } = useBlogTabs();
+  const { data: articles = [] } = useArticles();
   const { data: events } = useEvents();
 
   const tips = articles.filter((article) =>

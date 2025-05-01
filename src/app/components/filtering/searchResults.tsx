@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React from "react";
 import { useCourses } from "@/app/hooks/courses/useCourses";
 import { useScholarship } from "@/app/hooks/scholarships/useScholarship";
-import { useBlogTabs } from "@/app/hooks/blogTabs/useBlogTabs";
+import { useArticles } from "@/app/hooks/blogTabs/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
 import { useService } from "@/app/hooks/services/useServices";
 import SearchSection from "./searchSection";
@@ -17,7 +17,7 @@ const SearchResults = ({
 
   const { data: programs } = useCourses();
   const { data: scholarships } = useScholarship();
-  const { data: articles } = useBlogTabs();
+  const { data: articles } = useArticles();
   const { data: events } = useEvents();
   const { data: services } = useService();
 

@@ -1,19 +1,19 @@
-import { blogTabService } from "@/app/services/blogTabsService";
+import { articleService } from "@/app/services/articlesService";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-export function useBlogTabs() {
+export function useArticles() {
   return useQuery({
     queryKey: ["articles"],
-    queryFn: blogTabService.getBlogTabs,
+    queryFn: articleService.getArticles,
   });
 }
 
-export function useCreateBlogTabs() {
+export function useCreateArticles() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: blogTabService.createBlogTab,
+    mutationFn: articleService.createArticles,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["articles"] });
     },
