@@ -1,5 +1,5 @@
-import SearchClientWrapper from "@/app/components/filtering/searchClientWrapper";
-import SearchResults from "../../components/filtering/searchResults";
+import SearchClientWrapper from "@/app/components/search/searchClientWrapper";
+import SearchResults from "../../components/search/searchResults";
 
 
 export default function SearchPage({

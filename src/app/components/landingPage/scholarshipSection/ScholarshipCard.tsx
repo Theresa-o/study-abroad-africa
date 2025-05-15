@@ -4,27 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface Category {
-  category_name: string;
-}
-
-interface ScholarshipCategory {
-  id: number;
-  category_id: string;
-  categories: Category;
-}
-interface ScholarshipCardProps {
-  title: string;
-  id: number;
-  image: string;
-  published_date: string;
-  deadline_date: string;
-  type: string;
-  url: string;
-  description: string;
-  scholarship_categories: ScholarshipCategory[];
-}
+import { ScholarshipCardProps } from "@/app/types/scholarships/scholarships";
 
 const ScholarshipCard = ({
   title,
@@ -41,7 +21,7 @@ const ScholarshipCard = ({
       <Link href={url}>
         <Card
           key={id}
-          className="overflow-hidden h-full transition-all  md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-110 md:hover:shadow-lg md:duration-300 ..."
+          className="overflow-hidden h-full transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300 ..."
         >
           <div className="relative h-48 w-full">
             <Image
@@ -61,6 +41,7 @@ const ScholarshipCard = ({
                     key={scholarship_categories[0].category_id}
                     className="absolute top-4 right-4 bg-primary"
                   >
+                    {/* <h1>WHOOO</h1> */}
                     {scholarship_categories[0].categories?.category_name || ""}
                   </Badge>
                 )}
@@ -72,6 +53,7 @@ const ScholarshipCard = ({
                       key={scholarship_categories[0].category_id}
                       className="absolute top-4 left-4 bg-emerald-500 hover:bg-emerald-600 mb-2"
                     >
+                      {/* <h1>Hello</h1> */}
                       {scholarship_categories[0].categories?.category_name ||
                         ""}
                     </Badge>
@@ -80,6 +62,7 @@ const ScholarshipCard = ({
                       key={scholarship_categories[1].category_id}
                       className="absolute top-4 right-4 bg-emerald-500 hover:bg-emerald-600 mb-2"
                     >
+                      {/* <h1>Hi</h1> */}
                       {scholarship_categories[1].categories?.category_name ||
                         ""}
                     </Badge>
@@ -101,14 +84,14 @@ const ScholarshipCard = ({
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-muted-foreground line-clamp-2">{description}</p>
-            <div className="flex justify-between items-center">
+            <div className="">
               <div className="text-sm text-secondary font-medium">
                 Deadline:{" "}
                 {deadline_date
                   ? DateTime.fromISO(deadline_date).toFormat("MMM, d, yyyy")
                   : ""}
               </div>
-              <div className="flex items-center text-emerald-600 font-medium group">
+              <div className="flex items-center text-emerald-600 font-medium group my-2">
                 Read more
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>

@@ -16,7 +16,7 @@ const SchoolCards = ({
   imageUrl,
 }: CourseCardProps) => {
   return (
-    <Card className="overflow-hidden relative">
+    <Card className="overflow-hidden relative transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300">
       <div className="relative h-48 w-full">
         <Image
           src={imageUrl}

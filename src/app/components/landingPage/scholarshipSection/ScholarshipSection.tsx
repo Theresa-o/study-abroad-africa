@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import ScholarshipCard from "./ScholarshipCard";
 import { useScholarship } from "@/app/hooks/scholarships/useScholarship";
+import Link from "next/link";
 
 const ScholarshipsSection = () => {
   const { data: scholarships } = useScholarship();
@@ -19,7 +20,7 @@ const ScholarshipsSection = () => {
             variant="secondary"
             className="text-white hover:bg-white hover:border-secondary border border-secondary hover:text-secondary"
           >
-            View all
+            <Link href="/scholarships">View all</Link>
           </Button>
         </div>
 

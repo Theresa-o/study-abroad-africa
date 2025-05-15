@@ -11,4 +11,34 @@ export interface createScholarshipDTO {
         url: string;
         destinations: number[];
         categories: number[];
+        institutions: number[];
+        tags: number[];
+}
+
+export interface Category {
+  category_name: string;
+}
+
+export interface ScholarshipCardProps {
+  title: string;
+  id: number;
+  image: string;
+  published_date: string;
+  deadline_date: string;
+  type: string;
+  url: string;
+  description: string;
+  scholarship_categories: any;
+}
+
+export interface CourseCategoryRelation {
+  category_id: string;
+}
+      
+export interface InstitutionRelation {
+  institution_id: string;
+}
+      
+export interface DestinationRelation {
+  destination_id: string;
 }

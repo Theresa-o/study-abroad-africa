@@ -124,7 +124,7 @@ export function FilterSidebar({
                     <Badge
                       key={`${filter.id}-${filter.value}`}
                       variant="secondary"
-                      className="gap-1 pr-1.5"
+                      className="gap-1 pr-1.5 text-white"
                     >
                       {filter.value}
                       <Button
@@ -202,7 +202,7 @@ export function FilterSidebar({
 
               {/* Active filters */}
               {activeFilters.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2 text-white">
                   {activeFilters.map((filter) => (
                     <Badge
                       key={`${filter.id}-${filter.value}`}
@@ -217,7 +217,7 @@ export function FilterSidebar({
                         onClick={() => removeFilter(filter.id, filter.value)}
                       >
                         <X className="h-3 w-3" />
-                        <span className="sr-only">
+                        <span className="sr-only ">
                           Remove {filter.value} filter
                         </span>
                       </Button>
@@ -301,7 +301,7 @@ function FilterCategory({
           {count !== undefined && count > 0 && (
             <Badge
               variant="secondary"
-              className="rounded-full px-2 py-0 text-xs"
+              className="rounded-full px-2 py-0 text-xs text-white"
             >
               {count}
             </Badge>
@@ -375,7 +375,7 @@ function FilterCategoryMobile({
             {count !== undefined && count > 0 && (
               <Badge
                 variant="secondary"
-                className="rounded-full px-2 py-0 text-xs"
+                className="rounded-full px-2 py-0 text-xs text-white"
               >
                 {count}
               </Badge>

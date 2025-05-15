@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import Search from "../filtering/search";
+import Search from "../search/search";
 import Image from "next/image";
 
 const HeroSection = () => {

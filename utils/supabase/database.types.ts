@@ -7,31 +7,6 @@ export type Json =
   | Json[]
 
 export type Database = {
-  graphql_public: {
-    Tables: {
-      [_ in never]: never
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      graphql: {
-        Args: {
-          operationName?: string
-          query?: string
-          variables?: Json
-          extensions?: Json
-        }
-        Returns: Json
-      }
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
-  }
   public: {
     Tables: {
       articles: {
@@ -484,6 +459,42 @@ export type Database = {
           },
         ]
       }
+      institutions_m2m_scholarships: {
+        Row: {
+          created_at: string
+          id: number
+          institution_id: number | null
+          scholarship_id: number | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          institution_id?: number | null
+          scholarship_id?: number | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          institution_id?: number | null
+          scholarship_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "institutions_m2m_scholarships_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "Institution"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "institutions_m2m_scholarships_scholarship_id_fkey"
+            columns: ["scholarship_id"]
+            isOneToOne: false
+            referencedRelation: "scholarships"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       scholarships: {
         Row: {
           created_at: string
@@ -692,6 +703,42 @@ export type Database = {
           },
         ]
       }
+      tag_m2m_scholarships: {
+        Row: {
+          created_at: string
+          id: number
+          scholarship_id: number | null
+          tag_id: number | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          scholarship_id?: number | null
+          tag_id?: number | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          scholarship_id?: number | null
+          tag_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tag_m2m_scholarships_scholarship_id_fkey"
+            columns: ["scholarship_id"]
+            isOneToOne: false
+            referencedRelation: "scholarships"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tag_m2m_scholarships_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "course_tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -814,9 +861,6 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
-  graphql_public: {
-    Enums: {},
-  },
   public: {
     Enums: {},
   },
