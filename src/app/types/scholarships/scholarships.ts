@@ -19,6 +19,13 @@ export interface Category {
   category_name: string;
 }
 
+interface Categories {
+  category_id: number;
+  categories: {
+    category_name: string;
+  };
+}
+
 export interface ScholarshipCardProps {
   title: string;
   id: number;
@@ -28,7 +35,7 @@ export interface ScholarshipCardProps {
   type: string;
   url: string;
   description: string;
-  scholarship_categories: any;
+  scholarship_categories: Categories;
 }
 
 export interface CourseCategoryRelation {

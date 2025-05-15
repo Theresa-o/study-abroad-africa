@@ -33,43 +33,7 @@ const ScholarshipCard = ({
               className="rounded-md object-cover"
             />
 
-            {scholarship_categories?.length > 0 && (
-              <>
-                {/* If there's only one category, place it on the right */}
-                {scholarship_categories.length === 1 && (
-                  <Badge
-                    key={scholarship_categories[0].category_id}
-                    className="absolute top-4 right-4 bg-primary"
-                  >
-                    {/* <h1>WHOOO</h1> */}
-                    {scholarship_categories[0].categories?.category_name || ""}
-                  </Badge>
-                )}
 
-                {/* If there are 2 categories, position them differently */}
-                {scholarship_categories.length > 1 && (
-                  <>
-                    <Badge
-                      key={scholarship_categories[0].category_id}
-                      className="absolute top-4 left-4 bg-emerald-500 hover:bg-emerald-600 mb-2"
-                    >
-                      {/* <h1>Hello</h1> */}
-                      {scholarship_categories[0].categories?.category_name ||
-                        ""}
-                    </Badge>
-
-                    <Badge
-                      key={scholarship_categories[1].category_id}
-                      className="absolute top-4 right-4 bg-emerald-500 hover:bg-emerald-600 mb-2"
-                    >
-                      {/* <h1>Hi</h1> */}
-                      {scholarship_categories[1].categories?.category_name ||
-                        ""}
-                    </Badge>
-                  </>
-                )}
-              </>
-            )}
           </div>
           <CardHeader className="space-y-2">
             <div className="text-sm text-muted-foreground">
