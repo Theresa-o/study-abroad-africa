@@ -55,7 +55,7 @@ const ScholarshipCard = ({
                   ? DateTime.fromISO(deadline_date).toFormat("MMM, d, yyyy")
                   : ""}
               </div>
-              <div className="flex items-center text-emerald-600 font-medium group my-2">
+              <div className="flex items-center text-primary-600 font-medium group my-2">
                 Read more
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
