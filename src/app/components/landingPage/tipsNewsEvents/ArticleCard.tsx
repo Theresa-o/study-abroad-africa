@@ -26,7 +26,7 @@ const ArticleCard = ({
 }: ArticleCardProps) => {
   return (
     <Link href={url}>
-      <Card className="h-full overflow-hidden transition-all hover:shadow-lg">
+      <Card className="h-full overflow-hidden transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300">
         <div className="relative h-[200px] w-full overflow-hidden">
           {/* <Image
             src={image}

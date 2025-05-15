@@ -18,7 +18,7 @@ const CustomCard = ({
       <Link href={url}>
         <Card
           key={id}
-          className="overflow-hidden h-full transition-all  md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-110 md:hover:shadow-lg md:duration-300 ..."
+          className="overflow-hidden h-full md:transition md:ease-in-out md:delay-60 md:hover:-translate-y-1 md:hover:scale-60 md:hover:shadow-lg md:duration-300 ..."
         >
           <div className="relative h-48 w-full">
             <Image

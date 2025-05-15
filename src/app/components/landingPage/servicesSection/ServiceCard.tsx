@@ -12,7 +12,7 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, url, image }: ServiceCardProps) => {
   return (
-    <Card className="h-full flex flex-col font-sans">
+    <Card className="h-full flex flex-col font-sans transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300">
       <CardContent className="flex-grow space-y-4 p-6">
         <div className="h-24 w-full relative">
           <Image

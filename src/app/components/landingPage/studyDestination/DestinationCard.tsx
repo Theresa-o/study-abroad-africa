@@ -12,7 +12,7 @@ interface DestinationCardProps {
 const DestinationCard = ({ country, image_url }: DestinationCardProps) => {
   return (
     <Link href={`/country/${country.toLowerCase()}`}>
-    <Card className="overflow-hidden transition-all hover:shadow-lg font-sans">
+    <Card className="overflow-hidden transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300 font-sans">
       <CardContent className="p-0">
         <div className="relative h-40 w-full">
           <Image
