@@ -24,7 +24,7 @@ const FilterTags = ({ onTagSelect, selectedTagId }: FilterTagsProps) => {
           className={`px-4 py-2 rounded-full border border-gray-300 text-sm transition-colors ${
             selectedTagId === tag.id
               ? "bg-primary text-white"
-              : "bg-slate-100 hover:bg-secondary hover:text-white"
+              : "bg-slate-100 text-black hover:bg-secondary hover:text-white"
           }`}
           onClick={() => handleTagClick(tag.id)}
         >
