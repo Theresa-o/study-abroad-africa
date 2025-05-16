@@ -4,9 +4,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ArticleCard from "./ArticleCard";
 import { useArticles } from "@/app/hooks/blogTabs/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
-import { ArticleTagType } from "@/app/types/articles/articles";
+import { ArticleTagType, TabType } from "@/app/types/articles/articles";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useState } from "react";
 
 const BlogTabs = () => {
+  const [activeTab, setActiveTab] = useState<TabType>("tips");
   const { data: articles = [] } = useArticles();
   const { data: events } = useEvents();
 
@@ -22,6 +26,16 @@ const BlogTabs = () => {
     )
   );
 
+  // Map to store the relationship between tab values and their respective routes
+  const tabRoutes = {
+    tips: "/blog/tips",
+    news: "/blog/news",
+    events: "/blog/events",
+  };
+  const handleTabChange = (value: string) => {
+    setActiveTab(value as TabType);
+  };
+
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -34,49 +48,62 @@ const BlogTabs = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="tips" className="w-full font-sans">
+        <Tabs
+          defaultValue="tips"
+          className="w-full font-sans"
+          onValueChange={handleTabChange}
+        >
           <TabsList className="grid w-full grid-cols-3 max-w-[400px] mx-auto">
             <TabsTrigger
               value="tips"
-              className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
+              className="data-[state=active]:bg-secondary-foreground data-[state=active]:text-secondary"
             >
               Tips
             </TabsTrigger>
             <TabsTrigger
               value="news"
-              className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
+              className="data-[state=active]:bg-secondary-foreground data-[state=active]:text-secondary"
             >
               News
             </TabsTrigger>
             <TabsTrigger
               value="events"
-              className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
+              className="data-[state=active]:bg-secondary-foreground data-[state=active]:text-secondary"
             >
               Events
             </TabsTrigger>
           </TabsList>
           <TabsContent value="tips" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {tips?.map((article) => (
+              {tips?.slice(0, 3).map((article) => (
                 <ArticleCard key={article.id} {...article} />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="news" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {news?.map((article) => (
+              {news?.slice(0, 3).map((article) => (
                 <ArticleCard key={article.id} {...article} />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="events" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {events?.map((event) => (
+              {events?.slice(0, 3).map((event) => (
                 <ArticleCard key={event.id} {...event} />
               ))}
             </div>
           </TabsContent>
         </Tabs>
+      </div>
+      <div className="text-center my-8 text-lg">
+        <Button
+          asChild
+          variant="secondary"
+          className="text-white hover:bg-white hover:border-secondary border border-secondary hover:text-secondary rounded-full px-6"
+        >
+          <Link href={tabRoutes[activeTab]}>View more {activeTab}</Link>
+        </Button>
       </div>
     </section>
   );

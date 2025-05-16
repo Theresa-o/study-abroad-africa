@@ -67,7 +67,7 @@ const ArticleCard = ({
           <p className="text-muted-foreground line-clamp-2">{description}</p>
         </CardContent>
         <CardFooter>
-          <div className="flex items-center text-blue-600 font-medium group">
+          <div className="flex items-center text-primary-600 font-medium group">
             Read more
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </div>

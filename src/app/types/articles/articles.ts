@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Database } from "../../../../utils/supabase/database.types";
 
 export interface CustomCardProps {
@@ -16,3 +17,9 @@ export interface CustomCardProps {
     Database["public"]["Tables"]["articles"]["Row"];
 
   export type ArticleInsertDataDTO = Database['public']['Tables']['articles']['Insert'];
+
+  export interface BlogLayoutProps {
+    children: ReactNode;
+  }
+
+  export type TabType = "tips" | "news" | "events";
