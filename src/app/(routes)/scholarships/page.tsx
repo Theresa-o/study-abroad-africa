@@ -11,7 +11,6 @@ import {
   useScholarship,
   useScholarshipByTag,
 } from "@/app/hooks/scholarships/useScholarship";
-import { Database } from "../../../../utils/supabase/database.types";
 
 export default function Home() {
   const {

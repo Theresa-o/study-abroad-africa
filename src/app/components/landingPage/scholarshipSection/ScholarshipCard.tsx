@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { DateTime } from "luxon";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
@@ -14,7 +13,6 @@ const ScholarshipCard = ({
   deadline_date,
   url,
   description,
-  scholarship_categories,
 }: ScholarshipCardProps) => {
   return (
     <>
@@ -32,8 +30,6 @@ const ScholarshipCard = ({
               fill
               className="rounded-md object-cover"
             />
-
-
           </div>
           <CardHeader className="space-y-2">
             <div className="text-sm text-muted-foreground">
