@@ -1,4 +1,5 @@
 "use client";
+
 import ArticleCard from "@/app/components/landingPage/tipsNewsEvents/ArticleCard";
 import { useArticles } from "@/app/hooks/blogTabs/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
