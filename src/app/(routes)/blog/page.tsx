@@ -2,7 +2,11 @@
 import ArticleCard from "@/app/components/landingPage/tipsNewsEvents/ArticleCard";
 import { useArticles } from "@/app/hooks/blogTabs/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
-import { ArticleTagType, TabType } from "@/app/types/articles/articles";
+import {
+  ArticleCardProps,
+  ArticleTagType,
+  TabType,
+} from "@/app/types/articles/articles";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -36,7 +40,7 @@ const BlogPage = () => {
   );
 
   // Content mapping based on active tab
-  const contentMap: Record<TabType, any[]> = {
+  const contentMap: Record<TabType, ArticleCardProps[]> = {
     tips: tips,
     news: news,
     events: events,

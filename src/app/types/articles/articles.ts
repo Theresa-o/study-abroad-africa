@@ -23,3 +23,12 @@ export interface CustomCardProps {
   }
 
   export type TabType = "tips" | "news" | "events";
+
+  export interface ArticleCardProps {
+    id: string;
+    description: string;
+    created_at: string;
+    image: string;
+    title: string;
+    url: string;
+  }
