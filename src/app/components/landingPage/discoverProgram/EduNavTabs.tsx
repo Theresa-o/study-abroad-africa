@@ -38,7 +38,7 @@ const EduNavTabs = ({
 
   return (
     <Tabs defaultValue="undergraduate" className="w-full">
-      <TabsList className="w-full grid grid-cols-1 md:grid-cols-5 h-auto bg-white">
+      <TabsList className="w-full grid grid-cols-2 md:grid-cols-5 h-auto bg-white">
         {/* <TabsTrigger
           value="all"
           onClick={() => onCategorySelect(null)}
