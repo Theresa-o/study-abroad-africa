@@ -7,6 +7,31 @@ export type Json =
   | Json[]
 
 export type Database = {
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          operationName?: string
+          query?: string
+          variables?: Json
+          extensions?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
       articles: {
@@ -703,6 +728,27 @@ export type Database = {
           },
         ]
       }
+      subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: number
+          consent: boolean;
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: number
+          consent: boolean;
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: number
+          consent: boolean;
+        }
+        Relationships: []
+      }
       tag_m2m_scholarships: {
         Row: {
           created_at: string
@@ -861,6 +907,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  graphql_public: {
+    Enums: {},
+  },
   public: {
     Enums: {},
   },

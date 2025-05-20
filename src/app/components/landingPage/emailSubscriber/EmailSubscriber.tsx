@@ -4,6 +4,9 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
+import { useSubscribers } from "@/app/hooks/subscribers/useSubscribers";
+import { toast } from "sonner";
+import { checkIfEmailExists } from "@/app/services/subscriberService";
 
 const formSchema = Yup.object({
   email: Yup.string()
@@ -24,7 +27,15 @@ interface FormStatus {
   error?: string;
 }
 
+type SupabaseError = {
+  code: string;
+  message: string;
+  details?: string;
+};
+
 const EmailSubscriber = () => {
+  const { mutateAsync } = useSubscribers();
+
   const onSubmit = async (
     values: FormValues,
     {
@@ -39,18 +50,25 @@ const EmailSubscriber = () => {
   ) => {
     setSubmitting(true);
     try {
-      // Here you would typically send the data to your API
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating API call
+      const emailExists = await checkIfEmailExists(values.email);
+      if (emailExists) {
+        toast.error("This email is already subscribed.");
+        setStatus({ error: "This email is already subscribed" });
+        return;
+      }
+      await mutateAsync(values);
 
-      setStatus({ success: true });
-      resetForm(); // Clear the form after successful submission
-    } catch (error) {
-      setStatus({
-        error:
-          error instanceof Error
-            ? error.message
-            : "An unexpected error occurred",
-      });
+      toast.success("Thank you for subscribing");
+      resetForm();
+    } catch (err: unknown) {
+      if (err && typeof err === "object" && "message" in err) {
+        const supabaseError = err as SupabaseError;
+        toast.error(supabaseError.message || "An error occurred");
+        setStatus({ error: supabaseError.message });
+      } else {
+        toast.error("An unknown error occurred. Please try again");
+        setStatus({ error: "An unknown error occurred" });
+      }
     } finally {
       setSubmitting(false);
     }
@@ -63,7 +81,8 @@ const EmailSubscriber = () => {
           Change Your Life Now!
         </h2>
         <p className="text-xl text-gray-600 font-heading">
-          Want to know how will immigration affect you?
+          Want to know the latest immigration information and how it affects
+          you?
         </p>
         <Formik
           initialValues={{ email: "", consent: false }}
@@ -73,16 +92,26 @@ const EmailSubscriber = () => {
           {({ isSubmitting, status, errors, touched }) => (
             <Form className="space-y-4">
               <div className="flex max-w-md mx-auto">
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="Enter your e-mail"
-                  className={`flex-grow p-2 border ${
-                    errors.email && touched.email
-                      ? "border-primary"
-                      : "border-gray-300"
-                  } rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary`}
-                />
+                <Field name="email">
+                  {({ field, form }: any) => (
+                    <input
+                      {...field}
+                      type="email"
+                      placeholder="Enter your e-mail"
+                      className={`flex-grow p-2 border ${
+                        errors.email && touched.email
+                          ? "border-primary"
+                          : "border-gray-300"
+                      } rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary`}
+                      onChange={(e) => {
+                        // Clear the error status if the user is typing again
+                        form.setStatus(undefined);
+                        form.setFieldValue("email", e.target.value);
+                      }}
+                    />
+                  )}
+                </Field>
+
                 <Button
                   type="submit"
                   className="rounded-l-none my-auto bg-secondary text-white hover:bg-white hover:border-secondary hover:text-secondary"
@@ -100,7 +129,7 @@ const EmailSubscriber = () => {
               )}
 
               {/* Consent Checkbox */}
-              <div className="flex items-center justify-center space-x-2">
+              <div className="my-2 md:flex md:items-center md:justify-center md:space-x-2">
                 <Field
                   type="checkbox"
                   name="consent"
@@ -111,7 +140,7 @@ const EmailSubscriber = () => {
                       : "border-gray-300"
                   }`}
                 />
-                <label htmlFor="consent" className="text-sm text-gray-600">
+                <label htmlFor="consent" className="mx-2 text-sm text-gray-600">
                   I agree that my submitted data is being collected and stored.
                 </label>
               </div>
@@ -120,13 +149,6 @@ const EmailSubscriber = () => {
               {errors.consent && touched.consent && (
                 <p className="text-red-500 text-sm text-center">
                   {errors.consent}
-                </p>
-              )}
-
-              {/* Success Message */}
-              {status?.success && (
-                <p className="text-green-500 text-sm text-center">
-                  Subscribed successfully!
                 </p>
               )}
 
