@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FieldProps } from "formik";
 import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
 import { useSubscribers } from "@/app/hooks/subscribers/useSubscribers";
@@ -93,7 +93,7 @@ const EmailSubscriber = () => {
             <Form className="space-y-4">
               <div className="flex max-w-md mx-auto">
                 <Field name="email">
-                  {({ field, form }: any) => (
+                  {({ field, form }: FieldProps) => (
                     <input
                       {...field}
                       type="email"
