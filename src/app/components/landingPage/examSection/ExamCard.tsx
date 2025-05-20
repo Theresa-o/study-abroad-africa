@@ -24,7 +24,7 @@ export function ExamCard({ title, description, purpose, link }: ExamCardProps) {
           {title}
           <Badge
             variant="secondary"
-            className="text-white hover:bg-white hover:border-secondary border border-secondary hover:text-secondary"
+            className="text-black bg-gray-100 hover:bg-transparent"
           >
             {purpose}
           </Badge>
@@ -34,7 +34,7 @@ export function ExamCard({ title, description, purpose, link }: ExamCardProps) {
       <CardContent className="flex-grow flex items-end">
         <Button
           variant="outline"
-          className="w-full mt-4 text-blue-600 font-medium group hover:bg-inherit"
+          className="w-full mt-4 text-secondary border-none font-medium group hover:bg-inherit"
           asChild
         >
           <a href={link} target="_blank" rel="noopener noreferrer">
