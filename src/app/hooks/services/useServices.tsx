@@ -1,6 +1,24 @@
-import { servicesService } from "@/app/services/servicesService";
+import {
+  getServicesByProvider,
+  servicesCategoryService,
+  servicesService,
+} from "@/app/services/servicesService";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
+export function useServiceCategories() {
+  return useQuery({
+    queryKey: ["serviceCategories"],
+    queryFn: servicesCategoryService.getServicesCategories,
+  });
+}
+
+export function useServiceProviders() {
+  return useQuery({
+    queryKey: ["serviceProviders"],
+    queryFn: getServicesByProvider.getProviders,
+  });
+}
 
 export function useService() {
   return useQuery({

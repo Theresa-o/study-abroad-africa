@@ -24,22 +24,22 @@ const ServicesSection = () => {
         </div>
 
         <Tabs defaultValue="financial" className="w-full">
-          <TabsList className="grid w-full max-w-[600px] grid-cols-3 mx-auto font-sans">
+          <TabsList className="grid w-full max-w-[600px] grid-cols-2 md:grid-cols-3 mx-auto font-sans">
             <TabsTrigger
               value="financial"
-              className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
+              className="data-[state=active]:bg-secondary-foreground data-[state=active]:text-secondary"
             >
               Financial Services
             </TabsTrigger>
             <TabsTrigger
               value="visa"
-              className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
+              className="data-[state=active]:bg-secondary-foreground data-[state=active]:text-secondary"
             >
               Visa Services
             </TabsTrigger>
             <TabsTrigger
               value="language"
-              className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
+              className="data-[state=active]:bg-secondary-foreground data-[state=active]:text-secondary"
             >
               Language Test Services
             </TabsTrigger>
