@@ -47,12 +47,12 @@ const ServicesForm = () => {
   const { mutate } = useCreateServices();
   const {
     data: categoriesQuery,
-    isLoading: categoriesQueryLoading,
+    // isLoading: categoriesQueryLoading,
     // error: categoriesQueryError,
   } = useServiceCategories();
   const {
     data: serviceProviders,
-    isLoading: providersQueryLoading,
+    // isLoading: providersQueryLoading,
     // error: categoriesQueryError,
   } = useServiceProviders();
 
@@ -83,7 +83,7 @@ const ServicesForm = () => {
       description,
       service_category_id,
       image,
-      status,
+      // status,
       url,
       slug,
       serviceProviderIds,

@@ -43,7 +43,6 @@ export const TiptapEditor: React.FC<TiptapEditorProps> = ({
   content,
   onChange,
   error = false,
-  placeholder = "Enter description...",
 }) => {
   const [showLinkInput, setShowLinkInput] = useState(false);
   const [linkInput, setLinkInput] = useState("");
@@ -130,16 +129,6 @@ export const TiptapEditor: React.FC<TiptapEditorProps> = ({
       editor.commands.setContent(content);
     }
   }, [content, editor]);
-
-  // if (!editor) {
-  //   return null;
-  // }
-
-  const openLinkInput = useCallback(() => {
-    const previousUrl = editor?.getAttributes("link").href || "";
-    setLinkInput(previousUrl);
-    setShowLinkInput(true);
-  }, [editor]);
 
   const applyLink = useCallback(() => {
     if (!linkInput) {

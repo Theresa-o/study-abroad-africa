@@ -19,7 +19,7 @@ interface ServiceCardProps {
 const ServiceCard = ({
   title,
   description,
-  url,
+  // url,
   image,
   service_category,
   slug,

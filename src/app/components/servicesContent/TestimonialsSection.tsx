@@ -37,7 +37,7 @@ export const TestimonialsSection = ({
               </div>
 
               <blockquote className="text-gray-700 mb-4 italic">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </blockquote>
 
               <div className="flex items-center gap-3">
