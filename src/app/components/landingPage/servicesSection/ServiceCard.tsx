@@ -9,9 +9,23 @@ interface ServiceCardProps {
   description: string;
   image: string;
   url: string;
+  slug?: string;
+  service_category: {
+    id: number;
+    name: string;
+  };
 }
 
-const ServiceCard = ({ title, description, url, image }: ServiceCardProps) => {
+const ServiceCard = ({
+  title,
+  description,
+  url,
+  image,
+  service_category,
+  slug,
+}: ServiceCardProps) => {
+  const categoryName = service_category?.name?.toLowerCase();
+
   return (
     <Card className="h-full flex flex-col font-sans transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300">
       <CardContent className="flex-grow space-y-4 p-6">
@@ -30,7 +44,7 @@ const ServiceCard = ({ title, description, url, image }: ServiceCardProps) => {
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Link
-          href={url}
+          href={`/services/${categoryName}/${slug}`}
           className="text-secondary hover:text-secondary-dark inline-flex items-center group"
         >
           Learn More
