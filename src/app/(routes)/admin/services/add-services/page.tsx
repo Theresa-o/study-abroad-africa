@@ -38,6 +38,7 @@ interface FormValues {
   image: string;
   status: string;
   url: string;
+  slug: string;
   serviceProviderIds: number[];
 }
 
@@ -84,6 +85,7 @@ const ServicesForm = () => {
       image,
       status,
       url,
+      slug,
       serviceProviderIds,
     } = values;
 
@@ -97,6 +99,7 @@ const ServicesForm = () => {
       serviceProviderIds: serviceProviderIds,
       status: values.status === "true",
       url: url,
+      slug: slug,
     };
 
     mutate(createProviderData, {
@@ -119,6 +122,7 @@ const ServicesForm = () => {
         image: "",
         service_category_id: 0,
         status: "",
+        slug: "",
         url: "",
         serviceProviderIds: [] as number[],
       }}
@@ -186,6 +190,31 @@ const ServicesForm = () => {
 
               <ErrorMessage
                 name="description"
+                component="div"
+                className="mt-1 text-sm text-secondary"
+              />
+            </div>
+
+            {/* Slug */}
+            <div>
+              <label
+                htmlFor="slug"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Slug
+              </label>
+              <Field
+                name="slug"
+                type="text"
+                className={`block w-full px-4 py-3 rounded-md border ${
+                  errors.slug && touched.slug
+                    ? "border-secondary"
+                    : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
+                placeholder="Enter slug e.g title-slug"
+              />
+              <ErrorMessage
+                name="slug"
                 component="div"
                 className="mt-1 text-sm text-secondary"
               />

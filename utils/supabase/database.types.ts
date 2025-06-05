@@ -662,6 +662,7 @@ export type Database = {
           status: boolean | null
           title: string | null
           url: string | null
+          slug: string | null
         }
         Insert: {
           created_at?: string
@@ -672,6 +673,7 @@ export type Database = {
           status?: boolean | null
           title?: string | null
           url?: string | null
+          slug: string | null
         }
         Update: {
           created_at?: string
@@ -682,6 +684,7 @@ export type Database = {
           status?: boolean | null
           title?: string | null
           url?: string | null
+          slug: string | null
         }
         Relationships: [
           {
