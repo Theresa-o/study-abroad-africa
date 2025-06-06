@@ -64,7 +64,8 @@ export const courseService = {
         description: courseData.description,
         image: courseData.image,
         category_id: courseData.category_id,
-        institution_id: courseData.institution_id
+        institution_id: courseData.institution_id,
+        slug: courseData.slug
       })
       .select()
       .single();
@@ -95,6 +96,30 @@ export const courseService = {
       `);
 
     if (error) throw error;
+    return data;
+  },
+
+  // Get a single course by slug
+  async getCourseBySlug(slug: string) {
+    const { data, error } = await supabase
+      .from('Courses')
+      .select(`
+        *,
+        institution:institution_id(institution_name),
+        category:category_id(category_name),
+        course_tags:course_m2m_tags(tag_id)
+      `)
+      .eq('slug', slug)        
+      .single();       
+    
+    if (error) {
+      // If no course found, Supabase returns an error
+      if (error.code === 'PGRST116') {
+        return null; 
+      }
+      throw error;
+    }
+    
     return data;
   }
 };

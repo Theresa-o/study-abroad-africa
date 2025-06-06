@@ -6,15 +6,9 @@ import SchoolCards from "./SchoolCards";
 import EduNavTabs from "./EduNavTabs";
 import { useCourses, useCoursesByTag } from "@/app/hooks/courses/useCourses";
 import { useState } from "react";
-import { Tables } from "../../../../../utils/supabase/database.types";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-type Course = Tables<"Courses"> & {
-  course_m2m_tags?: Tables<"course_m2m_tags">[];
-  category?: Tables<"course_categories">;
-  institution?: Tables<"Institution">;
-};
+import { Course } from "@/app/types/courses/courses";
 
 const DiscoverPrograms = () => {
   const [selectedTagId, setSelectedTagId] = useState<number | null>(null);
@@ -75,6 +69,7 @@ const DiscoverPrograms = () => {
               institution={course.institution?.institution_name}
               imageUrl={course.image}
               category={course.category?.category_name}
+              slug={course.slug}
             />
           ))}
         </div>

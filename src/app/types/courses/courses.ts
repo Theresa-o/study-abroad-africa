@@ -1,3 +1,5 @@
+import { Tables } from "../../../../utils/supabase/database.types";
+
 // types/category.ts
 export interface Category {
     id: number;
@@ -37,3 +39,10 @@ export interface Category {
  export type CourseTagRelation = {
     tag_id: number;
   };
+
+export type Course = Tables<"Courses"> & {
+    course_m2m_tags?: Tables<"course_m2m_tags">[];
+    category?: Tables<"course_categories">;
+    institution?: Tables<"Institution">;
+  };
+  
