@@ -268,7 +268,7 @@ const ServicesForm = () => {
                   name="serviceProviderIds"
                   multiple
                   className={`block w-full px-4 py-3 rounded-md border ${
-                    errors.service_category_id && touched.service_category_id
+                    errors.serviceProviderIds && touched.serviceProviderIds
                       ? "border-secondary"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out appearance-none`}

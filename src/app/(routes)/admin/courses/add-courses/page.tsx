@@ -11,15 +11,20 @@ import {
 import { CreateCourseDTO } from "@/app/types/courses/courses";
 import { toast } from "sonner";
 import { useMemo } from "react";
+import { TiptapEditor } from "@/app/components/shared/TiptapEditor";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
+  slug: Yup.string().required("Slug is required"),
   description: Yup.string().required("Description is required"),
   imageUrl: Yup.string()
     .url("Must be a valid URL")
     .required("Image URL is required"),
   category: Yup.string().required("Please select a category"),
-  tag: Yup.string().required("Please select a tag"),
+  tag: Yup.array()
+    .min(1, "Please select at least one tag")
+    .of(Yup.number().required())
+    .required("Please select a tag"),
   institution: Yup.string().required("Please select a institution"),
 });
 
@@ -29,7 +34,7 @@ interface FormValues {
   institution: string;
   imageUrl: string;
   category: string;
-  tag: string;
+  tag: number[];
   slug: string;
 }
 
@@ -88,14 +93,16 @@ const CourseForm = () => {
   ) => {
     const { title, description, imageUrl, category, tag, institution, slug } =
       values;
-    const createCourseData: CreateCourseDTO = {
+    const createCourseData: CreateCourseDTO & {
+      tags: number[];
+    } = {
       title,
       description,
       image: imageUrl,
-      slug: slug,
+      slug,
       category_id: parseInt(category),
       institution_id: parseInt(institution),
-      tags: [parseInt(tag)],
+      tags: tag,
     };
 
     await createCourseMutation(createCourseData, {
@@ -118,15 +125,15 @@ const CourseForm = () => {
         institution: "",
         imageUrl: "",
         category: "",
-        tag: "",
+        tag: [] as number[],
         slug: "",
       }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched, isSubmitting }) => (
+      {({ errors, touched, isSubmitting, setFieldValue, values }) => (
         <Form className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
-          <div className="bg-purple-600 px-6 py-4">
+          <div className="bg-secondary px-6 py-4">
             <h2 className="text-2xl font-bold text-white">Add New Course</h2>
           </div>
           <div className="px-6 py-8 space-y-6">
@@ -142,7 +149,7 @@ const CourseForm = () => {
                 type="text"
                 className={`block w-full px-4 py-3 rounded-md border ${
                   errors.title && touched.title
-                    ? "border-red-500"
+                    ? "border-secondary"
                     : "border-gray-300"
                 } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
                 placeholder="Enter course title"
@@ -150,7 +157,7 @@ const CourseForm = () => {
               <ErrorMessage
                 name="title"
                 component="div"
-                className="mt-1 text-sm text-red-600"
+                className="mt-1 text-sm text-secondary"
               />
             </div>
 
@@ -161,20 +168,16 @@ const CourseForm = () => {
               >
                 Description
               </label>
-              <Field
-                name="description"
-                type="text"
-                className={`block w-full px-4 py-3 rounded-md border ${
-                  errors.description && touched.description
-                    ? "border-red-500"
-                    : "border-gray-300"
-                } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
+              <TiptapEditor
+                content={values.description}
+                onChange={(content) => setFieldValue("description", content)}
+                error={!!(errors.description && touched.description)}
                 placeholder="Enter course description"
               />
               <ErrorMessage
                 name="description"
                 component="div"
-                className="mt-1 text-sm text-red-600"
+                className="mt-1 text-sm text-secondary"
               />
             </div>
             <div>
@@ -189,7 +192,7 @@ const CourseForm = () => {
                 type="text"
                 className={`block w-full px-4 py-3 rounded-md border ${
                   errors.slug && touched.slug
-                    ? "border-red-500"
+                    ? "border-secondary"
                     : "border-gray-300"
                 } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
                 placeholder="Enter slug (e.g., my-article-title)"
@@ -197,7 +200,7 @@ const CourseForm = () => {
               <ErrorMessage
                 name="slug"
                 component="div"
-                className="mt-1 text-sm text-red-600"
+                className="mt-1 text-sm text-secondary"
               />
             </div>
             <div>
@@ -214,7 +217,7 @@ const CourseForm = () => {
                   isLoading={categoriesQueryLoading}
                   className={`block w-full px-4 py-3 rounded-md border ${
                     errors.category && touched.category
-                      ? "border-red-500"
+                      ? "border-secondary"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out appearance-none`}
                 >
@@ -230,7 +233,7 @@ const CourseForm = () => {
               <ErrorMessage
                 name="category"
                 component="div"
-                className="mt-1 text-sm text-red-600"
+                className="mt-1 text-sm text-secondary"
               />
             </div>
 
@@ -303,6 +306,7 @@ const CourseForm = () => {
                 <Field
                   as="select"
                   name="tag"
+                  multiple
                   isLoading={tagsQueryLoading}
                   className={`block w-full px-4 py-3 rounded-md border ${
                     errors.tag && touched.tag
@@ -329,9 +333,16 @@ const CourseForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-purple-600  text-white font-bold py-3 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+              className="w-full bg-secondary  text-white font-bold py-3 px-4 rounded-md hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
             >
-              {isSubmitting ? <Loader2 className="animate-spin" /> : "Submit"}
+              {isSubmitting ? (
+                <div className="flex items-center justify-center">
+                  <Loader2 className="animate-spin mr-2" size={16} />
+                  Creating...
+                </div>
+              ) : (
+                "Create Course"
+              )}
             </button>
           </div>
         </Form>
