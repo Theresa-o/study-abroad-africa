@@ -30,6 +30,7 @@ interface FormValues {
   imageUrl: string;
   category: string;
   tag: string;
+  slug: string;
 }
 
 const CourseForm = () => {
@@ -85,11 +86,13 @@ const CourseForm = () => {
     values: FormValues,
     { setSubmitting, resetForm }: FormikHelpers<FormValues>
   ) => {
-    const { title, description, imageUrl, category, tag, institution } = values;
+    const { title, description, imageUrl, category, tag, institution, slug } =
+      values;
     const createCourseData: CreateCourseDTO = {
       title,
       description,
       image: imageUrl,
+      slug: slug,
       category_id: parseInt(category),
       institution_id: parseInt(institution),
       tags: [parseInt(tag)],
@@ -116,6 +119,7 @@ const CourseForm = () => {
         imageUrl: "",
         category: "",
         tag: "",
+        slug: "",
       }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
@@ -173,7 +177,29 @@ const CourseForm = () => {
                 className="mt-1 text-sm text-red-600"
               />
             </div>
-
+            <div>
+              <label
+                htmlFor="slug"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Slug
+              </label>
+              <Field
+                name="slug"
+                type="text"
+                className={`block w-full px-4 py-3 rounded-md border ${
+                  errors.slug && touched.slug
+                    ? "border-red-500"
+                    : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
+                placeholder="Enter slug (e.g., my-article-title)"
+              />
+              <ErrorMessage
+                name="slug"
+                component="div"
+                className="mt-1 text-sm text-red-600"
+              />
+            </div>
             <div>
               <label
                 htmlFor="category"

@@ -26,6 +26,7 @@ export interface Category {
   // types/course.ts
   export interface CreateCourseDTO {
     title: string;
+    slug: string;
     description: string;
     image: string;
     category_id: number;

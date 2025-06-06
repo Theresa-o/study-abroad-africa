@@ -261,6 +261,7 @@ export type Database = {
           location_id: number | null
           title: string | null
           url: string | null
+          slug: string | null
         }
         Insert: {
           category_id?: number | null
@@ -272,6 +273,8 @@ export type Database = {
           location_id?: number | null
           title?: string | null
           url?: string | null
+          slug?: string | null
+
         }
         Update: {
           category_id?: number | null
@@ -283,6 +286,7 @@ export type Database = {
           location_id?: number | null
           title?: string | null
           url?: string | null
+          slug?: string | null
         }
         Relationships: [
           {
