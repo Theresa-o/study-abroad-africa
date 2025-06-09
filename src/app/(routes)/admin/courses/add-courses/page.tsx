@@ -7,6 +7,7 @@ import {
   useInstitutions,
   useTags,
   useCreateCourse,
+  useDestinations,
 } from "@/app/hooks/courses/useCourses";
 import { CreateCourseDTO } from "@/app/types/courses/courses";
 import { toast } from "sonner";
@@ -26,6 +27,11 @@ const validationSchema = Yup.object({
     .of(Yup.number().required())
     .required("Please select a tag"),
   institution: Yup.string().required("Please select a institution"),
+  location: Yup.string().required("Please select a location"),
+
+  url: Yup.string()
+    .url("Must be a valid URL")
+    .required("Institution's website is required"),
 });
 
 interface FormValues {
@@ -36,6 +42,8 @@ interface FormValues {
   category: string;
   tag: number[];
   slug: string;
+  url: string;
+  location: string;
 }
 
 const CourseForm = () => {
@@ -44,6 +52,11 @@ const CourseForm = () => {
     isLoading: categoriesQueryLoading,
     // error: categoriesQueryError,
   } = useCategories();
+  const {
+    data: locationsQuery,
+    isLoading: locationsQueryLoading,
+    // error: categoriesQueryError,
+  } = useDestinations();
   const {
     data: tagsQuery,
     isLoading: tagsQueryLoading,
@@ -65,6 +78,15 @@ const CourseForm = () => {
       categoriesQuery?.map((category) => ({
         value: category.id,
         label: category.category_name,
+      })) || [],
+    [categoriesQuery]
+  );
+
+  const locationsOptions = useMemo(
+    () =>
+      locationsQuery?.map((location) => ({
+        value: location.id,
+        label: location.country,
       })) || [],
     [categoriesQuery]
   );
@@ -91,8 +113,17 @@ const CourseForm = () => {
     values: FormValues,
     { setSubmitting, resetForm }: FormikHelpers<FormValues>
   ) => {
-    const { title, description, imageUrl, category, tag, institution, slug } =
-      values;
+    const {
+      title,
+      description,
+      imageUrl,
+      category,
+      tag,
+      institution,
+      slug,
+      url,
+      location,
+    } = values;
     const createCourseData: CreateCourseDTO & {
       tags: number[];
     } = {
@@ -103,11 +134,14 @@ const CourseForm = () => {
       category_id: parseInt(category),
       institution_id: parseInt(institution),
       tags: tag,
+      url: url,
+      location_id: parseInt(location),
     };
 
     await createCourseMutation(createCourseData, {
       onError: () => {
         toast.error("Transaction failed. Please try again.");
+        resetForm();
       },
       onSuccess: () => {
         toast.success("Course created successfully");
@@ -127,6 +161,8 @@ const CourseForm = () => {
         category: "",
         tag: [] as number[],
         slug: "",
+        url: "",
+        location: "",
       }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
@@ -260,7 +296,29 @@ const CourseForm = () => {
                 className="mt-1 text-sm text-red-600"
               />
             </div>
-
+            <div>
+              <label
+                htmlFor="url"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                URL/Website
+              </label>
+              <Field
+                name="url"
+                type="url"
+                className={`block w-full px-4 py-3 rounded-md border ${
+                  errors.url && touched.url
+                    ? "border-red-500"
+                    : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
+                placeholder="Please enter website"
+              />
+              <ErrorMessage
+                name="url"
+                component="div"
+                className="mt-1 text-sm text-red-600"
+              />
+            </div>
             <div>
               <label
                 htmlFor="institution"
@@ -294,7 +352,39 @@ const CourseForm = () => {
                 className="mt-1 text-sm text-red-600"
               />
             </div>
-
+            <div>
+              <label
+                htmlFor="location"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Location
+              </label>
+              <div className="relative">
+                <Field
+                  as="select"
+                  name="location"
+                  isLoading={locationsQueryLoading}
+                  className={`block w-full px-4 py-3 rounded-md border ${
+                    errors.location && touched.location
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out appearance-none`}
+                >
+                  <option value="">Select a location</option>
+                  {locationsOptions?.map((location) => (
+                    <option key={location.value} value={location.value}>
+                      {location.label}
+                    </option>
+                  ))}
+                </Field>
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+              </div>
+              <ErrorMessage
+                name="location"
+                component="div"
+                className="mt-1 text-sm text-red-600"
+              />
+            </div>
             <div>
               <label
                 htmlFor="tag"

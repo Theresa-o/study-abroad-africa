@@ -34,6 +34,8 @@ export interface Category {
     category_id: number;
     institution_id: number;
     tags: number[];
+    url: string;
+    location_id: number
   }
 
  export type CourseTagRelation = {

@@ -65,7 +65,9 @@ export const courseService = {
         image: courseData.image,
         category_id: courseData.category_id,
         institution_id: courseData.institution_id,
-        slug: courseData.slug
+        slug: courseData.slug,
+        url: courseData.url,
+        location_id: courseData.location_id
       })
       .select()
       .single();
