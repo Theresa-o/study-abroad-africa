@@ -62,7 +62,7 @@ const DiscoverPrograms = () => {
           selectedTagId={selectedTagId}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayedCourses?.map((course) => (
+          {displayedCourses?.slice(0, 4).map((course) => (
             <SchoolCards
               key={course?.id}
               title={course?.title}
