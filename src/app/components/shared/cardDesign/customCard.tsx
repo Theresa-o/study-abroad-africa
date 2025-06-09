@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 const CustomCard = ({
   id,
   school_name,
@@ -15,7 +14,7 @@ const CustomCard = ({
 }: CustomCardProps) => {
   return (
     <>
-      <Link href={url}>
+      <Link href="#">
         <Card
           key={id}
           className="overflow-hidden h-full md:transition md:ease-in-out md:delay-60 md:hover:-translate-y-1 md:hover:scale-60 md:hover:shadow-lg md:duration-300 ..."
