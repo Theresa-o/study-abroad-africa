@@ -1,4 +1,5 @@
 import { CustomCardProps } from "@/app/types/articles/articles";
+import { getHtmlPreview } from "@/app/utils/helpers";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -14,7 +15,7 @@ const CustomCard = ({
 }: CustomCardProps) => {
   return (
     <>
-      <Link href="#">
+      <Link href={url}>
         <Card
           key={id}
           className="overflow-hidden h-full md:transition md:ease-in-out md:delay-60 md:hover:-translate-y-1 md:hover:scale-60 md:hover:shadow-lg md:duration-300 ..."
@@ -38,7 +39,9 @@ const CustomCard = ({
             </h3>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-muted-foreground line-clamp-2">{description}</p>
+            <p className="text-muted-foreground line-clamp-2">
+              {getHtmlPreview(description)}
+            </p>
             <div className="flex items-center text-emerald-600 font-medium group">
               Read more
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -59,7 +59,11 @@ export default function Home() {
         {/* degree cards */}
         <div className="my-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {displayedCourses?.map((program) => (
-            <CustomCard key={program.id} {...program} />
+            <CustomCard
+              key={program.id}
+              {...program}
+              url={`/programs/courses/${program.slug}`}
+            />
           ))}
           {/* Show message when no results */}
           {(!displayedCourses || displayedCourses.length === 0) && (
