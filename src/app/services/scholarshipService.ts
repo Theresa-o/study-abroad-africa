@@ -83,6 +83,36 @@ export const scholarshipService = {
     
         if (error) throw error;
         return data;
+      },
+
+      async getScholarshipbySlug(slug: string) {
+        const { data, error } = await supabase
+          .from('scholarships')
+          .select(`
+            *,
+            scholarship_destination:destination_m2m_scholarships(
+                destinations:destinations(id, country, slug)
+              ),
+              scholarship_categories:category_m2m_scholarships(
+                course_categories:course_categories(id, category_name)
+              ),
+              scholarship_institution:institutions_m2m_scholarships(
+                Institution:Institution(id, institution_name)
+              ),
+              scholarship_tags:tag_m2m_scholarships(
+                course_tags:course_tags(id, tag_name)
+              )
+          `)
+          .eq('slug', slug)
+          .single();
+    
+        if (error)  {    
+          // If no scholarship found, Supabase returns an error
+      if (error.code === 'PGRST116') {
+        return null; 
+      } throw error;
+    }
+        return data;
       }
 }
 

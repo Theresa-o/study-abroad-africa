@@ -25,7 +25,7 @@ const ScholarshipsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
-          {scholarships?.map((scholarship) => (
+          {scholarships?.slice(0, 4)?.map((scholarship) => (
             <ScholarshipCard key={scholarship.id} {...scholarship} />
           ))}
         </div>

@@ -11,12 +11,12 @@ const ScholarshipCard = ({
   image,
   published_date,
   deadline_date,
-  url,
+  slug,
   description,
 }: ScholarshipCardProps) => {
   return (
     <>
-      <Link href={url}>
+      <Link href={`scholarships/${slug}`}>
         <Card
           key={id}
           className="overflow-hidden h-full transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300 ..."

@@ -58,7 +58,11 @@ export default function Home() {
         {/* degree cards */}
         <div className="my-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {displayedScholarships?.map((scholarship) => (
-            <CustomCard key={scholarship.id} {...scholarship} />
+            <CustomCard
+              key={scholarship.id}
+              {...scholarship}
+              url={`/scholarships/${scholarship.slug}`}
+            />
           ))}
           {/* Show message when no results */}
           {(!displayedScholarships || displayedScholarships.length === 0) && (

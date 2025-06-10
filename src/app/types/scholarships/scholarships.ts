@@ -33,7 +33,7 @@ export interface ScholarshipCardProps {
   published_date: string;
   deadline_date: string;
   type: string;
-  url: string;
+  slug: string;
   description: string;
   scholarship_categories: Categories;
 }

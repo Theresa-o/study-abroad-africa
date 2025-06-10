@@ -6,14 +6,44 @@ export const BasicPage = ({
   description,
   category,
   imageUrl,
+  categories,
   additionalContent,
+  tags,
 }: BasicPageProps) => (
   <div className="container mx-auto px-4 py-8">
     <div className="mb-8">
-      <div className="flex items-center gap-2 mb-4">
-        <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
-          {category.charAt(0).toUpperCase() + category.slice(1)}
-        </span>
+      {/* Display multiple categories and tags */}
+      <div className="flex justify-between gap-2 mb-4 flex-wrap">
+        {/* Single category display for pages with just 1 category) */}
+        <div>
+          {category && (!categories || categories.length <= 1) && (
+            <span className="bg-secondary-foreground text-secondary text-sm font-bold px-4 py-2 rounded-full">
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </span>
+          )}
+
+          {/* Multiple categories */}
+          {categories?.map((cat) => (
+            <span
+              key={cat.id}
+              className="bg-secondary-foreground text-secondary text-sm font-bold px-4 py-1 mx-2 rounded-full"
+            >
+              {cat?.category_name}
+            </span>
+          ))}
+        </div>
+
+        {/* Tags display */}
+        <div>
+          {tags?.map((tag) => (
+            <span
+              key={tag.id}
+              className="bg-primary-foreground text-primary text-sm font-bold px-4 py-1 mx-2 rounded-full"
+            >
+              {tag.tag_name}
+            </span>
+          ))}
+        </div>
       </div>
 
       {imageUrl && (
