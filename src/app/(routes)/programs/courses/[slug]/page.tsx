@@ -39,14 +39,39 @@ const page = async ({ params }: CourseDetailPageProps) => {
   ];
 
   const additionalContent = (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Institution</h3>
-        <p className="text-gray-700">{course?.institution?.institution_name}</p>
+    <div className="grid md:grid-cols-2 gap-6">
+      <div>
+        <h3 className="text-xl font-semibold mb-3">Program Information</h3>
+        <div className="space-y-2">
+          {course.Institution?.name && (
+            <p>
+              <strong>Institution:</strong> {course.Institution.name}
+            </p>
+          )}
+          {course.destinations?.name && (
+            <p>
+              <strong>Location:</strong> {course.destinations.name}
+            </p>
+          )}
+          {course.course_categories?.name && (
+            <p>
+              <strong>Category:</strong> {course.course_categories.name}
+            </p>
+          )}
+        </div>
       </div>
-      <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-xl font-semibold mb-4">Course Details</h3>
-        <p className="text-gray-700">More course information can go here...</p>
+      <div>
+        <h3 className="text-xl font-semibold mb-3">Quick Actions</h3>
+        {course.url && (
+          <a
+            href={course.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
+          >
+            Visit Official Page
+          </a>
+        )}
       </div>
     </div>
   );
