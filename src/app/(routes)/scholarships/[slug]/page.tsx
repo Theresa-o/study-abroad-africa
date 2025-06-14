@@ -6,6 +6,8 @@ import { scholarshipService } from "@/app/services/scholarshipService";
 import { DateTime } from "luxon";
 import { TransformedScholarship } from "@/app/types/scholarships/scholarships";
 import {
+  Destination,
+  Institution,
   ScholarshipCategory,
   ScholarshipDestination,
   ScholarshipInstitution,
@@ -101,7 +103,7 @@ const page = async ({ params }: ScholarshipDetailPageProps) => {
             <p>
               <strong>Destinations:</strong>{" "}
               {transformedScholarship.destinations
-                .map((d: any) => d.country)
+                .map((d: Destination) => d.country)
                 .join(", ")}
             </p>
           )}
@@ -109,7 +111,7 @@ const page = async ({ params }: ScholarshipDetailPageProps) => {
             <p>
               <strong>Institutions:</strong>{" "}
               {transformedScholarship.institutions
-                .map((i: any) => i.institution_name)
+                .map((i: Institution) => i.institution_name)
                 .join(", ")}
             </p>
           )}
