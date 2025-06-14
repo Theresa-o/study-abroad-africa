@@ -1,25 +1,7 @@
 import supabase from "../../../utils/supabase/supaBaseClient";
 import { CreateCourseDTO } from "../types/courses/courses";
 
-export const categoryService = {
-  async getCategories() {
-    const { data, error } = await supabase
-      .from('course_categories')
-      .select('*');
-    if (error) throw error;
-    return data;
-  }
-};
-
-// services/tagService.ts
-export const tagService = {
-  async getTags() {
-    const { data, error } = await supabase
-      .from('course_tags')
-      .select('*');
-    if (error) throw error;
-    return data;
-  },
+export const courseByTagService = {
 
   async getCoursesByTag(tagId: number) {
     const { data, error } = await supabase
@@ -39,21 +21,9 @@ export const tagService = {
   }
 };
 
-export const institutionService = {
-  async getInstitutions() {
-    const {data, error } = await supabase.from('Institution').select('*')
-    if (error) throw error;
-    return data;
-  }
-}
 
-export const destinationsService = {
-  async getDestinations() {
-    const {data, error } = await supabase.from('destinations').select('*')
-    if (error) throw error;
-    return data;
-  }
-}
+
+
 
 export const courseService = {
   async createCourse(courseData: CreateCourseDTO) {

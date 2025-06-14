@@ -1,51 +1,21 @@
 import {
-  categoryService,
+  courseByTagService,
   courseService,
-  destinationsService,
-  institutionService,
-  tagService,
 } from "@/app/services/courseService";
 import { CourseTagRelation } from "@/app/types/courses/courses";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { toast } from "sonner";
-
-// hooks/useCategories.ts
-export function useCategories() {
-  return useQuery({
-    queryKey: ["categories"],
-    queryFn: categoryService.getCategories,
-  });
-}
-
-// hooks/useTags.ts
-export function useTags() {
-  return useQuery({
-    queryKey: ["tags"],
-    queryFn: tagService.getTags,
-  });
-}
+import { useStudyDestinations } from "../studyDestination/useStudyDestination";
+import { useInstitutions } from "../institutions/useInstitutions";
+import { useTags } from "../shared/useTags";
+import { useCategories } from "../shared/useCategories";
 
 export function useCoursesByTag(tagId: number | null) {
   return useQuery({
     queryKey: ["courses", "byTag", tagId],
-    queryFn: () => (tagId ? tagService.getCoursesByTag(tagId) : []),
+    queryFn: () => (tagId ? courseByTagService.getCoursesByTag(tagId) : []),
     enabled: !!tagId,
-  });
-}
-
-// hooks/useInstitutions.ts
-export function useInstitutions() {
-  return useQuery({
-    queryKey: ["institutions"],
-    queryFn: institutionService.getInstitutions,
-  });
-}
-
-export function useDestinations() {
-  return useQuery({
-    queryKey: ["destinations"],
-    queryFn: destinationsService.getDestinations,
   });
 }
 
@@ -78,7 +48,7 @@ export function useFilteredCourses(
   const { data: allCourses, isLoading } = useCourses();
   const { data: categories } = useCategories();
   const { data: tags } = useTags();
-  const { data: destinations } = useDestinations();
+  const { data: destinations } = useStudyDestinations();
   const { data: institutions } = useInstitutions();
 
   // Group filters by their category

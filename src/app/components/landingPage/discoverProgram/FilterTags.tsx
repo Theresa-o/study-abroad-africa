@@ -1,6 +1,6 @@
 "use client";
 
-import { useTags } from "@/app/hooks/courses/useCourses";
+import { useTags } from "@/app/hooks/shared/useTags";
 import { Button } from "@/components/ui/button";
 
 interface FilterTagsProps {

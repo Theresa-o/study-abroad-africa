@@ -2,17 +2,15 @@
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from "formik";
 import { ChevronDown, Loader2 } from "lucide-react";
-import {
-  useCategories,
-  useInstitutions,
-  useTags,
-  useCreateCourse,
-  useDestinations,
-} from "@/app/hooks/courses/useCourses";
 import { CreateCourseDTO } from "@/app/types/courses/courses";
 import { toast } from "sonner";
 import { useMemo } from "react";
 import { TiptapEditor } from "@/app/components/shared/TiptapEditor";
+import { useCategories } from "@/app/hooks/shared/useCategories";
+import { useTags } from "@/app/hooks/shared/useTags";
+import { useInstitutions } from "@/app/hooks/institutions/useInstitutions";
+import { useCreateCourse } from "@/app/hooks/courses/useCourses";
+import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -56,7 +54,7 @@ const CourseForm = () => {
     data: locationsQuery,
     isLoading: locationsQueryLoading,
     // error: categoriesQueryError,
-  } = useDestinations();
+  } = useStudyDestinations();
   const {
     data: tagsQuery,
     isLoading: tagsQueryLoading,

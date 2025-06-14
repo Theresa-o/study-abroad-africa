@@ -11,25 +11,41 @@ export interface BasicPageProps {
 
 }
 
-interface Category {
+export interface Category {
   id: number;
   category_name: string;
   slug?: string;
 }
 
-interface Tag {
+export interface Tag {
   id: number;
   tag_name: string;
 }
 
-interface Destination {
+export interface Destination {
   id: number;
-  name: string;
+  country: string;
   slug?: string;
 }
 
-interface Institution {
+export interface Institution {
   id: number;
-  name: string;
+  institution_name: string;
   slug?: string;
+}
+
+export interface ScholarshipTag {
+  course_tags: Tag;
+}
+
+export interface ScholarshipCategory {
+  course_categories: Category;
+}
+
+export interface ScholarshipDestination {
+  destinations: Destination;
+}
+
+export interface ScholarshipInstitution {
+  Institution: Institution;
 }

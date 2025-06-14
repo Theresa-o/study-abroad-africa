@@ -1,6 +1,6 @@
 "use client";
 
-import { useCategories } from "@/app/hooks/courses/useCourses";
+import { useCategories } from "@/app/hooks/shared/useCategories";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ArrowRightLeft,

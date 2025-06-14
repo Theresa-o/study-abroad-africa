@@ -19,13 +19,11 @@ import {
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
 import { useMediaQuery } from "@/app/hooks/shared/use-media-query";
-import {
-  useCategories,
-  useDestinations,
-  useInstitutions,
-  useTags,
-} from "@/app/hooks/courses/useCourses";
 import { useMemo, useState } from "react";
+import { useCategories } from "@/app/hooks/shared/useCategories";
+import { useTags } from "@/app/hooks/shared/useTags";
+import { useInstitutions } from "@/app/hooks/institutions/useInstitutions";
+import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 
 interface FilterSidebarProps {
   activeFilters: { id: string; value: string }[];
@@ -43,7 +41,7 @@ export function FilterSidebar({
 
   const { data: categories } = useCategories();
   const { data: tags } = useTags();
-  const { data: destinations } = useDestinations();
+  const { data: destinations } = useStudyDestinations();
   const { data: institutions } = useInstitutions();
 
   // Group filters by category to calculate counts

@@ -4,12 +4,6 @@ import {
 } from "@/app/services/scholarshipService";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import {
-  useCategories,
-  useDestinations,
-  useInstitutions,
-  useTags,
-} from "../courses/useCourses";
 import { useMemo } from "react";
 import { CourseTagRelation } from "@/app/types/courses/courses";
 import {
@@ -17,6 +11,10 @@ import {
   DestinationRelation,
   InstitutionRelation,
 } from "@/app/types/scholarships/scholarships";
+import { useCategories } from "../shared/useCategories";
+import { useTags } from "../shared/useTags";
+import { useInstitutions } from "../institutions/useInstitutions";
+import { useStudyDestinations } from "../studyDestination/useStudyDestination";
 
 export function useScholarship() {
   return useQuery({
@@ -46,7 +44,7 @@ export function useFilteredScholarships(
   const { data: allScholarships, isLoading } = useScholarship();
   const { data: categories } = useCategories();
   const { data: tags } = useTags();
-  const { data: destinations } = useDestinations();
+  const { data: destinations } = useStudyDestinations();
   const { data: institutions } = useInstitutions();
 
   // Group filters by their category

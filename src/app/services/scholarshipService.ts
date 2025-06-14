@@ -1,21 +1,19 @@
 import supabase from "../../../utils/supabase/supaBaseClient";
-import { createScholarshipDTO } from "../types/scholarships/scholarships";
+import { CreateScholarshipDTO } from "../types/scholarships/scholarships";
 
 export const scholarshipService = {
-    async createScholarship (scholarshipData: createScholarshipDTO) {
+    async createScholarship (scholarshipData: CreateScholarshipDTO) {
         const {data: scholarship, error: scholarshipError} = await supabase
             .from("scholarships")
             .insert({
-                created_at: scholarshipData.created_at,
                 creator_name: scholarshipData.creator_name,
                 deadline_date: scholarshipData.deadline_date,
                 funding_amount: scholarshipData. funding_amount,
-                id: scholarshipData.id,
                 image: scholarshipData.image,
-                published_date: scholarshipData.published_date,
                 description: scholarshipData.description,
                 title: scholarshipData.title,
-                url: scholarshipData.url
+                url: scholarshipData.url,
+                slug: scholarshipData.slug,
             })
             .select()
             .single() 
