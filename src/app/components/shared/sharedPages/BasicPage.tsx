@@ -26,7 +26,7 @@ export const BasicPage = ({
           {categories?.map((cat) => (
             <span
               key={cat.id}
-              className="bg-secondary-foreground text-secondary text-sm font-bold px-4 py-1 mx-2 rounded-full"
+              className="bg-secondary-foreground text-secondary text-sm font-bold  md:px-4 px-2 py-1 md:mx-2 my-2 md:my-0 rounded-full"
             >
               {cat?.category_name}
             </span>
@@ -38,7 +38,7 @@ export const BasicPage = ({
           {tags?.map((tag) => (
             <span
               key={tag.id}
-              className="bg-primary-foreground text-primary text-sm font-bold px-4 py-1 mx-2 rounded-full"
+              className="bg-primary-foreground text-primary text-sm font-bold px-4 py-1 mx-2  rounded-full"
             >
               {tag.tag_name}
             </span>

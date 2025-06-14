@@ -4,6 +4,13 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/app/components/shared/Breadcrumb/Breadcrumb";
 import { scholarshipService } from "@/app/services/scholarshipService";
 import { DateTime } from "luxon";
+import { TransformedScholarship } from "@/app/types/scholarships/scholarships";
+import {
+  ScholarshipCategory,
+  ScholarshipDestination,
+  ScholarshipInstitution,
+  ScholarshipTag,
+} from "@/app/types/shared/shared";
 
 interface ScholarshipDetailPageProps {
   params: { slug: string };
@@ -29,19 +36,24 @@ const page = async ({ params }: ScholarshipDetailPageProps) => {
 
   if (!scholarship) return notFound();
 
-  const transformedScholarship = {
+  const transformedScholarship: TransformedScholarship = {
     ...scholarship,
-    tags: scholarship.scholarship_tags?.map((st: any) => st.course_tags) ?? [],
+    tags:
+      scholarship.scholarship_tags?.map(
+        (st: ScholarshipTag) => st.course_tags
+      ) ?? [],
     categories:
       scholarship.scholarship_categories?.map(
-        (sc: any) => sc.course_categories
+        (sc: ScholarshipCategory) => sc.course_categories
       ) ?? [],
     destinations:
-      scholarship.scholarship_destination?.map((sd: any) => sd.destinations) ??
-      [],
+      scholarship.scholarship_destination?.map(
+        (sd: ScholarshipDestination) => sd.destinations
+      ) ?? [],
     institutions:
-      scholarship.scholarship_institution?.map((si: any) => si.Institution) ??
-      [],
+      scholarship.scholarship_institution?.map(
+        (si: ScholarshipInstitution) => si.Institution
+      ) ?? [],
   };
 
   const breadcrumbItems = [

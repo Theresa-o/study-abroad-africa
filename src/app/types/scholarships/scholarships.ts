@@ -1,20 +1,3 @@
-export interface createScholarshipDTO {
-        created_at: string;
-        creator_name: string;
-        deadline_date: string;
-        funding_amount: string;
-        id: number;
-        image: string;
-        published_date: string;
-        description: string;
-        title: string;
-        url: string;
-        destinations: number[];
-        categories: number[];
-        institutions: number[];
-        tags: number[];
-}
-
 export interface Category {
   category_name: string;
 }
@@ -49,3 +32,53 @@ export interface InstitutionRelation {
 export interface DestinationRelation {
   destination_id: string;
 }
+
+export interface CreateScholarshipDTO {
+  title: string;
+  description: string;
+  image: string; 
+  url: string;
+  slug: string;
+  deadline_date: string | null; 
+  funding_amount: string | null; 
+  creator_name: string | null; 
+  categories: number[]; 
+  tags: number[];
+  institutions: number[]; 
+  destinations: number[]; 
+}
+
+export interface TransformedScholarship {
+  id: number;
+  title: string;
+  description: string;
+  slug: string;
+  image: string;
+  url: string;
+  deadline_date: string | null;
+  funding_amount: string | null;
+  creator_name: string | null;
+  published_date?: string;
+
+  tags: {
+    id: number;
+    tag_name: string;
+  }[];
+
+  categories: {
+    id: number;
+    category_name: string;
+  }[];
+
+  destinations: {
+    id: number;
+    slug: string;
+    country: string;
+  }[];
+
+  institutions: {
+    id: number;
+    institution_name: string;
+  }[];
+}
+
