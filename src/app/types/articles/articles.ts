@@ -30,5 +30,6 @@ export interface CustomCardProps {
     created_at: string;
     image: string;
     title: string;
-    url: string;
+    slug: string;
+    type: TabType
   }

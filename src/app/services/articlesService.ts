@@ -51,6 +51,27 @@ export const articleService = {
         if (error) throw error
         return data
     },
+
+    async getArticleBySlug(slug: string) {
+        const {data, error} = await supabase
+            .from("articles")
+            .select(`*,
+                country:country_id(country),
+                category:category_id(category_name),
+                articles_tags:articles_m2m_articles_tags(articles_tags_id)
+                `
+            )
+            .eq("slug", slug)
+            .single();
+        
+            if (error)  {    
+            if (error.code === 'PGRST116') {
+                return null; 
+            } throw error;
+            }
+                return data;
+            }
+    
 }
 
  

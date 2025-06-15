@@ -40,4 +40,23 @@ export const eventsService = {
         if (error) throw error
         return data
     },
+
+        async getEventBySlug(slug: string) {
+            const {data, error} = await supabase
+                .from("events")
+                .select(`*,
+                    country:country_id(country),
+                    course:course_id(title)
+                    `
+                )
+                .eq("slug", slug)
+                .single();
+            
+                if (error)  {    
+                if (error.code === 'PGRST116') {
+                    return null; 
+                } throw error;
+                }
+                    return data;
+                }
 }

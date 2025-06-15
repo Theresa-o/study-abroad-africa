@@ -16,10 +16,11 @@ const ArticleCard = ({
   created_at,
   image,
   title,
-  url,
+  slug,
+  type,
 }: ArticleCardProps) => {
   return (
-    <Link key={id} href={url}>
+    <Link key={id} href={`/blog/${type}/${slug}`}>
       <Card className="h-full overflow-hidden transition-all md:transition md:ease-in-out md:delay-100 md:hover:-translate-y-1 md:hover:scale-80 md:hover:shadow-lg md:duration-300">
         <div className="relative h-[200px] w-full overflow-hidden">
           {/* <Image

@@ -76,21 +76,21 @@ const BlogTabs = () => {
           <TabsContent value="tips" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {tips?.slice(0, 3).map((article) => (
-                <ArticleCard key={article.id} {...article} />
+                <ArticleCard key={article.id} {...article} type="tips" />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="news" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {news?.slice(0, 3).map((article) => (
-                <ArticleCard key={article.id} {...article} />
+                <ArticleCard key={article.id} {...article} type="news" />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="events" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {events?.slice(0, 3).map((event) => (
-                <ArticleCard key={event.id} {...event} />
+                <ArticleCard key={event.id} {...event} type="events" />
               ))}
             </div>
           </TabsContent>
