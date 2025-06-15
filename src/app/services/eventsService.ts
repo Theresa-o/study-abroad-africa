@@ -10,16 +10,15 @@ export const eventsService = {
             .insert({
                 country_id: eventData.country_id,
                 course_id: eventData.course_id,
-                created_at: eventData.created_at,
                 created_by: eventData.created_by,
                 description: eventData.description,
                 event_date: eventData.event_date,
                 event_location: eventData.event_location,
-                id: eventData.id,
                 image: eventData.image,
                 registration_link: eventData.registration_link,
                 title: eventData.title,
                 url: eventData.url,
+                slug: eventData.slug
             })
             .select()
             .single()

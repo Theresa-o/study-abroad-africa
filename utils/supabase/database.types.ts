@@ -401,6 +401,7 @@ export type Database = {
           registration_link: string | null
           title: string | null
           url: string | null
+          slug: string | null
         }
         Insert: {
           country_id?: number | null
@@ -415,6 +416,7 @@ export type Database = {
           registration_link?: string | null
           title?: string | null
           url?: string | null
+          slug?: string | null
         }
         Update: {
           country_id?: number | null
@@ -429,6 +431,7 @@ export type Database = {
           registration_link?: string | null
           title?: string | null
           url?: string | null
+          slug?: string | null
         }
         Relationships: [
           {

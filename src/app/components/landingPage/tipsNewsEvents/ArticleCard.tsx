@@ -4,11 +4,12 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Calendar, MessageCircle, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { DateTime } from "luxon";
 import { ArticleCardProps } from "@/app/types/articles/articles";
+import { getHtmlPreview } from "@/app/utils/helpers";
 
 const ArticleCard = ({
   id,
@@ -50,16 +51,18 @@ const ArticleCard = ({
                 ? DateTime.fromISO(created_at).toFormat("MMM, d, yyyy")
                 : ""}
             </div>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <MessageCircle className="mr-1 h-4 w-4" />5 comments
-            </div>
+            </div> */}
           </div>
           <h3 className="text-xl font-bold leading-tight line-clamp-2 group-hover:text-blue-600">
             {title}
           </h3>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground line-clamp-2">{description}</p>
+          <p className="text-muted-foreground line-clamp-2">
+            {getHtmlPreview(description)}
+          </p>
         </CardContent>
         <CardFooter>
           <div className="flex items-center text-primary-600 font-medium group">
