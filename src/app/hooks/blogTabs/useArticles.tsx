@@ -1,4 +1,7 @@
-import { articleService } from "@/app/services/articlesService";
+import {
+  articleService,
+  articleTagService,
+} from "@/app/services/articlesService";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -21,5 +24,12 @@ export function useCreateArticles() {
       const errorMessage = "An error occurred. Please try again.";
       toast.error(errorMessage);
     },
+  });
+}
+
+export function useArticleTags() {
+  return useQuery({
+    queryKey: ["articleTags"],
+    queryFn: articleTagService.getTags,
   });
 }

@@ -16,6 +16,8 @@ export const tagService = {
       .from('course_tags')
       .select('*');
     if (error) throw error;
+
     return data;
   },
 }
+

@@ -8,13 +8,12 @@ export const articleService = {
             .insert({
                 author: ArticleData.author,
                 category_id: ArticleData.category_id,
-                content: ArticleData.description,
+                description: ArticleData.description,
                 country_id: ArticleData.country_id,
-                created_at: ArticleData.created_at,
-                id: ArticleData.id,
                 image: ArticleData.image,
                 slug: ArticleData.slug,
-                title: ArticleData.title
+                title: ArticleData.title,
+                url: ArticleData.url
             })
             .select()
             .single()
@@ -72,6 +71,16 @@ export const articleService = {
                 return data;
             }
     
+}
+
+export const articleTagService = {
+  async getTags() {
+    const { data, error } = await supabase
+      .from('articles_tags')
+      .select('*');
+    if (error) throw error;
+    return data;
+  },
 }
 
  
