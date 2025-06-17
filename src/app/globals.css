@@ -13,18 +13,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.tiptap h1 {
-  @apply text-3xl font-bold mt-10 mb-5;
-}
-
-.tiptap h2 {
-  @apply text-2xl font-semibold mt-8 mb-4;
-}
-
-.tiptap h3 {
-  @apply text-xl font-medium mt-6 mb-3;
-}
-
 .tiptap table {
   @apply w-full border border-gray-200 rounded-md overflow-hidden text-sm mt-6;
 }

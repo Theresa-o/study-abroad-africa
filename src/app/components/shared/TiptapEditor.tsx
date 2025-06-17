@@ -48,7 +48,10 @@ export const TiptapEditor: React.FC<TiptapEditorProps> = ({
   const [linkInput, setLinkInput] = useState("");
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        // Disable heading from StarterKit
+        heading: false,
+      }),
       ListItem,
       Table.configure({
         resizable: true,
@@ -58,6 +61,30 @@ export const TiptapEditor: React.FC<TiptapEditorProps> = ({
       TableCell,
       Heading.configure({
         levels: [1, 2, 3],
+      }).extend({
+        addGlobalAttributes() {
+          return [
+            {
+              types: [this.name],
+              attributes: {
+                class: {
+                  default: null,
+                  renderHTML: (attributes) => {
+                    const level = attributes.level;
+                    const levelClasses: Record<number, string> = {
+                      1: "text-3xl font-bold mt-10 mb-5",
+                      2: "text-2xl font-semibold mt-8 mb-4",
+                      3: "text-xl font-medium mt-6 mb-3",
+                    };
+                    return {
+                      class: levelClasses[level] || "",
+                    };
+                  },
+                },
+              },
+            },
+          ];
+        },
       }),
       BulletList.configure({
         HTMLAttributes: {
