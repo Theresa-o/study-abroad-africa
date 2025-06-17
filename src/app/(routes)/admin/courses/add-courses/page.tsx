@@ -86,7 +86,7 @@ const CourseForm = () => {
         value: location.id,
         label: location.country,
       })) || [],
-    [categoriesQuery]
+    [locationsQuery]
   );
 
   const tagsOptions = useMemo(

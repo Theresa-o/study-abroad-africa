@@ -24,9 +24,9 @@ const ConsultationRequest = () => {
         <h2 className="text-4xl font-bold font-heading">
           Need Consultation for Your Canadian PR Application?{" "}
         </h2>
-        <p className="text-xl font-sans">
-          If you're considering moving to Canada and need help with your
-          permanent residency (PR) process, we’ve partnered with a trusted
+        <p className="mx-1 md:text-xl font-sans">
+          If you&apos;re considering moving to Canada and need help with your
+          permanent residency (PR) process, we&apos;ve partnered with a trusted
           registered Canadian immigration consultant.
         </p>
         <Link href={`book_consultation/`}>
