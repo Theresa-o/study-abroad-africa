@@ -43,7 +43,7 @@ export type Database = {
           description: string | null
           id: number
           image: string | null
-          slug: string | null
+          slug: string
           title: string | null
           url: string | null
         }
@@ -55,7 +55,7 @@ export type Database = {
           description?: string | null
           id?: number
           image?: string | null
-          slug?: string | null
+          slug: string
           title?: string | null
           url?: string | null
         }
@@ -67,7 +67,7 @@ export type Database = {
           description?: string | null
           id?: number
           image?: string | null
-          slug?: string | null
+          slug?: string
           title?: string | null
           url?: string | null
         }
@@ -178,6 +178,48 @@ export type Database = {
           },
         ]
       }
+      consultation: {
+        Row: {
+          admin_comment: string | null
+          consultation_done: boolean | null
+          created_at: string
+          email: string | null
+          first_name: string | null
+          id: number
+          is_paid: boolean | null
+          last_name: string | null
+          payment_reference: string | null
+          phone_no: string | null
+          pr_interest: string | null
+        }
+        Insert: {
+          admin_comment?: string | null
+          consultation_done?: boolean | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: number
+          is_paid?: boolean | null
+          last_name?: string | null
+          payment_reference?: string | null
+          phone_no?: string | null
+          pr_interest?: string | null
+        }
+        Update: {
+          admin_comment?: string | null
+          consultation_done?: boolean | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: number
+          is_paid?: boolean | null
+          last_name?: string | null
+          payment_reference?: string | null
+          phone_no?: string | null
+          pr_interest?: string | null
+        }
+        Relationships: []
+      }
       course_categories: {
         Row: {
           category_name: string | null
@@ -259,9 +301,9 @@ export type Database = {
           image: string | null
           institution_id: number | null
           location_id: number | null
+          slug: string
           title: string | null
           url: string | null
-          slug: string | null
         }
         Insert: {
           category_id?: number | null
@@ -271,10 +313,9 @@ export type Database = {
           image?: string | null
           institution_id?: number | null
           location_id?: number | null
+          slug: string
           title?: string | null
           url?: string | null
-          slug?: string | null
-
         }
         Update: {
           category_id?: number | null
@@ -284,9 +325,9 @@ export type Database = {
           image?: string | null
           institution_id?: number | null
           location_id?: number | null
+          slug?: string
           title?: string | null
           url?: string | null
-          slug?: string | null
         }
         Relationships: [
           {
@@ -399,9 +440,9 @@ export type Database = {
           id: number
           image: string | null
           registration_link: string | null
+          slug: string | null
           title: string | null
           url: string | null
-          slug: string | null
         }
         Insert: {
           country_id?: number | null
@@ -414,9 +455,9 @@ export type Database = {
           id?: number
           image?: string | null
           registration_link?: string | null
+          slug?: string | null
           title?: string | null
           url?: string | null
-          slug?: string | null
         }
         Update: {
           country_id?: number | null
@@ -429,9 +470,9 @@ export type Database = {
           id?: number
           image?: string | null
           registration_link?: string | null
+          slug?: string | null
           title?: string | null
           url?: string | null
-          slug?: string | null
         }
         Relationships: [
           {
@@ -537,10 +578,9 @@ export type Database = {
           id: number
           image: string | null
           published_date: string | null
+          slug: string
           title: string | null
           url: string | null
-          slug: string | null
-
         }
         Insert: {
           created_at?: string
@@ -551,10 +591,9 @@ export type Database = {
           id?: number
           image?: string | null
           published_date?: string | null
+          slug: string
           title?: string | null
           url?: string | null
-          slug?: string | null
-
         }
         Update: {
           created_at?: string
@@ -565,10 +604,9 @@ export type Database = {
           id?: number
           image?: string | null
           published_date?: string | null
+          slug?: string
           title?: string | null
           url?: string | null
-          slug?: string | null
-
         }
         Relationships: []
       }
@@ -672,10 +710,10 @@ export type Database = {
           id: number
           image: string | null
           service_category_id: number | null
+          slug: string | null
           status: boolean | null
           title: string | null
           url: string | null
-          slug: string | null
         }
         Insert: {
           created_at?: string
@@ -683,10 +721,10 @@ export type Database = {
           id?: number
           image?: string | null
           service_category_id?: number | null
+          slug?: string | null
           status?: boolean | null
           title?: string | null
           url?: string | null
-          slug: string | null
         }
         Update: {
           created_at?: string
@@ -694,10 +732,10 @@ export type Database = {
           id?: number
           image?: string | null
           service_category_id?: number | null
+          slug?: string | null
           status?: boolean | null
           title?: string | null
           url?: string | null
-          slug: string | null
         }
         Relationships: [
           {
@@ -746,22 +784,22 @@ export type Database = {
       }
       subscribers: {
         Row: {
+          consent: boolean
           created_at: string
           email: string
           id: number
-          consent: boolean;
         }
         Insert: {
+          consent: boolean
           created_at?: string
           email: string
           id?: number
-          consent: boolean;
         }
         Update: {
+          consent?: boolean
           created_at?: string
           email?: string
           id?: number
-          consent: boolean;
         }
         Relationships: []
       }
