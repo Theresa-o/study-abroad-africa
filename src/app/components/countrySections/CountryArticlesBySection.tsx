@@ -1,6 +1,6 @@
 "use client";
 
-import { useArticles } from "@/app/hooks/blogTabs/useArticles";
+import { useArticlesByCountry } from "@/app/hooks/blogTabs/useArticles";
 import React from "react";
 import ChoosingUniversity from "./ChoosingUniversity";
 import { ArticleTagType } from "@/app/types/articles/articles";
@@ -19,7 +19,7 @@ const CountryArticlesBySection = ({
   destinationId: number;
   countryName: string;
 }) => {
-  const { data: articles = [] } = useArticles();
+  const { data: articles = [] } = useArticlesByCountry(destinationId);
 
   const filterByTag = (tagId: number) =>
     articles.filter((article) =>

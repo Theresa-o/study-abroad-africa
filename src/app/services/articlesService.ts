@@ -69,7 +69,21 @@ export const articleService = {
             } throw error;
             }
                 return data;
-            }
+            },
+
+    async getArticlesByCountry(countryId: number) {
+        const {data, error} = await supabase    
+            .from("articles")
+            .select(`*,
+            country:country_id(country),
+            category:category_id(category_name),
+            articles_tags:articles_m2m_articles_tags(articles_tags_id)
+            `)
+            .eq('country_id', countryId);
+        
+        if (error) throw error;
+        return data;
+        },
     
 }
 
@@ -82,5 +96,6 @@ export const articleTagService = {
     return data;
   },
 }
+
 
  

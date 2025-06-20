@@ -33,3 +33,10 @@ export function useArticleTags() {
     queryFn: articleTagService.getTags,
   });
 }
+
+export function useArticlesByCountry(countryId: number) {
+  return useQuery({
+    queryKey: ["articles", countryId],
+    queryFn: () => articleService.getArticlesByCountry(countryId),
+  });
+}
