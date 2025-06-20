@@ -3,7 +3,7 @@
 import React from "react";
 import { useCourses } from "@/app/hooks/courses/useCourses";
 import { useScholarship } from "@/app/hooks/scholarships/useScholarship";
-import { useArticles } from "@/app/hooks/blogTabs/useArticles";
+import { useArticles } from "@/app/hooks/articles/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
 import { useService } from "@/app/hooks/services/useServices";
 import SearchSection from "./searchSection";

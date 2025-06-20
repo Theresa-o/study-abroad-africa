@@ -11,7 +11,7 @@ import { useCategories } from "@/app/hooks/shared/useCategories";
 import {
   useArticleTags,
   useCreateArticles,
-} from "@/app/hooks/blogTabs/useArticles";
+} from "@/app/hooks/articles/useArticles";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),

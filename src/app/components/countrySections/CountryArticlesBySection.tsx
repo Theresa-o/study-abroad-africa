@@ -1,6 +1,6 @@
 "use client";
 
-import { useArticlesByCountry } from "@/app/hooks/blogTabs/useArticles";
+import { useArticlesByCountry } from "@/app/hooks/articles/useArticles";
 import React from "react";
 import ChoosingUniversity from "./ChoosingUniversity";
 import { ArticleTagType } from "@/app/types/articles/articles";

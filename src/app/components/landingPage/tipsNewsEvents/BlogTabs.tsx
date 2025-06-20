@@ -2,7 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ArticleCard from "./ArticleCard";
-import { useArticles } from "@/app/hooks/blogTabs/useArticles";
+import { useArticles } from "@/app/hooks/articles/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
 import { ArticleTagType, TabType } from "@/app/types/articles/articles";
 import { Button } from "@/components/ui/button";

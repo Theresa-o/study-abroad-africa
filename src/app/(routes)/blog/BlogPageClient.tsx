@@ -1,7 +1,7 @@
 "use client";
 
 import ArticleCard from "@/app/components/landingPage/tipsNewsEvents/ArticleCard";
-import { useArticles } from "@/app/hooks/blogTabs/useArticles";
+import { useArticles } from "@/app/hooks/articles/useArticles";
 import { useEvents } from "@/app/hooks/events/useEvents";
 import {
   ArticleCardProps,
