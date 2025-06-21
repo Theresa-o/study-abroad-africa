@@ -23,7 +23,7 @@ const StudentLife = ({ articles }: { articles: ArticleType[] }) => {
               image={article.image ?? ""}
               title={article.title ?? ""}
               description={article.description ?? ""}
-              url={article.url ?? ""}
+              url={`/articles/${article.slug}`}
             />
           ))}
         </div>
