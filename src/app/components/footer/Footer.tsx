@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -10,17 +10,17 @@ const Footer = () => {
           <nav className="mt-2">
             <ul className="flex space-x-4">
               <li>
-                <Link href="/terms" className="hover:underline">
+                <Link href="/terms_of_service" className="hover:underline">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:underline">
+                <Link href="/privacy_policy" className="hover:underline">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:underline">
+                <Link href="/contact_us" className="hover:underline">
                   Contact Us
                 </Link>
               </li>
@@ -28,21 +28,25 @@ const Footer = () => {
           </nav>
         </div>
         <div className="flex space-x-4">
-          <Link href="https://facebook.com" className="hover:text-blue-400">
-            <Facebook size={24} />
-            <span className="sr-only">Facebook</span>
-          </Link>
-          <Link href="https://twitter.com" className="hover:text-blue-400">
-            <Twitter size={24} />
-            <span className="sr-only">Twitter</span>
+          <Link href="https://linkedin.com" className="hover:text-blue-400">
+            <Linkedin size={24} />
+            <span className="sr-only">LinkedIn</span>
           </Link>
           <Link href="https://instagram.com" className="hover:text-pink-400">
             <Instagram size={24} />
             <span className="sr-only">Instagram</span>
           </Link>
+          <Link href="https://twitter.com" className="hover:text-blue-400">
+            <Twitter size={24} />
+            <span className="sr-only">Twitter</span>
+          </Link>
           <Link href="https://linkedin.com" className="hover:text-blue-400">
-            <Linkedin size={24} />
-            <span className="sr-only">LinkedIn</span>
+            <Youtube size={24} />
+            <span className="sr-only">Youtube</span>
+          </Link>
+          <Link href="https://facebook.com" className="hover:text-blue-400">
+            <Facebook size={24} />
+            <span className="sr-only">Facebook</span>
           </Link>
         </div>
       </div>
