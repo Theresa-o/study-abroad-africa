@@ -220,6 +220,36 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_us: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: number
+          message: string | null
+          subject: string | null
+          phone_no: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: number
+          message?: string | null
+          subject?: string | null
+          phone_no?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: number
+          message?: string | null
+          subject?: string | null
+          phone_no?: string | null
+        }
+        Relationships: []
+      }
       course_categories: {
         Row: {
           category_name: string | null
