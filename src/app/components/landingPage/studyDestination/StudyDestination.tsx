@@ -1,10 +1,8 @@
-"use client";
-
-import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 import DestinationCard from "./DestinationCard";
+import { destinationService } from "@/app/services/destinationService";
 
-const StudyDestinations = () => {
-  const { data } = useStudyDestinations();
+const StudyDestinations = async () => {
+  const data = await destinationService.getDestinations();
   return (
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
