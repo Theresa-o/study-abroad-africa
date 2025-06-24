@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Course } from "@/app/types/courses/courses";
+import SchoolCardSkeleton from "../../shared/LoadingSkeletalView/SchoolCardSkeleton";
 
 const DiscoverPrograms = () => {
   const [selectedTagId, setSelectedTagId] = useState<number | null>(null);
@@ -16,8 +17,9 @@ const DiscoverPrograms = () => {
     null
   );
 
-  const { data: allCourses } = useCourses();
-  const { data: filteredCourses } = useCoursesByTag(selectedTagId);
+  const { data: allCourses, isLoading: allCoursesLoading } = useCourses();
+  const { data: filteredCourses, isLoading: filteredCoursesLoading } =
+    useCoursesByTag(selectedTagId);
 
   const displayedCourses = (
     selectedTagId ? filteredCourses : allCourses
@@ -35,6 +37,8 @@ const DiscoverPrograms = () => {
     setSelectedTagId(null);
     setSelectedCategoryId(null);
   };
+
+  const isLoading = selectedTagId ? filteredCoursesLoading : allCoursesLoading;
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-8 my-4">
@@ -61,18 +65,26 @@ const DiscoverPrograms = () => {
           onTagSelect={setSelectedTagId}
           selectedTagId={selectedTagId}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayedCourses?.slice(0, 4).map((course) => (
-            <SchoolCards
-              key={course?.id}
-              title={course?.title}
-              institution={course.institution?.institution_name}
-              imageUrl={course.image}
-              category={course.category?.category_name}
-              slug={course.slug}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((_, idx) => (
+              <SchoolCardSkeleton key={idx} />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {displayedCourses?.slice(0, 4).map((course) => (
+              <SchoolCards
+                key={course?.id}
+                title={course?.title}
+                institution={course.institution?.institution_name}
+                imageUrl={course.image}
+                category={course.category?.category_name}
+                slug={course.slug}
+              />
+            ))}
+          </div>
+        )}
         {displayedCourses?.length === 0 && (
           <div className="text-center mt-10">
             <p className="text-gray-600 mb-4">
