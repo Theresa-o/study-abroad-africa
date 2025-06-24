@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Open_Sans } from 'next/font/google';
+import { Inter, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import ReactQueryProvider from "@/app/providers/ReactQueryProvider";
@@ -7,17 +7,17 @@ import { Toaster } from "sonner";
 import Footer from "./components/footer/Footer";
 
 // Configure Inter for headings
-export const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 // Configure Open Sans for body text
-export const openSans = Open_Sans({
-  subsets: ['latin'],
-  variable: '--font-open-sans',
-  display: 'swap',
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,9 +33,7 @@ export default function RootLayout({
   return (
     <ReactQueryProvider>
       <html lang="en">
-        <body
-          className={`${openSans.variable} ${inter.variable}`}
-        >
+        <body className={`${openSans.variable} ${inter.variable}`}>
           <Navbar />
           {children}
           <Toaster richColors position="top-right" duration={5000} />
