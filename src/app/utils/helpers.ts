@@ -20,3 +20,13 @@ export const getHtmlPreview = (html: string, wordCount: number = 15): string => 
   const plainText = stripHtmlTags(html);
   return getFirstWords(plainText, wordCount);
 };
+
+// used for server components
+export const stripHtmlTagsServer = (html: string): string => {
+  return html.replace(/<[^>]*>/g, ''); // Strips all HTML tags
+};
+
+export const getHtmlPreviewServer = (html: string, wordCount: number = 15): string => {
+  const plainText = stripHtmlTagsServer(html);
+  return getFirstWords(plainText, wordCount);
+};

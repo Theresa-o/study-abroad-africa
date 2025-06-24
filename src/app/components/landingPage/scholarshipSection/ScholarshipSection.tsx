@@ -1,11 +1,12 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import ScholarshipCard from "./ScholarshipCard";
-import { useScholarship } from "@/app/hooks/scholarships/useScholarship";
+// import { useScholarship } from "@/app/hooks/scholarships/useScholarship";
 import Link from "next/link";
+import { scholarshipService } from "@/app/services/scholarshipService";
 
-const ScholarshipsSection = () => {
-  const { data: scholarships } = useScholarship();
+const ScholarshipsSection = async () => {
+  // const { data: scholarships } = useScholarship();
+  const scholarships = await scholarshipService.getScholarship();
   return (
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">

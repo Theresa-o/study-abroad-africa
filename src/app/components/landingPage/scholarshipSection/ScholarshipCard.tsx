@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ScholarshipCardProps } from "@/app/types/scholarships/scholarships";
-import { getHtmlPreview } from "@/app/utils/helpers";
+import { getHtmlPreviewServer } from "@/app/utils/helpers";
 
 const ScholarshipCard = ({
   title,
@@ -45,7 +45,7 @@ const ScholarshipCard = ({
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-muted-foreground line-clamp-2">
-              {getHtmlPreview(description)}
+              {getHtmlPreviewServer(description)}
             </p>
             <div className="">
               <div className="text-sm text-secondary font-medium">
