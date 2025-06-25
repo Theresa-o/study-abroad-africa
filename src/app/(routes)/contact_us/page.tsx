@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { TiptapEditor } from "@/app/components/shared/TiptapEditor";
-import { useConsultation } from "@/app/hooks/consultation/useConsultation";
 import { useRouter } from "next/navigation";
 import { useContactUs } from "@/app/hooks/contactUs/useContactUs";
 
