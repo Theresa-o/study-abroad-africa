@@ -13,11 +13,35 @@ export interface CustomCardProps {
   export type ArticleTagType =
     Database["public"]["Tables"]["articles_m2m_articles_tags"]["Row"];
 
-  export type ArticleType =
-    Database["public"]["Tables"]["articles"]["Row"];
 
-export type Eventype =
-    Database["public"]["Tables"]["events"]["Row"];
+  export interface ArticleType {            
+          author: string
+          category_id: number
+          country_id: number
+          created_at: string
+          description: string
+          id: number
+          image: string
+          slug: string
+          title: string
+          url: string
+  }
+
+    export interface Eventype {            
+          country_id: number
+          course_id: number
+          created_at: string
+          created_by: string
+          description: string
+          event_date: string
+          event_location: string
+          id: number
+          image: string
+          registration_link: string
+          slug: string
+          title: string
+          url: string
+  }
 
   export type ArticleInsertDataDTO = Database['public']['Tables']['articles']['Insert'];
 
@@ -30,9 +54,9 @@ export type Eventype =
   export interface ArticleCardProps {
     id: number;
     description: string;
-    created_at: string | null;
+    created_at: string;
     image: string;
     title: string;
-    slug: string | null;
+    slug: string ;
     type: TabType
   }
