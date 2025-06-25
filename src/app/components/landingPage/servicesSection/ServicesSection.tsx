@@ -1,10 +1,10 @@
-"use client";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ServiceCard from "./ServiceCard";
-import { useService } from "@/app/hooks/services/useServices";
-const ServicesSection = () => {
-  const { data } = useService();
+import { servicesService } from "@/app/services/servicesService";
+
+const ServicesSection = async () => {
+  // const { data } = useService();
+  const data = await servicesService.getServices();
 
   const financialServices = data?.filter(
     (service) => service?.service_category_id === 1

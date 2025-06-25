@@ -1,4 +1,4 @@
-import { getHtmlPreview } from "@/app/utils/helpers";
+import { getHtmlPreviewServer } from "@/app/utils/helpers";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -40,7 +40,7 @@ const ServiceCard = ({
           />
         </div>
         <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
-        <p className="text-gray-600">{getHtmlPreview(description)}</p>
+        <p className="text-gray-600">{getHtmlPreviewServer(description)}</p>
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Link
