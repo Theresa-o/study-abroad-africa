@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { DateTime } from "luxon";
 import { ArticleCardProps } from "@/app/types/articles/articles";
-import { getHtmlPreview } from "@/app/utils/helpers";
+import { getHtmlPreviewServer } from "@/app/utils/helpers";
 
 const ArticleCard = ({
   id,
@@ -61,7 +61,7 @@ const ArticleCard = ({
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground line-clamp-2">
-            {getHtmlPreview(description)}
+            {getHtmlPreviewServer(description)}
           </p>
         </CardContent>
         <CardFooter>

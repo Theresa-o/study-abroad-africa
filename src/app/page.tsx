@@ -9,6 +9,8 @@ import ScholarshipsSection from "./components/landingPage/scholarshipSection/Sch
 import ServicesSection from "./components/landingPage/servicesSection/ServicesSection";
 import StudyDestinations from "./components/landingPage/studyDestination/StudyDestination";
 import BlogTabs from "./components/landingPage/tipsNewsEvents/BlogTabs";
+import { Suspense } from "react";
+import BlogTabsSkeleton from "./components/shared/LoadingSkeletalView/BlogTabsSkeleton";
 
 export default function Home() {
   return (
@@ -18,7 +20,9 @@ export default function Home() {
       <StudyAbroadSteps />
       <StudyDestinations />
       <ScholarshipsSection />
-      <BlogTabs />
+      <Suspense fallback={<BlogTabsSkeleton />}>
+        <BlogTabs />
+      </Suspense>
       <EmailSubscriber />
       <EssentialExams />
       <ServicesSection />

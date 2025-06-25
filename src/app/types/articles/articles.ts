@@ -16,6 +16,9 @@ export interface CustomCardProps {
   export type ArticleType =
     Database["public"]["Tables"]["articles"]["Row"];
 
+export type Eventype =
+    Database["public"]["Tables"]["events"]["Row"];
+
   export type ArticleInsertDataDTO = Database['public']['Tables']['articles']['Insert'];
 
   export interface BlogLayoutProps {
@@ -25,11 +28,11 @@ export interface CustomCardProps {
   export type TabType = "tips" | "news" | "events";
 
   export interface ArticleCardProps {
-    id: string;
-    description: string;
-    created_at: string;
-    image: string;
-    title: string;
-    slug: string;
+    id: number;
+    description: string | null;
+    created_at: string | null;
+    image: string | null;
+    title: string | null;
+    slug: string | null;
     type: TabType
   }
