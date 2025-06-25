@@ -4,7 +4,7 @@ import { Database } from "../../../../utils/supabase/database.types";
 export interface CustomCardProps {
     school_name?: string;
     id: number;
-    image: string ;
+    image: string;
     title: string;
     description: string;
     url: string;
@@ -29,10 +29,10 @@ export type Eventype =
 
   export interface ArticleCardProps {
     id: number;
-    description: string | null;
+    description: string;
     created_at: string | null;
-    image: string | null;
-    title: string | null;
+    image: string;
+    title: string;
     slug: string | null;
     type: TabType
   }
