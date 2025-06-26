@@ -22,7 +22,11 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: "Study Abroad Africa",
-  description: "All information about studying abroad as an African",
+  description:
+    "The best resource to get all information about studying abroad as an African",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
