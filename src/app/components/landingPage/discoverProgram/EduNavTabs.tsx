@@ -43,7 +43,7 @@ const EduNavTabs = ({
         <EduNavTabsSkeleton />
       ) : (
         <Tabs defaultValue="undergraduate" className="w-full">
-          <TabsList className="w-full grid grid-cols-2 md:grid-cols-5 h-auto bg-white">
+          <TabsList className="w-full grid grid-cols-2 gap-2 md:gap-0 md:grid-cols-5 h-auto bg-white">
             {/* <TabsTrigger
           value="all"
           onClick={() => onCategorySelect(null)}
