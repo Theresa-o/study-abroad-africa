@@ -18,7 +18,7 @@ const DestinationCard = ({ country, image_url }: DestinationCardProps) => {
               src={image_url}
               alt={`Study in ${country}`}
               fill
-              className="rounded-md object-contain"
+              className="rounded-md object-cover"
               // udate the sizes attribute to match the image dimensions
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
