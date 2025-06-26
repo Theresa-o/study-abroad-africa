@@ -166,7 +166,7 @@ const CourseForm = () => {
       onSubmit={handleSubmit}
     >
       {({ errors, touched, isSubmitting, setFieldValue, values }) => (
-        <Form className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
+        <Form className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
           <div className="bg-secondary px-6 py-4">
             <h2 className="text-2xl font-bold text-white">Add New Course</h2>
           </div>
