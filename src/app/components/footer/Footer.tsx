@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { TikTokIcon } from "../shared/icons/TikTok";
 
 const Footer = () => {
   return (
@@ -28,23 +29,45 @@ const Footer = () => {
           </nav>
         </div>
         <div className="flex space-x-4">
-          <Link href="https://linkedin.com" className="hover:text-blue-400">
+          <Link
+            href="https://www.linkedin.com/company/study-abroad-africa/"
+            className="hover:text-secondary"
+          >
             <Linkedin size={24} />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="https://instagram.com" className="hover:text-pink-400">
+          <Link
+            href="https://www.tiktok.com/@studyabroadafrica1"
+            className="hover:text-secondary"
+          >
+            <TikTokIcon size={24} />
+            <span className="sr-only">Tiktok</span>
+          </Link>
+          <Link
+            href="https://www.instagram.com/studyabroadafrica/"
+            className="hover:text-secondary"
+          >
             <Instagram size={24} />
             <span className="sr-only">Instagram</span>
           </Link>
-          <Link href="https://twitter.com" className="hover:text-blue-400">
+          <Link
+            href="https://x.com/studyabroadafri"
+            className="hover:text-secondary"
+          >
             <Twitter size={24} />
             <span className="sr-only">Twitter</span>
           </Link>
-          <Link href="https://linkedin.com" className="hover:text-blue-400">
+          <Link
+            href="https://www.youtube.com/channel/UCSnxYOYXSkPzZrxvM8dAGTw"
+            className="hover:text-secondary"
+          >
             <Youtube size={24} />
             <span className="sr-only">Youtube</span>
           </Link>
-          <Link href="https://facebook.com" className="hover:text-blue-400">
+          <Link
+            href="https://www.facebook.com/groups/605764575429869"
+            className="hover:text-secondary"
+          >
             <Facebook size={24} />
             <span className="sr-only">Facebook</span>
           </Link>
