@@ -8,13 +8,13 @@ import { ChevronDown, Loader2 } from "lucide-react";
 import { TiptapEditor } from "@/app/components/shared/TiptapEditor";
 import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 import { useCreateInstitutionss } from "@/app/hooks/institution/useInstitution";
+import { useImageCoursesUpload } from "@/app/hooks/uploadFiles/useImageUpload";
+import { handleImageUpload } from "@/app/utils/handleImageUpload";
 
 const validationSchema = Yup.object({
   institution_name: Yup.string().required("Slug is required"),
   description: Yup.string().required("Description is required"),
-  logo: Yup.string()
-    .url("Must be a valid URL")
-    .required("Image URL is required"),
+  logo: Yup.string().required("Logo is required"),
   destination_id: Yup.string().required("Please select related destination"),
   location: Yup.string().required("Please select a location"),
   website: Yup.string()
@@ -37,6 +37,12 @@ const AddInstitutionForm = () => {
   const { data: locationsQuery, isLoading: locationsQueryLoading } =
     useStudyDestinations();
   const { mutate: createInstitution } = useCreateInstitutionss();
+
+  const {
+    mutate: uploadImage,
+    isError: uploadError,
+    isPending: uploadPending,
+  } = useImageCoursesUpload("institutions");
 
   const locationsOptions = useMemo(
     () =>
@@ -152,22 +158,36 @@ const AddInstitutionForm = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="logo"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                logo
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Upload Logo
               </label>
-              <Field
-                name="logo"
-                type="url"
-                className={`block w-full px-4 py-3 rounded-md border ${
-                  errors.logo && touched.logo
-                    ? "border-red-500"
-                    : "border-gray-300"
-                } focus:outline-none focus:ring-2 focus:ring-secondary transition duration-150 ease-in-out`}
-                placeholder="https://example.com/image.jpg"
-              />
+              <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center hover:border-primary transition">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    handleImageUpload(e, {
+                      uploadImage,
+                      setFieldValue,
+                      fieldName: "logo",
+                    })
+                  }
+                  className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                />
+                {uploadPending && (
+                  <p className="text-sm text-gray-500 mt-1">Uploading...</p>
+                )}
+                {uploadError && (
+                  <p className="text-sm text-red-600 mt-1">{uploadError}</p>
+                )}
+                {values.logo && (
+                  <img
+                    src={values.logo}
+                    alt="Uploaded"
+                    className="mt-2 w-full max-w-xs rounded"
+                  />
+                )}
+              </div>
               <ErrorMessage
                 name="logo"
                 component="div"

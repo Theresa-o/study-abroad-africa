@@ -11,14 +11,14 @@ import { useTags } from "@/app/hooks/shared/useTags";
 import { useInstitutions } from "@/app/hooks/institutions/useInstitutions";
 import { useCreateCourse } from "@/app/hooks/courses/useCourses";
 import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
+import { useImageCoursesUpload } from "@/app/hooks/uploadFiles/useImageUpload";
+import { handleImageUpload } from "@/app/utils/handleImageUpload";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
   slug: Yup.string().required("Slug is required"),
   description: Yup.string().required("Description is required"),
-  imageUrl: Yup.string()
-    .url("Must be a valid URL")
-    .required("Image URL is required"),
+  imageUrl: Yup.string().required("Image URL is required"),
   category: Yup.string().required("Please select a category"),
   tag: Yup.array()
     .min(1, "Please select at least one tag")
@@ -26,7 +26,6 @@ const validationSchema = Yup.object({
     .required("Please select a tag"),
   institution: Yup.string().required("Please select a institution"),
   location: Yup.string().required("Please select a location"),
-
   url: Yup.string()
     .url("Must be a valid URL")
     .required("Institution's website is required"),
@@ -70,6 +69,12 @@ const CourseForm = () => {
     // error: createCourseMutationError,
     // isSuccess,
   } = useCreateCourse();
+
+  const {
+    mutate: uploadImage,
+    isError: uploadError,
+    isPending: uploadPending,
+  } = useImageCoursesUpload("courses");
 
   const categoriesOptions = useMemo(
     () =>
@@ -270,24 +275,37 @@ const CourseForm = () => {
                 className="mt-1 text-sm text-secondary"
               />
             </div>
-
             <div>
-              <label
-                htmlFor="imageUrl"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Image URL
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Upload Image
               </label>
-              <Field
-                name="imageUrl"
-                type="url"
-                className={`block w-full px-4 py-3 rounded-md border ${
-                  errors.imageUrl && touched.imageUrl
-                    ? "border-red-500"
-                    : "border-gray-300"
-                } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
-                placeholder="https://example.com/image.jpg"
-              />
+              <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center hover:border-primary transition">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    handleImageUpload(e, {
+                      uploadImage,
+                      setFieldValue,
+                      fieldName: "imageUrl",
+                    })
+                  }
+                  className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                />
+                {uploadPending && (
+                  <p className="text-sm text-gray-500 mt-1">Uploading...</p>
+                )}
+                {uploadError && (
+                  <p className="text-sm text-red-600 mt-1">{uploadError}</p>
+                )}
+                {values.imageUrl && (
+                  <img
+                    src={values.imageUrl}
+                    alt="Uploaded"
+                    className="mt-2 w-full max-w-xs rounded"
+                  />
+                )}
+              </div>
               <ErrorMessage
                 name="imageUrl"
                 component="div"
