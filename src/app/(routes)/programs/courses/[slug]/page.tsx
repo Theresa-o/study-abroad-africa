@@ -39,40 +39,18 @@ const page = async ({ params }: CourseDetailPageProps) => {
   ];
 
   const additionalContent = (
-    <div className="grid md:grid-cols-2 gap-6">
-      <div>
-        <h3 className="text-xl font-semibold mb-3">Program Information</h3>
-        <div className="space-y-2">
-          {course.Institution?.name && (
-            <p>
-              <strong>Institution:</strong> {course.Institution.name}
-            </p>
-          )}
-          {course.destinations?.name && (
-            <p>
-              <strong>Location:</strong> {course.destinations.name}
-            </p>
-          )}
-          {course.course_categories?.name && (
-            <p>
-              <strong>Category:</strong> {course.course_categories.name}
-            </p>
-          )}
-        </div>
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold mb-3">Quick Actions</h3>
-        {course.url && (
-          <a
-            href={course.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
-          >
-            Visit Official Page
-          </a>
-        )}
-      </div>
+    <div>
+      <h3 className="text-xl font-semibold mb-3">Quick Actions</h3>
+      {course.url && (
+        <a
+          href={course.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
+        >
+          Visit Official Page
+        </a>
+      )}
     </div>
   );
 
