@@ -312,7 +312,7 @@ function FilterCategory({
         />
       </button>
       {isOpen && (
-        <div className="mt-2 space-y-1 px-4">
+        <div className="mt-2 space-y-1 px-4 max-h-60 overflow-y-auto">
           {options.map((option) => (
             <div key={option} className="flex items-center space-x-2">
               <input
