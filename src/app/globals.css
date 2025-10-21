@@ -34,6 +34,14 @@ body {
   @apply text-gray-800;
 }
 
+.tiptap a {
+  @apply text-red-500 decoration-secondary decoration-2 underline underline-offset-2 hover:text-secondary transition-colors duration-200 cursor-pointer;
+}
+
+.dark .tiptap a {
+  @apply decoration-secondary hover:text-secondary;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

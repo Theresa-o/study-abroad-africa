@@ -34,7 +34,7 @@ const ConsultationRequest = () => {
             className="bg-secondary text-white hover:bg-white hover:text-secondary font-sans mt-4"
             size="lg"
           >
-            Book a Consultation – $100
+            Book a Consultation
           </Button>
         </Link>
       </div>
