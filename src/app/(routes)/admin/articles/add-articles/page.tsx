@@ -12,6 +12,8 @@ import {
   useArticleTags,
   useCreateArticles,
 } from "@/app/hooks/articles/useArticles";
+import { useImageCoursesUpload } from "@/app/hooks/uploadFiles/useImageUpload";
+import { handleImageUpload } from "@/app/utils/handleImageUpload";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -108,6 +110,12 @@ const ArticleForm = () => {
     setSubmitting(false);
   };
 
+    const {
+      mutate: uploadImage,
+      isError: uploadError,
+      isPending: uploadPending,
+    } = useImageCoursesUpload("articles");
+
   return (
     <Formik
       initialValues={{
@@ -197,24 +205,37 @@ const ArticleForm = () => {
                 className="mt-1 text-sm text-secondary"
               />
             </div>
-
             <div>
-              <label
-                htmlFor="image"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Image URL
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Upload Image
               </label>
-              <Field
-                name="image"
-                type="url"
-                className={`block w-full px-4 py-3 rounded-md border ${
-                  errors.image && touched.image
-                    ? "border-red-500"
-                    : "border-gray-300"
-                } focus:outline-none focus:ring-2 focus:ring-secondary transition duration-150 ease-in-out`}
-                placeholder="https://example.com/image.jpg"
-              />
+              <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center hover:border-primary transition">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    handleImageUpload(e, {
+                      uploadImage,
+                      setFieldValue,
+                      fieldName: "image",
+                    })
+                  }
+                  className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                />
+                {uploadPending && (
+                  <p className="text-sm text-gray-500 mt-1">Uploading...</p>
+                )}
+                {uploadError && (
+                  <p className="text-sm text-red-600 mt-1">{uploadError}</p>
+                )}
+                {values.image && (
+                  <img
+                    src={values.image}
+                    alt="Uploaded"
+                    className="mt-2 w-full max-w-xs rounded"
+                  />
+                )}
+              </div>
               <ErrorMessage
                 name="image"
                 component="div"
