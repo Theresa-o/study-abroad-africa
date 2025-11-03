@@ -11,6 +11,8 @@ import { useTags } from "@/app/hooks/shared/useTags";
 import { useCreateScholarship } from "@/app/hooks/scholarships/useScholarship";
 import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 import { CreateScholarshipDTO } from "@/app/types/scholarships/scholarships";
+import { handleImageUpload } from "@/app/utils/handleImageUpload";
+import { useImageCoursesUpload } from "@/app/hooks/uploadFiles/useImageUpload";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -30,13 +32,11 @@ const validationSchema = Yup.object({
     .of(Yup.number().required())
     .required("Please select at least one category"),
   tags: Yup.array()
-    .min(1, "Please select at least one tag")
     .of(Yup.number().required())
-    .required("Please select at least one tag"),
+    .nullable(),
   institutions: Yup.array()
-    .min(1, "Please select at least one institution")
     .of(Yup.number().required())
-    .required("Please select at least one institution"),
+    .nullable(),
   destinations: Yup.array()
     .min(1, "Please select at least one destination")
     .of(Yup.number().required())
@@ -154,6 +154,12 @@ const ScholarshipForm = () => {
     setSubmitting(false);
   };
 
+    const {
+      mutate: uploadImage,
+      isError: uploadError,
+      isPending: uploadPending,
+    } = useImageCoursesUpload("scholarship");
+
   return (
     <Formik
       initialValues={{
@@ -174,7 +180,7 @@ const ScholarshipForm = () => {
       onSubmit={handleSubmit}
     >
       {({ errors, touched, isSubmitting, setFieldValue, values }) => (
-        <Form className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
+        <Form className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
           <div className="bg-secondary px-6 py-4">
             <h2 className="text-2xl font-bold text-white">
               Add New Scholarship
@@ -248,24 +254,37 @@ const ScholarshipForm = () => {
                 className="mt-1 text-sm text-secondary"
               />
             </div>
-
             <div>
-              <label
-                htmlFor="imageUrl"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Image URL
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Upload Image
               </label>
-              <Field
-                name="imageUrl"
-                type="url"
-                className={`block w-full px-4 py-3 rounded-md border ${
-                  errors.imageUrl && touched.imageUrl
-                    ? "border-red-500"
-                    : "border-gray-300"
-                } focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out`}
-                placeholder="https://example.com/scholarship-image.jpg"
-              />
+              <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center hover:border-primary transition">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    handleImageUpload(e, {
+                      uploadImage,
+                      setFieldValue,
+                      fieldName: "imageUrl",
+                    })
+                  }
+                  className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                />
+                {uploadPending && (
+                  <p className="text-sm text-gray-500 mt-1">Uploading...</p>
+                )}
+                {uploadError && (
+                  <p className="text-sm text-red-600 mt-1">{uploadError}</p>
+                )}
+                {values.imageUrl && (
+                  <img
+                    src={values.imageUrl}
+                    alt="Uploaded"
+                    className="mt-2 w-full max-w-xs rounded"
+                  />
+                )}
+              </div>
               <ErrorMessage
                 name="imageUrl"
                 component="div"
@@ -408,7 +427,7 @@ const ScholarshipForm = () => {
                 htmlFor="tags"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Tags
+                Tags/Courses
               </label>
               <div className="relative">
                 <Field
