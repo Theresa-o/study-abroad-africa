@@ -77,7 +77,8 @@ export const scholarshipService = {
             scholarship_categories:category_m2m_scholarships(category_id),
             scholarship_institution:institutions_m2m_scholarships(institution_id),
             scholarship_tags:tag_m2m_scholarships(tag_id)
-          `);
+          `)
+          .order('published_date', { ascending: false });
     
         if (error) throw error;
         return data;

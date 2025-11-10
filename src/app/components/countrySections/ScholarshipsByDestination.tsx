@@ -29,7 +29,7 @@ const ScholarshipsByDestination = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
-          {filteredScholarships.map((scholarship) => (
+          {filteredScholarships.slice(0, 4).map((scholarship) => (
             <ScholarshipCard key={scholarship.id} {...scholarship} />
           ))}
         </div>
