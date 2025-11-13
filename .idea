@@ -1,0 +1,112 @@
+TO BE ADDED
+- coupon cgpa calculator requirements best in
+- community chat rooms
+- ai integration
+- excel sheet to take note of schools that user has applied to and etc
+- gradcafe like
+
+
+Page Structure for "Study in Canada"
+✅ 1. Hero Section
+Headline: "Study in Canada: Your Path to World-Class Education"
+Brief Intro: A short paragraph about why Canada is a great study destination.
+Call-to-Action (CTA) Button:
+"Find Scholarships" → Links to available scholarships
+"Apply Now" → Guide on application process
+✅ 2. Why Study in Canada?
+Key Benefits:
+
+Affordable tuition & living costs compared to the US/UK
+Post-graduation work permit (PGWP)
+Safe, multicultural environment
+High-ranking universities
+Scholarship opportunities
+Attractive icons for quick scanning.
+
+✅ 3. Top Universities in Canada 🏫
+A grid/list of top universities with links to their official pages.
+Example:
+🏅 University of Toronto
+🏅 McGill University
+🏅 University of British Columbia (UBC)
+✅ 4. Admission Requirements & Process
+Undergraduate & Postgraduate requirements
+English/French Proficiency Exams (IELTS/TOEFL)
+Application Deadlines
+Step-by-step guide on how to apply
+✅ 5. Scholarships & Funding 💰
+List available scholarships for international students
+Graduate Assistantships (GA, TA, RA)
+Government-funded programs like Vanier Canada Graduate Scholarships
+✅ 6. Student Visa Guide 🎫
+Requirements to apply for a Canadian Study Permit
+How to show proof of funds
+Biometrics and medical exams
+✅ 7. Cost of Living 💵
+Breakdown of tuition fees, accommodation, food, and transportation
+Tips on how students can save money
+✅ 8. Work & Post-Graduation Opportunities 🏢
+Can students work while studying? (Yes, up to 20 hours/week)
+Post-Graduation Work Permit (PGWP): Stay & work after studies
+✅ 9. Student Life in Canada 🇨🇦
+Housing options (on-campus vs off-campus)
+Best cities for students (Toronto, Vancouver, Montreal)
+Student support groups & communities
+✅ 10. How to Apply (Step-by-Step) 📝
+Interactive checklist or step-by-step guide to make it actionable
+✅ 11. Aarticles about Canada 📝
+✅ 12. Hidden gem schools - affordable schools in canada📝
+🔗 Additional UX Features
+FAQs Section – Common student questions answered.
+Live Chat / Contact Support – To guide students who need help.
+Success Stories – Testimonials from African students in Canada.
+Resources Section – Downloadable guides, application templates, etc.
+
+
+Final Database Schema Recommendation
+Main Tables
+study_destinations
+
+id (PK)
+country (e.g., "Canada")
+flag_code (e.g., "CA")
+image_url
+href (e.g., "/study/canada")
+universities
+
+id (PK)
+name (e.g., "University of Toronto")
+website
+study_destination_id (FK → study_destinations)
+admission_requirements
+
+id (PK)
+requirement (Text)
+program_id (FK → programs)
+university_id (M2M → universities)
+programs (for undergrad, master's, PhD)
+
+id (PK)
+level (e.g., "Undergraduate", "Master's", "PhD")
+cost_of_living
+
+id (PK)
+study_destination_id (FK → study_destinations)
+average_rent
+food_expenses
+transportation_costs
+tuition_fees
+work_opportunities
+
+id (PK)
+study_destination_id (FK → study_destinations)
+can_work_while_studying (Boolean)
+max_hours_per_week
+post_graduation_work_permit (Text)
+student_life
+
+id (PK)
+study_destination_id (FK → study_destinations)
+best_cities_for_students (Text)
+housing_options (Text)
+student_support_groups (Text)
