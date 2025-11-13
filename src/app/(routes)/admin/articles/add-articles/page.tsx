@@ -1,6 +1,7 @@
 "use client";
 
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+import Image from "next/image";
 import * as Yup from "yup";
 import { useMemo } from "react";
 import { toast } from "sonner";
@@ -110,11 +111,11 @@ const ArticleForm = () => {
     setSubmitting(false);
   };
 
-    const {
-      mutate: uploadImage,
-      isError: uploadError,
-      isPending: uploadPending,
-    } = useImageCoursesUpload("articles");
+  const {
+    mutate: uploadImage,
+    isError: uploadError,
+    isPending: uploadPending,
+  } = useImageCoursesUpload("articles");
 
   return (
     <Formik
@@ -229,10 +230,12 @@ const ArticleForm = () => {
                   <p className="text-sm text-red-600 mt-1">{uploadError}</p>
                 )}
                 {values.image && (
-                  <img
+                  <Image
                     src={values.image}
                     alt="Uploaded"
-                    className="mt-2 w-full max-w-xs rounded"
+                    width={400}
+                    height={400}
+                    className="rounded object-cover"
                   />
                 )}
               </div>

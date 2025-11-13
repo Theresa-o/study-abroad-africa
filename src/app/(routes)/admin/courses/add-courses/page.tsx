@@ -13,6 +13,7 @@ import { useCreateCourse } from "@/app/hooks/courses/useCourses";
 import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDestination";
 import { useImageCoursesUpload } from "@/app/hooks/uploadFiles/useImageUpload";
 import { handleImageUpload } from "@/app/utils/handleImageUpload";
+import Image from "next/image";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -299,10 +300,12 @@ const CourseForm = () => {
                   <p className="text-sm text-red-600 mt-1">{uploadError}</p>
                 )}
                 {values.imageUrl && (
-                  <img
+                  <Image
                     src={values.imageUrl}
                     alt="Uploaded"
-                    className="mt-2 w-full max-w-xs rounded"
+                    width={400}
+                    height={400}
+                    className="rounded object-cover"
                   />
                 )}
               </div>

@@ -10,6 +10,8 @@ import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDesti
 import { useCreateInstitutionss } from "@/app/hooks/institution/useInstitution";
 import { useImageCoursesUpload } from "@/app/hooks/uploadFiles/useImageUpload";
 import { handleImageUpload } from "@/app/utils/handleImageUpload";
+import Image from "next/image";
+
 
 const validationSchema = Yup.object({
   institution_name: Yup.string().required("Slug is required"),
@@ -181,11 +183,13 @@ const AddInstitutionForm = () => {
                   <p className="text-sm text-red-600 mt-1">{uploadError}</p>
                 )}
                 {values.logo && (
-                  <img
-                    src={values.logo}
-                    alt="Uploaded"
-                    className="mt-2 w-full max-w-xs rounded"
-                  />
+                      <Image
+                        src={values.logo}
+                        alt="Uploaded"
+                        width={400}
+                        height={400}
+                        className="rounded object-cover"
+                      />
                 )}
               </div>
               <ErrorMessage

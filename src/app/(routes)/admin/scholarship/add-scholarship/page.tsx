@@ -13,6 +13,7 @@ import { useStudyDestinations } from "@/app/hooks/studyDestination/useStudyDesti
 import { CreateScholarshipDTO } from "@/app/types/scholarships/scholarships";
 import { handleImageUpload } from "@/app/utils/handleImageUpload";
 import { useImageCoursesUpload } from "@/app/hooks/uploadFiles/useImageUpload";
+import Image from "next/image";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -31,12 +32,8 @@ const validationSchema = Yup.object({
     .min(1, "Please select at least one category")
     .of(Yup.number().required())
     .required("Please select at least one category"),
-  tags: Yup.array()
-    .of(Yup.number().required())
-    .nullable(),
-  institutions: Yup.array()
-    .of(Yup.number().required())
-    .nullable(),
+  tags: Yup.array().of(Yup.number().required()).nullable(),
+  institutions: Yup.array().of(Yup.number().required()).nullable(),
   destinations: Yup.array()
     .min(1, "Please select at least one destination")
     .of(Yup.number().required())
@@ -154,11 +151,11 @@ const ScholarshipForm = () => {
     setSubmitting(false);
   };
 
-    const {
-      mutate: uploadImage,
-      isError: uploadError,
-      isPending: uploadPending,
-    } = useImageCoursesUpload("scholarship");
+  const {
+    mutate: uploadImage,
+    isError: uploadError,
+    isPending: uploadPending,
+  } = useImageCoursesUpload("scholarship");
 
   return (
     <Formik
@@ -278,10 +275,12 @@ const ScholarshipForm = () => {
                   <p className="text-sm text-red-600 mt-1">{uploadError}</p>
                 )}
                 {values.imageUrl && (
-                  <img
+                  <Image
                     src={values.imageUrl}
                     alt="Uploaded"
-                    className="mt-2 w-full max-w-xs rounded"
+                    width={400}
+                    height={400}
+                    className="rounded object-cover"
                   />
                 )}
               </div>
