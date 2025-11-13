@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import ScholarshipCard from "./ScholarshipCard";
 import Link from "next/link";
