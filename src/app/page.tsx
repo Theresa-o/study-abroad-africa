@@ -12,6 +12,7 @@ import BlogTabs from "./components/landingPage/tipsNewsEvents/BlogTabs";
 import { Suspense } from "react";
 import BlogTabsSkeleton from "./components/shared/LoadingSkeletalView/BlogTabsSkeleton";
 import ServicesSectionSkeleton from "./components/shared/LoadingSkeletalView/ServicesSectionSkeleton";
+import POFRequest from "./components/landingPage/proofOfFunds.tsx/proofOfFunds";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Suspense fallback={<BlogTabsSkeleton />}>
         <BlogTabs />
       </Suspense>
+      <POFRequest />
       <EmailSubscriber />
       <EssentialExams />
       <Suspense fallback={<ServicesSectionSkeleton />}>

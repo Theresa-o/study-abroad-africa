@@ -598,6 +598,42 @@ export type Database = {
           },
         ]
       }
+      proof_of_funds: {
+        Row: {
+          admin_comment: string | null
+          created_at: string
+          email: string | null
+          first_name: string | null
+          id: number
+          is_contacted: boolean | null
+          last_name: string | null
+          phone_no: string | null
+          pof_interest: string | null
+        }
+        Insert: {
+          admin_comment?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: number
+          is_contacted?: boolean | null
+          last_name?: string | null
+          phone_no?: string | null
+          pof_interest?: string | null
+        }
+        Update: {
+          admin_comment?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: number
+          is_contacted?: boolean | null
+          last_name?: string | null
+          phone_no?: string | null
+          pof_interest?: string | null
+        }
+        Relationships: []
+      }
       scholarships: {
         Row: {
           created_at: string
