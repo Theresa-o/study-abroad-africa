@@ -34,10 +34,10 @@ const CountryArticlesBySection = ({
       <ApplicationProcess articles={filterByTag(4)} />
       <RequiredTests articles={filterByTag(5)} />
       <FinancingProgram articles={filterByTag(6)} />
-      <ScholarshipsByDestination
+      {/* <ScholarshipsByDestination
         destinationId={destinationId}
         countryName={countryName}
-      />
+      /> */}
       <StudentVisaGuide articles={filterByTag(7)} />
       <StudentLife articles={filterByTag(8)} />
       <PostStudyOptions articles={filterByTag(9)} />
