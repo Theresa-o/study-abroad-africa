@@ -65,7 +65,8 @@ export const courseService = {
         institution:institution_id(institution_name),
         category:category_id(category_name),
         course_tags:course_m2m_tags(tag_id)
-      `);
+      `)
+      .order('created_at', { ascending: false });
 
     if (error) throw error;
     return data;

@@ -46,7 +46,8 @@ export const articleService = {
                 category:category_id(category_name),
                 articles_tags:articles_m2m_articles_tags(articles_tags_id)
                 `
-            );
+            )
+            .order('created_at', { ascending: false });
         if (error) throw error
         return data
     },
