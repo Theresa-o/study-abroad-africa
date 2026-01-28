@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import ReactQueryProvider from "@/app/providers/ReactQueryProvider";
 import { Toaster } from "sonner";
 import Footer from "./components/footer/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // Configure Inter for headings
 const inter = Inter({
@@ -43,6 +44,7 @@ export default function RootLayout({
           <Toaster richColors position="top-right" duration={5000} />
           <Footer />
         </body>
+        <GoogleAnalytics gaId="G-68846Q996W" />
       </html>
     </ReactQueryProvider>
   );
